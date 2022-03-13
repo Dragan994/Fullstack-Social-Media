@@ -1,0 +1,148 @@
+@import '~@angular/material/theming';
+.wrapper {
+    background-color: rgb(75, 136, 250);
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    padding: 0 0 5px 5px;
+    height: 100%;
+    box-shadow: 10px 10px 10px ;
+}
+
+.flex-column{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.online-users-list{
+    width: 100%;
+    min-height: 100px;
+    padding-left: 5px;
+    
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    overflow-y: auto;
+    border-radius: 0 0 0  10px;
+
+    h4{
+        margin-top: 5px;
+    }
+}
+
+.chat-window{
+    margin: 5px 0;
+    border-radius: 10px 0 0  10px;
+    padding: 5px;
+    background-color: #fff;
+    flex-grow: 15;
+    overflow-y: auto;
+    border-bottom: 1px solid green;
+
+    >div{
+        margin-top: 15px;
+    }
+    
+    .chat-message{
+        word-break: break-all;
+        padding: 5px;
+        max-width: 80%;
+        background-color: rgb(160, 255, 200);
+        display: inline-block;
+    }
+
+    .my-chat-message{
+        display: flex;
+        justify-content: flex-end;
+        
+        .message-text{
+            word-break: break-all;
+            padding: 5px;
+            max-width: 80%;
+            background-color: rgb(180, 200, 255);
+            display: inline-block;
+
+        }
+    }
+
+
+}
+
+.text-input{
+    background-color: #fff;
+    border-radius: 10px 0 0  10px;
+    padding: 0 10px;
+    flex-grow: 0;
+    display: flex;
+    align-items: baseline;
+
+    .input-field{
+        flex-grow: 500;
+        mat-form-field{
+            width: 100%;
+        }
+    }
+    .send-icon{
+        cursor: pointer;
+        flex-grow: 1;
+
+        width: 2.5em;
+        height: 2.5em;
+
+        background-color: cornflowerblue;
+        border-radius:  50%;
+        text-align: center;
+        mat-icon{
+            line-height: 1.6em;
+            fill: aliceblue;
+        }
+    }
+
+
+}
+
+#hideChatBtn{
+    height: 100%;
+    background-color: darkslateblue;
+    display: flex;
+    align-items: center;
+
+    >button{
+        color: #fff;
+    }
+    
+}
+
+#showChatBtn {
+    position: absolute;
+    bottom: 30px;
+    left: -60px;
+
+    width: 2em;
+    height: 2em;
+
+}
+
+.hidden-chat{
+    transform: translateX(300px);
+}
+.hidden-btn{
+    display: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .wrapper{
+        width: 100%;
+    }
+    .hidden-chat{
+        transform: translateX(100%);
+    }
+    #hideChatBtn{
+        right: 0;
+    }
+  }

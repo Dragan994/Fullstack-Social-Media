@@ -1,0 +1,33 @@
+<div class="flex-container-center m-t-15">
+
+        <mat-card>
+            <mat-card-title class="text-center">{{"components.login.title" | translate}}</mat-card-title>
+            
+            <form [formGroup]="loginForm">
+                <div>
+                    <mat-form-field>
+                        <mat-label>{{"common.user.username" | translate}}</mat-label>
+                        <input id="username" formControlName="username" matInput placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                        <mat-error *ngIf='loginForm.controls.username.hasError("required")'>{{"common.user.username" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                        
+                        <mat-error *ngIf='loginForm.controls.username.hasError("wrongCredentials")'>{{"common.user.errorMessages.wrongCredentials" | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div>
+                    <mat-form-field>
+                        <mat-label>{{"common.user.password" | translate}}</mat-label>
+                        <input id="password" formControlName="password" type="text" matInput placeholder='{{"common.user.passwordPlaceholder" | translate}}'/>                        
+                        <mat-error *ngIf='loginForm.controls.password.hasError("minlength")'>{{"common.user.errorMessages.passwordMinlength" | translate}}</mat-error>
+                        <mat-error *ngIf='loginForm.controls.password.hasError("required")'>{{"common.user.password" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>                        
+                        <mat-error *ngIf='loginForm.controls.password.hasError("wrongPassword")'>{{"common.user.errorMessages.wrongPassword" | translate}}</mat-error>
+                        <mat-error *ngIf='loginForm.controls.password.hasError("wrongCredentials")'>{{"common.user.errorMessages.wrongCredentials" | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </form>
+            <div class="flex-container-center m-t-15">
+                <button id="loginBtn" (click)="submitForm()" mat-raised-button color="primary" [disabled]=!loginForm.valid>{{"components.login.buttons.login" | translate}}</button>
+            </div>
+
+        </mat-card>
+</div>

@@ -1,0 +1,69 @@
+<div class="wrapper" (keyup.enter)="sendMessage()" id="chat" [ngClass]="{'hidden-chat' : chatIsHidden}" >
+    <div class="flex-column">
+
+        <div class="online-users-list">
+
+            <div>
+                <h4>Users online:</h4>
+                
+                <div class="online-user" *ngFor="let user of onlineUsersList">
+                    {{user['username']}} - id:{{user['user_id']}}
+                </div>
+            </div>
+            
+            <div id="hideChatBtn"  (click)="hideChat()" [ngClass]="{'hidden-btn' : chatIsHidden}">
+                <button mat-icon-button>
+                    <mat-icon class="hide-chat-icon">chevron_right</mat-icon>
+                  </button>
+            </div>
+
+        </div>
+
+        <div class="chat-window">
+            <div  *ngFor="let messageData of chatMessages">
+
+                <div *ngIf="!messageData['userMessage']" class="chat-message">
+                    <div class="user-name">
+                        {{messageData['username']}}
+                    </div>
+                    <div class="message-text">
+                        {{messageData['message']}}
+                    </div>
+                </div>
+
+                
+                    <div *ngIf="messageData['userMessage']" class="my-chat-message">
+                        <div class="message-text">
+                            {{messageData['message']}}
+                        </div>
+                    </div>
+               
+
+            </div>
+        </div>
+
+        <div class="text-input" >
+            <div [formGroup]="chatForm" class="input-field">
+                <mat-form-field>
+                    <textarea matInput
+                    formControlName="chatText"
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5"></textarea>
+                </mat-form-field>
+            </div>
+            <button (click)="sendMessage()" mat-mini-fab color="primary">
+                <mat-icon>send</mat-icon>
+              </button>
+        </div>
+
+    </div>
+    
+    <div id="showChatBtn" (click)="showChat()" [ngClass]="{'hidden-btn' : !chatIsHidden}">
+       
+        <button mat-mini-fab color="primary">
+            <mat-icon>chat</mat-icon>
+          </button>
+    </div>
+</div>

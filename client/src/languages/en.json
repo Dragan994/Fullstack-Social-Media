@@ -1,0 +1,47 @@
+{
+    "components": {
+        "login": {
+            "title": "Login",
+            "buttons":{
+                "login": "Login"
+            }
+        },
+        "register": {
+            "title": "Register",
+            "buttons":{
+                "register": "Register"
+            }
+        }
+    },
+    "common":{
+        "user":{
+            "firstname": "Firstname",
+            "firstnamePlaceholder":"Enter Firstname",
+
+            "lastname": "Lastname",
+            "lastnamePlaceholder":"Enter Lastname",
+
+            "email": "E-mail",
+            "emailPlaceholder":"Enter E-mail",
+
+            "username": "Username",
+            "usernamePlaceholder": "Enter Username",
+
+            "password": "Password",
+            "passwordPlaceholder": "Enter Password",
+
+            "confirmPassword": "Confirm Password",
+            "confirmPasswordPlaceholder": "Confirm Password",
+
+
+            "errorMessages": {
+                    "isRequired": " is required!",
+                    "passwordMinlength": "Password length must be 6 characters or more.",
+                    "wrongCredentials": "Wrong credentials, try again.",
+                    "wrongPassword": "Wrong password, try again."
+                
+            }
+        }
+    }
+
+}

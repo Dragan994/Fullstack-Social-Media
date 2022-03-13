@@ -1,0 +1,64 @@
+<div class="flex-container-center m-t-15">
+
+    <mat-card>
+        <mat-card-title class="text-center">{{"components.register.title" | translate}}</mat-card-title>
+
+        <form [formGroup]="loginForm">
+
+            <div>
+                <mat-form-field>
+                    <mat-label>{{"common.user.firstname" | translate}}</mat-label>
+                    <input id="firstname" formControlName="firstname" matInput="matInput" placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                    <mat-error *ngIf='loginForm.controls.firstname.hasError("required")'>{{"common.user.firstname" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>{{"common.user.lastname" | translate}}</mat-label>
+                    <input id="lastname" formControlName="lastname" matInput="matInput" placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                    <mat-error *ngIf='loginForm.controls.lastname.hasError("required")'>{{"common.user.lastname" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>{{"common.user.email" | translate}}</mat-label>
+                    <input id="email" formControlName="email" matInput="matInput" placeholder='{{"common.user.emailPlaceholder" | translate}}'/>
+                    <mat-error *ngIf='loginForm.controls.email.hasError("required")'>{{"common.user.email" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>{{"common.user.username" | translate}}</mat-label>
+                    <input id="username" formControlName="username" matInput="matInput" placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                    <mat-error *ngIf='loginForm.controls.username.hasError("required")'>{{"common.user.username" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>{{"common.user.password" | translate}}</mat-label>
+                    <input id="password" formControlName="password" type="text" matInput="matInput" placeholder='{{"common.user.passwordPlaceholder" | translate}}'/>
+                    <mat-error *ngIf='loginForm.controls.password.hasError("minlength")'>{{"common.user.errorMessages.passwordMinlength" | translate}}</mat-error>
+                    <mat-error *ngIf='loginForm.controls.password.hasError("required")'>{{"common.user.password" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>{{"common.user.confirmPassword" | translate}}</mat-label>
+                    <input id="confirmPassword" formControlName="confirmPassword" matInput="matInput" placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                    <mat-error *ngIf='loginForm.controls.username.hasError("required")'>{{"common.user.confirmPassword" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+
+        </form>
+
+        <div class="flex-container-center m-t-15">
+            <button id="registerBtn" (click)="submitForm()" mat-raised-button="mat-raised-button" color="primary" [disabled]="!loginForm.valid">{{"components.register.buttons.register" | translate}}</button>
+        </div>
+
+    </mat-card>
+</div>

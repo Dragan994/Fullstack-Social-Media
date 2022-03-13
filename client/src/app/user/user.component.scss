@@ -1,0 +1,39 @@
+.wrapper{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+nav{
+    padding: 2px;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 10px 10px 5px rgba(207, 207, 255, 0.336);
+    .nav-bar{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .user-profile{
+            padding: 10px;
+            border-left: 3px solid blue;
+        }
+
+
+
+
+        >div{
+            margin-right: 15px;
+        }
+    }
+}
+
+
+
+.chat-margin{
+    width: 350px;
+}
+

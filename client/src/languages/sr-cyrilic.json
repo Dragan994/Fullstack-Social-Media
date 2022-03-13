@@ -1,0 +1,12 @@
+{
+    "components": {
+        "login": {
+            "title": "Пријави се"
+        },
+        "register": {
+            "title": "Региструј се"
+        }
+
+    }
+
+}

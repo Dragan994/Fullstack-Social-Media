@@ -1,0 +1,45 @@
+
+
+.game-wrapper{
+    padding: 30px;
+    width: 100%;
+    display:flex;
+    >div{
+        width: 50%;
+    }
+
+
+
+    .row{
+        display: inline-flex;
+        flex-wrap: nowrap;
+    }
+
+    .ship-row{
+        border: 1px solid red;
+        margin-top: 5px;
+
+        .ship-cell{
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+
+    .map-cell{    
+        width: 32px;
+        height: 32px;
+        &:hover{
+            background-color: aqua;
+        }
+    }
+
+    .marked{
+        background: #000;
+        &:hover{
+            background-color: rgb(70, 70, 70);
+        }
+    }
+
+}
+

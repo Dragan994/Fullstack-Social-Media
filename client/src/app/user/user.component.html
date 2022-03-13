@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <div *ngIf="!tokenError">
+
+        <nav >
+            <div class="nav-bar">
+                <div class="user-profile">
+                    {{userData['firstname']}} {{userData['lastname']}}
+                </div>
+                <div>
+                    <button mat-mini-fab color="primary" >
+                        <mat-icon>person</mat-icon>
+                      </button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="main-view">
+            
+            <!--
+                <app-battleship></app-battleship>
+                
+            -->
+        </div>
+    </div>
+    
+    
+    <div *ngIf="tokenError">
+        <h2>Token error, please login</h2>
+        <a routerLink="/login">Go to Login</a>
+    </div>
+
+    <app-chat></app-chat>
+</div>

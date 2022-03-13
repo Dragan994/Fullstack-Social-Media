@@ -1,0 +1,33 @@
+<div>
+    <h2>Battleship puzzle</h2>
+    <div class="game-wrapper">
+        <div  >
+            <p>Battle ships</p>
+            <div  class="border" *ngFor=" let ship of battleShips">
+                <div  class="row ship-row"   >
+                    
+                        <div class="ship-cell" *ngFor=" let cell of ship['cells']">
+                            {{cell}}
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p>Battlefield map</p>
+            <div id="battlefieldMap" class="border" *ngFor=" let bfRow of battlefieldMap">
+                <div class="row">
+                    
+                        <div class="map-cell" *ngFor=" let bfCell of bfRow" (click)="logCell(bfCell)" [ngClass]="{'marked' : bfCell['marked']=== 'ship'}">
+                            x
+                        </div>                    
+                </div>
+            </div>            
+        </div>
+    </div>
+
+
+
+
+</div>
