@@ -23,6 +23,8 @@ import { ChatComponent } from './chat/chat.component';
 import {MatIconModule} from '@angular/material/icon';
 import { BattleshipComponent } from './games/battleship/battleship.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -41,7 +43,8 @@ const config: SocketIoConfig = {
     PageNotFoundComponent,
     UserComponent,
     ChatComponent,
-    BattleshipComponent
+    BattleshipComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ const config: SocketIoConfig = {
     MatButtonModule,
     SocketIoModule.forRoot(config),
     MatIconModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

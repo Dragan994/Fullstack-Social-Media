@@ -7,7 +7,7 @@
                     {{userData['firstname']}} {{userData['lastname']}}
                 </div>
                 <div>
-                    <button mat-mini-fab color="primary" >
+                    <button mat-mini-fab color="primary" (click)="enableCrudUser()" >
                         <mat-icon>person</mat-icon>
                       </button>
                 </div>
@@ -31,6 +31,10 @@
     <div *ngIf="tokenError">
         <h2>Token error, please login</h2>
         <a routerLink="/login">Go to Login</a>
+    </div>
+    <div class="main-view">
+        <app-update-user *ngIf="crudUser" [userData]="userData" (cancelUpdateEvent)="disapleUpdateUser()"></app-update-user>
+        
     </div>
 
     <app-chat></app-chat>

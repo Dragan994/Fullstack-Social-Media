@@ -1,4 +1,4 @@
-<div class="flex-container-center m-t-15">
+<div class="flex-container-center m-t-30 wrapper">
 
         <mat-card>
             <mat-card-title class="text-center">{{"components.login.title" | translate}}</mat-card-title>
@@ -28,6 +28,8 @@
             <div class="flex-container-center m-t-15">
                 <button id="loginBtn" (click)="submitForm()" mat-raised-button color="primary" [disabled]=!loginForm.valid>{{"components.login.buttons.login" | translate}}</button>
             </div>
+
+            <p class="text-center">Dont have acount <a routerLink="/register">Register</a></p>
 
         </mat-card>
 </div>

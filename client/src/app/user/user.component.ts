@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SocketService } from '../services/socket.service';
 import { UserService } from './user.service';
@@ -9,12 +10,13 @@ import { UserService } from './user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-
-  userData = "no data yet"
+  crudUser = true
+  userData = null
   tokenError = true
   retrivedData;
 
   constructor(
+    public dialog: MatDialog,
     private userService: UserService,
     private router : Router,
     private socketService: SocketService
@@ -40,6 +42,14 @@ export class UserComponent implements OnInit {
     this.router.navigate(['login'])
     console.log(this.userData)
     this.socketService.emitUserDisconnection()
+  }
+
+  enableCrudUser(){
+    this.crudUser = !this.crudUser
+  }
+
+  disapleUpdateUser(){
+    this.crudUser = false
   }
 
 }

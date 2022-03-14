@@ -51,6 +51,11 @@ After starting server, you can visit app on https://localhost:4200 from Angular 
 So app will work fine on Angular dev-server and our server.
 ___
 
+# DATABASE
+Database is MySQL, and for this application I used XAMP. Install it and run Apache and MySQL and that should be it.
+
+
+
 # TESTING
 
 Start end to end test tool Cypress:

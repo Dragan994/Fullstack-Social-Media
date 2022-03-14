@@ -58,9 +58,9 @@ server.listen(PORT,ADDRESS, ()=>{
     console.log(`Server starting...\nListening at ${ADDRESS}:${PORT}`);
 })
 const newUserData = {
-    firstname: "Mike",
+    firstname: "John",
     lastname: "Doe",
-    username: "Mike",
+    username: "John",
     email: "john@mail.com",
     password: "12345678",
     token: "no-data"

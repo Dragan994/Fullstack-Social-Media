@@ -1,0 +1,81 @@
+<div class="flex-container-center wrapper">
+
+    <mat-card>   
+    
+        <div>
+            <form [formGroup]="crudUserForm">
+            
+                <div class="flex">
+                    <p class="input-label">{{"common.user.firstname" | translate}}</p>
+                    <mat-form-field>
+                        <input id="firstname" formControlName="firstname" matInput />
+                        <mat-error *ngIf='crudUserForm.controls.firstname.hasError("required")'
+                        >{{"common.user.firstname" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="flex">
+                    <p class="input-label">{{"common.user.lastname" | translate}}</p>
+                    <mat-form-field>
+                        <input id="lastname" formControlName="lastname" matInput/>
+                        <mat-error *ngIf='crudUserForm.controls.lastname.hasError("required")'
+                        >{{"common.user.lastname" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="flex">
+                    <p class="input-label">{{"common.user.email" | translate}}</p>
+                    <mat-form-field>
+                        <input id="email" formControlName="email" matInput readOnly/>
+                        <mat-error *ngIf='crudUserForm.controls.email.hasError("required")'
+                        >{{"common.user.email" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="flex">
+                    <p class="input-label">{{"common.user.username" | translate}}</p>
+                    <mat-form-field>
+                        <input id="username" formControlName="username" matInput/>
+                        <mat-error *ngIf='crudUserForm.controls.username.hasError("required")'
+                        >{{"common.user.username" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+
+                    </mat-form-field>
+                </div>
+                
+                <div class="flex">
+                    <p class="input-label">{{"common.user.password" | translate}}</p>
+                    <mat-form-field>
+                        <input id="password" formControlName="password" type="text" matInput/>
+                        <mat-error *ngIf='crudUserForm.controls.password.hasError("minlength")'
+                        >{{"common.user.errorMessages.minlength6" | translate}}</mat-error>
+
+                        <mat-error *ngIf='crudUserForm.controls.password.hasError("required")'
+                        >{{"common.user.password" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+
+                    </mat-form-field>
+                </div>
+                
+                <div class="flex input-label">
+                    <p class="input-label">{{"common.user.confirmPassword" | translate}}</p>
+                    <mat-form-field>
+                        <input id="confirmPassword" formControlName="confirmPassword" matInput/>
+                        <mat-error *ngIf='crudUserForm.controls.confirmPassword.hasError("required")'
+                        >{{"common.user.confirmPassword" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                        <mat-error *ngIf='crudUserForm.controls.confirmPassword.hasError("minlength")'
+                        >{{"common.user.errorMessages.minlength6" | translate}}</mat-error>
+                        <mat-error *ngIf='crudUserForm.controls.confirmPassword.hasError("confirmedValidator")'
+                        >{{"common.user.errorMessages.passwordsDontMatch" | translate}}</mat-error>
+
+                    </mat-form-field>
+                </div>
+                
+            </form>
+        </div>
+    
+        <div class="btn-container">
+            <button mat-flat-button color="warn" (click)="cancelUpdate()">Cancel</button>
+            <button mat-flat-button color="primary" (click)="updateUser()" [disabled]=!crudUserForm.valid>Save</button>
+        </div>
+    
+    </mat-card>
+</div>

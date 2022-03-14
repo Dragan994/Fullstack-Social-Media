@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfirmedValidator } from 'src/utils/ConfirmedValidator';
 import { UserService } from '../user/user.service';
 import { RegisterService } from './register.service';
 
@@ -10,7 +11,7 @@ import { RegisterService } from './register.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  loginForm: FormGroup;
+  registerForm: FormGroup;
   responseData: any
 
   constructor(
@@ -19,16 +20,18 @@ export class RegisterComponent implements OnInit {
       private router: Router,
       private userService: UserService
   ) {
-    this.loginForm = this.fb.group({
+    this.registerForm = this.fb.group({
       
-      firstname: ['', [Validators.required]],
-      lastname: ['', [Validators.required]],
+      firstname: ['', [Validators.required, Validators.minLength(4)]],
+      lastname: ['', [Validators.required, Validators.minLength(4)]],
       
       email: ['', [Validators.required, Validators.email]],
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
 
       password: ['', [Validators.required, Validators.minLength(6)]],      
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+    },{
+      validator: ConfirmedValidator('password', 'confirmPassword')
     });
   }
 
@@ -37,7 +40,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm(){
-    this.registerService.requestRegistration(this.loginForm.value).subscribe( (response) => {
+    this.registerService.requestRegistration(this.registerForm.value).subscribe( (response) => {
       this.responseData = response;
       if(this.responseData.status === "User created succesfully."){
         this.userService.setUserData(this.responseData)

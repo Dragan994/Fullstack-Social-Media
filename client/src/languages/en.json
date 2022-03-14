@@ -36,9 +36,12 @@
 
             "errorMessages": {
                     "isRequired": " is required!",
-                    "passwordMinlength": "Password length must be 6 characters or more.",
+                    "minlength4": "Length must be 4 characters or more.",
+                    "minlength6": "Length must be 6 characters or more.",
+                    "passwordsDontMatch": "Passwords does not match.",
                     "wrongCredentials": "Wrong credentials, try again.",
-                    "wrongPassword": "Wrong password, try again."
+                    "wrongPassword": "Wrong password, try again.",
+                    "invalidEmail": "Invalid email format."
                 
             }
         }
