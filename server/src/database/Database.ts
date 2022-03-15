@@ -121,7 +121,7 @@ export default class Database {
 
     }
 
-    writeToken(user_id, token){
+    writeToken(user_id, token){    // This function is not used, but it is written and considered for later use
         const sqlToken = JSON.stringify(token)
         const writeTokenSql =
         `UPDATE users
