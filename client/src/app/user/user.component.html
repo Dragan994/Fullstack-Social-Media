@@ -33,7 +33,9 @@
         <a routerLink="/login">Go to Login</a>
     </div>
     <div class="main-view">
-        <app-update-user *ngIf="crudUser" [userData]="userData" (cancelUpdateEvent)="disapleUpdateUser()"></app-update-user>
+        <app-update-user *ngIf="updateUser" [userData]="userData" (cancelUpdateEvent)="disapleUpdateUser()"></app-update-user>
+
+        <app-feed *ngIf="!updateUser"></app-feed>
         
     </div>
 

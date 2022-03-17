@@ -2,6 +2,7 @@ import express from 'express';
 import ip from 'ip';
 import { chatHandlers } from './chatHandlers';
 import Database from './database/Database';
+import { updateUserRouter } from './routes/updateUser';
 import {userRouter} from './routes/user'
 import { registerRouter } from './routes/register';
 import { loginRouter } from './routes/login';
@@ -33,6 +34,7 @@ app.use( (req,res,next)=>{
 
 app.use(registerRouter)
 app.use(loginRouter)
+app.use(updateUserRouter)
 app.use(userRouter)
 
 const serverData = {

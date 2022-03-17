@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -25,6 +25,9 @@ import { BattleshipComponent } from './games/battleship/battleship.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { RequestPasswordComponent } from './dialogs/request-password/request-password.component';
+import { FeedComponent } from './feed/feed.component';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -44,7 +47,9 @@ const config: SocketIoConfig = {
     UserComponent,
     ChatComponent,
     BattleshipComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    RequestPasswordComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,9 @@ const config: SocketIoConfig = {
     SocketIoModule.forRoot(config),
     MatIconModule,
     DragDropModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

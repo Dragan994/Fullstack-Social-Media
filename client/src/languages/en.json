@@ -28,10 +28,15 @@
             "usernamePlaceholder": "Enter Username",
 
             "password": "Password",
+            "oldPassword": "Old Password",
+            "newPassword": "New Password",
             "passwordPlaceholder": "Enter Password",
 
             "confirmPassword": "Confirm Password",
+            "confirmNewPassword": "Confirm New Password",
             "confirmPasswordPlaceholder": "Confirm Password",
+
+
 
 
             "errorMessages": {

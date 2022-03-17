@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { RequestPasswordComponent } from '../dialogs/request-password/request-password.component';
 import { SocketService } from '../services/socket.service';
 import { UserService } from './user.service';
 
@@ -10,13 +11,12 @@ import { UserService } from './user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  crudUser = true
+  updateUser = false
   userData = null
   tokenError = true
   retrivedData;
 
   constructor(
-    public dialog: MatDialog,
     private userService: UserService,
     private router : Router,
     private socketService: SocketService
@@ -45,11 +45,14 @@ export class UserComponent implements OnInit {
   }
 
   enableCrudUser(){
-    this.crudUser = !this.crudUser
+    this.updateUser = !this.updateUser
   }
 
   disapleUpdateUser(){
-    this.crudUser = false
+    this.updateUser = false
   }
+
+
+  
 
 }
