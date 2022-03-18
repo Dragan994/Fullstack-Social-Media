@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken'
 import { verifyToken } from '../utils/verifyToken'; // This middleware should be checked, now it has no function...
 export const userRouter = express.Router();
 
-const database = new Database()
 
 userRouter.use(express.json())
 

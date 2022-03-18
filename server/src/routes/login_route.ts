@@ -8,9 +8,11 @@ export const loginRouter = express.Router();
 
 loginRouter.post("/api/login", (req,res)=>{
     // In login we get username and password
+    // I'm plannning to make login availibe with email...
     const {username,password} = req.body
 
-    database.getUser(username, (DBresponse)=> {
+    database.getUser(username,"", (DBresponse)=> {  // This empty string is temp fix for getUser function, it's changed so we can return error for taken email.
+                                                    // Earlier version was checking only for taken username, and that could lead to problem.
 
         if (DBresponse.status === "User found."){
             database.loginUser(username,password, (reqestUserData)=>{

@@ -13,12 +13,14 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 
+const baseURL = "100.103.0.120:3000"
+
 Cypress.Commands.add('visitBaseURL', (extend) => {
     if(!extend){
-        cy.visit('http://localhost:4200')
+        cy.visit(baseURL)
     }
     else{
-        cy.visit(`http://localhost:4200${extend}`)
+        cy.visit(`${baseURL}${extend}`)
     }
 
   })

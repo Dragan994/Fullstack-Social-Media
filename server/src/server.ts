@@ -2,10 +2,10 @@ import express from 'express';
 import ip from 'ip';
 import { chatHandlers } from './chatHandlers';
 import Database from './database/Database';
-import { updateUserRouter } from './routes/updateUser';
-import {userRouter} from './routes/user'
-import { registerRouter } from './routes/register';
-import { loginRouter } from './routes/login';
+import { updateUserRouter } from './routes/updateUser_route';
+import {userRouter} from './routes/user_route'
+import { registerRouter } from './routes/register_route';
+import { loginRouter } from './routes/login_route';
 const http = require('http')
 const  app = express();
 const socketio = require('socket.io')
@@ -66,14 +66,14 @@ server.listen(PORT,ADDRESS, ()=>{
 const newUserData = {
     firstname: "John",
     lastname: "Doe",
-    username: "John",
+    username: "Johny",
     email: "john@mail.com",
     password: "12345678",
-    token: "no-data"
 
 }
 
 //database.resetUsersTable()
+//database.resetPostsTable()
 //database.addNewUser(newUserData, (data)=>{console.log(data)})
 
 //database.getUser("Rexyco", (response)=>{console.log(response)})

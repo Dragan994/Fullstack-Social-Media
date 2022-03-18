@@ -4,6 +4,5 @@ export interface UserInterface {
     username: string,
     email: string,
     password: string,
-    newPassword: string,
-    token: string
+    newPassword?: string
 }

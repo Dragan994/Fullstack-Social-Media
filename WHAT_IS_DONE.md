@@ -1,6 +1,6 @@
 Initial Commit 13/3/2020
   
-Login and Register system
+Login Register, update user.
 
 JWT auth that sings client after login and veryfies it at every '/user' request for now, as long token is saved in localStorage.
 

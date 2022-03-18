@@ -1,5 +1,5 @@
 import mySql from 'mysql';
-import { updateUserRouter } from '../routes/updateUser';
+import { updateUserRouter } from '../routes/updateUser_route';
 import { UserInterface } from '../User-interface';
 import databaseConfig from './Database-config.json'
 
@@ -10,29 +10,24 @@ import databaseConfig from './Database-config.json'
 
 
 
-export default class UpdateUserDB{
-    private connection!: mySql.Connection
+export default function updateUserDB(updateData, callback){
+    let connection: mySql.Connection
 
-    private updateUserSQL = 
-    `UPDATE users
-    SET username
-    `
 
-    constructor(){}
 
-    connect(){
-        this.connection = mySql.createConnection(databaseConfig)
-        this.connection.connect( (err)=>{
+    function  connect(){
+        connection = mySql.createConnection(databaseConfig)
+        connection.connect( (err)=>{
             if(err) {
                 console.error("Error connecting to Database:\nError:" + err.stack);
                 return
             }
-            console.log("Connected as id:" + this.connection.threadId)
+            console.log("Connected as id:" + connection.threadId)
         })
     }
     
-    update(updateData, callback){
-        this.connect()
+    
+        connect()
         console.log(updateData)
         
         const updatedFormData: UserInterface = updateData.updateFormData
@@ -42,44 +37,40 @@ export default class UpdateUserDB{
             const {username, password} = {...loginData}
 
             if(updateData['updateFormData']['changePassword']){
-                console.log("Change pass")
+                console.log("Updating User with password change.")
                 const changePassSQL = 
                 `UPDATE users
                 SET firstname = '${firstname}', lastname= '${lastname}' , password= '${newPassword}'
                 WHERE username = '${username}' AND password= '${password}';
                 `
-                this.connection.query(changePassSQL, (err, res, fields)=>{
+                connection.query(changePassSQL, (err, res, fields)=>{
                     if(err) throw err
-                    console.log("THIS IS SQL RESPONSE")
-                    console.log(res)
                     return callback({
                         changedRows: res.changedRows,
                         affectedRows: res.affectedRows
                     })
                 })                
-                this.connection.end()
+                connection.end()
             }else{
                 const changePassSQL = 
                 `UPDATE users
                 SET firstname = '${firstname}', lastname= '${lastname}'
                 WHERE username = '${username}' AND password= '${password}';
                 `
-                this.connection.query(changePassSQL, (err, res, fields)=>{
+                connection.query(changePassSQL, (err, res, fields)=>{
                     if(err) throw err
-                    console.log("THIS IS SQL RESPONSE")
                     
                     return callback({
                         changedRows: res.changedRows,
                         affectedRows: res.affectedRows
                     })
                 })  
-                console.log("not changing pass")
+                console.log("Updating User without password change.")
                 
                 
-                this.connection.end()
+                connection.end()
             }
         
     }
 
 
-}
