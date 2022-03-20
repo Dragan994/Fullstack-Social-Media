@@ -1,7 +1,7 @@
 import mySql from 'mysql';
-import { updateUserRouter } from '../routes/updateUser_route';
-import { UserInterface } from '../User-interface';
-import databaseConfig from './Database-config.json'
+import { updateUserRouter } from '../../routes/user/updateUser_route';
+import { UserInterface } from '../../User-interface';
+import databaseConfig from '../Database-config.json'
 
 
 

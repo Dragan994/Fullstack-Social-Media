@@ -1,8 +1,6 @@
 import mySql from 'mysql';
-import databaseConfig from './Database-config.json'
-
-
-export default function resetPostsTable(){
+import databaseConfig from '../Database-config.json'
+export default function resetUsersTable(){
     let  connnection! : mySql.Connection
 
 
@@ -19,25 +17,25 @@ export default function resetPostsTable(){
     }
     connect()
     const createTableSql =
-     `CREATE TABLE posts(
-        post_id INT NOT NULL AUTO_INCREMENT,
-        user_id INT,
-        post_Text TEXT(500) NOT NULL,
-        PRIMARY KEY (post_id),
-        CONSTRAINT user_id FOREIGN KEY (user_id)
-        REFERENCES users(user_id)
-    );
-    `
+     `CREATE TABLE users(
+        user_id INT NOT NULL AUTO_INCREMENT,
+        firstname VARCHAR(40) NOT NULL,
+        lastname VARCHAR(40) NOT NULL,
+        username VARCHAR(40) NOT NULL,
+        email VARCHAR(40) NOT NULL,
+        password VARCHAR(40) NOT NULL,
+        PRIMARY KEY ( user_id )
+     );`
     connnection.query(createTableSql, (err, res, fields)=>{
         if(err) {
-            if(err.message.includes("Table 'posts' already exists")){
+            if(err.message.includes("Table 'users' already exists")){
                 // Drop table
-                connnection.query("DROP TABLE posts", (err,res,fields)=> {
+                connnection.query(" DROP TABLE users", (err,res,fields)=> {
                     if (err) throw err;
                 })
                 // Create table
-                resetPostsTable()
-                console.log("Table posts is resetted succesfully!")
+                resetUsersTable()
+                console.log("Table users is resetted succesfully!")
                 connnection.end()
             }
             else throw err;

@@ -1,7 +1,7 @@
 import express from 'express';
-import Database from '../database/Database';
+import Database from '../../database/Database';
 
-import UpdateUserDB from '../database/updateUser_DB';
+import UpdateUserDB from '../../database/user/updateUser_DB';
 
 const database = new Database()
 

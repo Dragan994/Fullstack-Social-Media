@@ -1,5 +1,5 @@
 import express from "express";
-import Database from '../database/Database';
+import Database from '../../database/Database';
 import jwt from 'jsonwebtoken'
 
 const database = new Database()

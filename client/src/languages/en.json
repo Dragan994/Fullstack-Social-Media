@@ -11,6 +11,10 @@
             "buttons":{
                 "register": "Register"
             }
+        },
+        "feed":{
+            "postPlaceholder": "Write a Post here...",
+            "postBtn": "Post"
         }
     },
     "common":{

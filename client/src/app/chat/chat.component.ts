@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocketService } from '../services/socket.service';
-import { UserService } from '../user/user.service';
+import { MainViewService } from '../mainView/main-view.service';
 
 @Component({
   selector: 'app-chat',
@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private socketService: SocketService,
-    private userService: UserService
+    private userService: MainViewService
   ) {
     this.chatForm = this.fb.group({
       chatText: ['', []]
@@ -29,7 +29,9 @@ export class ChatComponent implements OnInit {
       
       this.userService.getUserData().subscribe(res=>{
         if(res['message'] === 'Access granted'){
-           this.userData = {...res['data']} 
+           this.userData = {...res['data']}
+           //console.log("Chat on init.")
+           //console.log(this.userData)
            this.socketService.emitUserConnection(this.userData)
         }
       })
@@ -54,11 +56,11 @@ export class ChatComponent implements OnInit {
 
         this.socketService.OnNewUserConnected().subscribe(onlineUsersList=>{       
           this.updateOnlineUsersList(onlineUsersList)
-          console.log("userConnected")
+          //console.log("userConnected")
       })
 
       this.socketService.OnInitialData().subscribe( initialData=>{
-        console.log(initialData)
+        //console.log(initialData)
         let rawChatMessages = initialData['chat']
         rawChatMessages.forEach(msg=>{
           if(this.userData){
@@ -152,7 +154,7 @@ export class ChatComponent implements OnInit {
 
   async checkConnection(){
     const conn = await this.socketService.getStatus() // This line of code just solved a problem where i had to refresh browser after login to connect...
-    console.log(conn)
+    //console.log(conn)
   }
 
 }

@@ -1,7 +1,7 @@
 
 import mySql from 'mysql';
-import { UserInterface } from '../User-interface';
-import databaseConfig from './Database-config.json'
+import { UserInterface } from '../../User-interface';
+import databaseConfig from '../Database-config.json'
 
 export default function registerUser(newUserData: UserInterface, callback:any){
     let  connnection! : mySql.Connection
@@ -27,7 +27,6 @@ export default function registerUser(newUserData: UserInterface, callback:any){
             console.log(response)
         }
         else{
-            console.log("DEBBUG EMAIL RECOGNITION HERE")
             if(dbRes['data']['username'] === username){
                 return callback({status: "Username taken.", data: null})
             }

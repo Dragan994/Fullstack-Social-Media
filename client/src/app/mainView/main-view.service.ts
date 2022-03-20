@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+
+export class MainViewService {
 
   private userData = null;
   constructor(private http: HttpClient, private router: Router) {}

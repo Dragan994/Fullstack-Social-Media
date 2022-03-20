@@ -1,0 +1,51 @@
+import mySql from 'mysql';
+import databaseConfig from '../Database-config.json'
+
+
+export default function resetLikesTable(){
+    let  connnection! : mySql.Connection
+
+
+    function connect(){
+        console.log("Creating connection to Database")
+        connnection = mySql.createConnection(databaseConfig)
+        connnection.connect( (err)=>{
+            if(err) {
+                console.error("Error connecting to Database:\nError:" + err.stack);
+                return
+            }
+            console.log("Connected as id:" + connnection.threadId)
+        })
+    }
+    connect()
+    const createTableSql =
+    `CREATE TABLE likes(
+       like_id INT NOT NULL AUTO_INCREMENT,
+       fk_like_post_id INT,
+       fk_like_user_id INT,
+       PRIMARY KEY (like_id),
+       CONSTRAINT fk_like_post_id FOREIGN KEY (fk_like_post_id)
+       REFERENCES posts(post_id)
+        ON DELETE CASCADE,
+       
+       CONSTRAINT fk_like_user_id FOREIGN KEY (fk_like_user_id)
+       REFERENCES users(user_id)
+        ON DELETE CASCADE
+   );
+   `
+    connnection.query(createTableSql, (err, res, fields)=>{
+        if(err) {
+            if(err.message.includes("Table 'likes' already exists")){
+                // Drop table
+                connnection.query("DROP TABLE likes", (err,res,fields)=> {
+                    if (err) throw err;
+                })
+                // Create table
+                resetLikesTable()
+                console.log("Table likes is resetted succesfully!")
+                connnection.end()
+            }
+            else throw err;
+        }
+    })
+}

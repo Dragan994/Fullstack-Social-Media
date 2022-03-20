@@ -1,9 +1,30 @@
 
-<div>
-
+<div class="wrapper">
 
     
+    <mat-card class="center">
+        <div class="flex">
+            
+            <form [formGroup]="postForm" class="example-form">
+                <mat-form-field floatLabel="never" class="example-full-width">
+                    <input id="post" formControlName="post" matInput placeholder='{{"components.feed.postPlaceholder" | translate}}'/>
+                </mat-form-field>
+            </form>
 
+            <div>
+                <button mat-raised-button color="primary" (click)="createPost()">
+                    {{"components.feed.postBtn" | translate}}
+                </button>
+            </div>
 
+        </div>
+    </mat-card>          
+            
 
+    <div class="center post-list">
+        <div  *ngFor="let postData of allPosts">
+            <app-post [userData]="userData" [postData]="postData"></app-post>
+        </div>
+    </div>
+        
 </div>

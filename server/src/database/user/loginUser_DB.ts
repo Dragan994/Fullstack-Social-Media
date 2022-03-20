@@ -1,5 +1,5 @@
 import mySql from 'mysql';
-import databaseConfig from './Database-config.json'
+import databaseConfig from '../Database-config.json'
 
 
 export default function loginUser(username, password, callback){

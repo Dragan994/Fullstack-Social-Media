@@ -2,10 +2,14 @@ import express from 'express';
 import ip from 'ip';
 import { chatHandlers } from './chatHandlers';
 import Database from './database/Database';
-import { updateUserRouter } from './routes/updateUser_route';
+import { updateUserRouter } from './routes/user/updateUser_route';
 import {userRouter} from './routes/user_route'
-import { registerRouter } from './routes/register_route';
-import { loginRouter } from './routes/login_route';
+import { registerRouter } from './routes/user/register_route';
+import { loginRouter } from './routes/user/login_route';
+import { createPost } from './routes/posts/createPost_route';
+import { getAllPosts } from './routes/posts/getAllPosts_route';
+import { likePost } from './routes/posts/likePost_route';
+import { getPostLikeList } from './routes/posts/getPostLikes_route';
 const http = require('http')
 const  app = express();
 const socketio = require('socket.io')
@@ -36,6 +40,10 @@ app.use(registerRouter)
 app.use(loginRouter)
 app.use(updateUserRouter)
 app.use(userRouter)
+app.use(createPost)
+app.use(getAllPosts)
+app.use(likePost)
+app.use(getPostLikeList)
 
 const serverData = {
     allClients: [],
@@ -74,6 +82,8 @@ const newUserData = {
 
 //database.resetUsersTable()
 //database.resetPostsTable()
+//database.resetLikesTable()
+//database.resetCommentsTable()
 //database.addNewUser(newUserData, (data)=>{console.log(data)})
 
 //database.getUser("Rexyco", (response)=>{console.log(response)})

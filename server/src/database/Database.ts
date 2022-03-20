@@ -1,11 +1,18 @@
 import mySql from 'mysql';
 import { UserInterface } from '../User-interface';
-import addNewUser from './registerUser_DBr';
+import addNewUser from './user/registerUser_DBr';
 import databaseConfig from './Database-config.json'
-import loginUser from './loginUser_DB';
-import resetPostsTable from './resetPostsTable_DB';
-import resetUsersTable from './resetUsersTable_DB';
-import updateUserDB from './updateUser_DB';
+import loginUser from './user/loginUser_DB';
+import resetPostsTable from './tableResets/resetPostsTable_DB';
+import resetUsersTable from './tableResets/resetUsersTable_DB';
+import updateUserDB from './user/updateUser_DB';
+import createPost from './posts/createPost_DB';
+import getAllPosts from './posts/getAllPosts_DB';
+import resetLikesTable from './tableResets/resetLikesTable_DB';
+import resetCommentsTable from './tableResets/resetCommentsTable_DB';
+import likePost from './posts/likePost_DB';
+import getPostLikeList from './posts/getPostLikeList_DB';
+import deletePost from './posts/deletePost_DB';
 
 
 export default class Database {
@@ -67,6 +74,28 @@ export default class Database {
 
     resetPostsTable(){
         resetPostsTable()
+    }
+    resetLikesTable(){
+        resetLikesTable()
+    }
+    resetCommentsTable(){
+        resetCommentsTable()
+    }
+
+    createPost(postData){
+        createPost(postData)
+    }
+    deletePost(postData){
+        deletePost(postData)
+    }
+    getAllPosts(callback){
+        getAllPosts(callback)
+    }
+    likePost(likeData, callback){
+        likePost(likeData, callback)
+    }
+    getPostLikeList(post_id, callback){
+        getPostLikeList(post_id, callback)
     }
 
     connect(){

@@ -1,6 +1,8 @@
 import mySql from 'mysql';
-import databaseConfig from './Database-config.json'
-export default function resetUsersTable(){
+import databaseConfig from '../Database-config.json'
+
+
+export default function resetCommentsTable(){
     let  connnection! : mySql.Connection
 
 
@@ -17,25 +19,28 @@ export default function resetUsersTable(){
     }
     connect()
     const createTableSql =
-     `CREATE TABLE users(
-        user_id INT NOT NULL AUTO_INCREMENT,
-        firstname VARCHAR(40) NOT NULL,
-        lastname VARCHAR(40) NOT NULL,
-        username VARCHAR(40) NOT NULL,
-        email VARCHAR(40) NOT NULL,
-        password VARCHAR(40) NOT NULL,
-        PRIMARY KEY ( user_id )
-     );`
+    `CREATE TABLE comments(
+       comment_id INT NOT NULL AUTO_INCREMENT,
+       fk_comm_post_id INT,
+       fk_comm_user_id INT,
+       comment_text VARCHAR(500),
+       PRIMARY KEY (comment_id),
+       CONSTRAINT fk_comm_post_id FOREIGN KEY (fk_comm_post_id)
+       REFERENCES posts(post_id),       
+       CONSTRAINT fk_comm_user_id FOREIGN KEY (fk_comm_user_id)
+       REFERENCES users(user_id)
+   );
+   `
     connnection.query(createTableSql, (err, res, fields)=>{
         if(err) {
-            if(err.message.includes("Table 'users' already exists")){
+            if(err.message.includes("Table 'comments' already exists")){
                 // Drop table
-                connnection.query("DROP TABLE users", (err,res,fields)=> {
+                connnection.query("DROP TABLE comments", (err,res,fields)=> {
                     if (err) throw err;
                 })
                 // Create table
-                resetUsersTable()
-                console.log("Table users is resetted succesfully!")
+                resetCommentsTable()
+                console.log("Table comments is resetted succesfully!")
                 connnection.end()
             }
             else throw err;

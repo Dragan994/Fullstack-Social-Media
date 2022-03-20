@@ -16,18 +16,19 @@ import {MatButtonModule} from '@angular/material/button';
 
 import {TranslatePipe} from './pipes/Translate.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { UserComponent } from './user/user.component'
+import { MainViewComponent } from './mainView/main-view.component'
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 import { ChatComponent } from './chat/chat.component';
 import {MatIconModule} from '@angular/material/icon';
 import { BattleshipComponent } from './games/battleship/battleship.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RequestPasswordComponent } from './dialogs/request-password/request-password.component';
 import { FeedComponent } from './feed/feed.component';
+import { PostComponent } from './feed/post/post.component';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -44,12 +45,13 @@ const config: SocketIoConfig = {
     LoginComponent,
     TranslatePipe,
     PageNotFoundComponent,
-    UserComponent,
+    MainViewComponent,
     ChatComponent,
     BattleshipComponent,
     UpdateUserComponent,
     RequestPasswordComponent,
-    FeedComponent
+    FeedComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

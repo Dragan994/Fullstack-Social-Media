@@ -32,10 +32,10 @@
         <h2>Token error, please login</h2>
         <a routerLink="/login">Go to Login</a>
     </div>
-    <div class="main-view">
+    <div *ngIf="!tokenError" class="main-view">
         <app-update-user *ngIf="updateUser" [userData]="userData" (cancelUpdateEvent)="disapleUpdateUser()"></app-update-user>
 
-        <app-feed *ngIf="!updateUser"></app-feed>
+        <app-feed *ngIf="!updateUser" [userData]="userData"></app-feed>
         
     </div>
 

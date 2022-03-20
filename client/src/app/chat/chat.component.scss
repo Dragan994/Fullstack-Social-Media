@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 .wrapper {
-    padding-top: 45px;
+    padding-top: 40px;
     box-sizing: border-box;
     position: absolute;
     bottom: 0;
@@ -10,6 +10,7 @@
 }
 
 .flex-column{
+    box-sizing: border-box;
     padding: 5px 0;
     height: 100%;
     box-shadow: 10px  10px 10px 10px rgb(75, 136, 250);
@@ -22,6 +23,8 @@
 }
 
 .online-users-list{
+    
+    box-sizing: border-box;
     width: 100%;
     min-height: 100px;
     padding-left: 5px;
@@ -39,6 +42,8 @@
 }
 
 .chat-window{
+    
+    box-sizing: border-box;
     margin: 5px 0;
     border-radius: 10px 0 0  10px;
     padding: 5px;

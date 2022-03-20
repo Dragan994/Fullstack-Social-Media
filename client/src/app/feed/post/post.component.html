@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <mat-card>
+
+        <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
+        <mat-card-title>{{postData.post_text}}</mat-card-title>
+        <div>
+            <span> {{likeCount}}likes</span><span>Comments</span>
+        </div>
+        <div>
+            <a mat-button class="link-style" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> Like</a>
+            <a mat-button class="link-style"><mat-icon>comment</mat-icon>Comment</a>
+        </div>
+    </mat-card>
+
+</div>

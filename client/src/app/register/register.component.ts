@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmedValidator } from 'src/utils/ConfirmedValidator';
-import { UserService } from '../user/user.service';
+import { MainViewService } from '../mainView/main-view.service';
 import { RegisterService } from './register.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
       private registerService: RegisterService,
       private fb: FormBuilder,
       private router: Router,
-      private userService: UserService
+      private userService: MainViewService
   ) {
     this.registerForm = this.fb.group({
       

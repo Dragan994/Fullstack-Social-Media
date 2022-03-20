@@ -1,0 +1,32 @@
+.center{
+
+    width: 60%;
+    margin: auto;
+
+    .flex{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+
+
+    
+    
+}
+.post-list{
+    margin-top: 15px;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
