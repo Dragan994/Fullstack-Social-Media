@@ -15,6 +15,15 @@
         "feed":{
             "postPlaceholder": "Write a Post here...",
             "postBtn": "Post"
+        },
+        "post": {
+            "like":{
+                "likePostBtn": "Like"
+            },
+            "comment":{
+                "postCommentPlaceholder": "Write Comment here...",
+                "postCommentBtn": "Post Comment"
+            }
         }
     },
     "common":{

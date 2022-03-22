@@ -3,13 +3,42 @@
 
         <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
         <mat-card-title>{{postData.post_text}}</mat-card-title>
-        <div>
-            <span> {{likeCount}}likes</span><span>Comments</span>
+        <div class="likes-comments-counter" (click)="openLikeList()">
+            <span> {{likeCount}} Likes</span> <!--<span>Comments</span>-->
         </div>
-        <div>
-            <a mat-button class="link-style" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> Like</a>
-            <a mat-button class="link-style"><mat-icon>comment</mat-icon>Comment</a>
+        <div class="buttons">
+            <a mat-raised-button class="link-style " [ngClass]="{'postIsLiked': postIsLiked}" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> Like</a>
         </div>
+
+
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-description *ngIf="!noComment">
+                    Show {{commentCount}} comments.
+                </mat-panel-description><mat-panel-description *ngIf="noComment">
+                    No comments yet.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="comment-container" *ngFor="let comment of commentList">
+                <mat-card>
+                    <mat-label>{{comment.firstname}} {{comment.lastname}}</mat-label>
+                    <h3>{{comment.comment_text}}</h3>
+                </mat-card>
+
+            </div>
+            <p *ngIf="noComment">Sorry this post isn't commented yet, be first to write a comment!</p>
+        </mat-expansion-panel>
+        <div>
+            <form [formGroup]="commentForm" class="example-form">
+                <mat-form-field floatLabel="never" class="example-full-width">
+                    <input  formControlName="comment" matInput placeholder='{{"components.post.comment.postCommentPlaceholder" | translate}}'/>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="commentPost()">
+                    Add Comment
+                </button>
+            </form>
+        </div>
+
     </mat-card>
 
 </div>

@@ -21,8 +21,8 @@ export default function resetLikesTable(){
     const createTableSql =
     `CREATE TABLE likes(
        like_id INT NOT NULL AUTO_INCREMENT,
-       fk_like_post_id INT,
-       fk_like_user_id INT,
+       fk_like_post_id INT NOT NULL,
+       fk_like_user_id INT NOT NULL,
        PRIMARY KEY (like_id),
        CONSTRAINT fk_like_post_id FOREIGN KEY (fk_like_post_id)
        REFERENCES posts(post_id)

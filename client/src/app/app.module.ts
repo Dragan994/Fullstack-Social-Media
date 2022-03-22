@@ -29,6 +29,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RequestPasswordComponent } from './dialogs/request-password/request-password.component';
 import { FeedComponent } from './feed/feed.component';
 import { PostComponent } from './feed/post/post.component';
+import { LikeListDialogComponent } from './dialogs/like-list-dialog/like-list-dialog.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -51,7 +53,8 @@ const config: SocketIoConfig = {
     UpdateUserComponent,
     RequestPasswordComponent,
     FeedComponent,
-    PostComponent
+    PostComponent,
+    LikeListDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ const config: SocketIoConfig = {
     DragDropModule,
     MatDialogModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

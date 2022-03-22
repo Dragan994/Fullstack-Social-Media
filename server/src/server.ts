@@ -10,6 +10,8 @@ import { createPost } from './routes/posts/createPost_route';
 import { getAllPosts } from './routes/posts/getAllPosts_route';
 import { likePost } from './routes/posts/likePost_route';
 import { getPostLikeList } from './routes/posts/getPostLikes_route';
+import { commentPost } from './routes/posts/commentPost_route';
+import { getPostsComments } from './routes/posts/getPostComments_routes';
 const http = require('http')
 const  app = express();
 const socketio = require('socket.io')
@@ -44,6 +46,8 @@ app.use(createPost)
 app.use(getAllPosts)
 app.use(likePost)
 app.use(getPostLikeList)
+app.use(commentPost)
+app.use(getPostsComments)
 
 const serverData = {
     allClients: [],

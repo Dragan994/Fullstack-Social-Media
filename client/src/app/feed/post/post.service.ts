@@ -24,5 +24,16 @@ export class PostService {
       return this.http.post('/api/getPostLikeList', {post_id})
   }
 
+  commentPost(commentData){
+    return this.http.post('/api/commentPost',commentData)
+  }
+
+  getPostComments(post_id){
+      const postData = {
+          post_id
+      }
+      return this.http.post('/api/getPostComments', postData)
+  }
+
 
 }

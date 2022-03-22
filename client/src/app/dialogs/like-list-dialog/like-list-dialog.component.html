@@ -1,0 +1,12 @@
+
+<p>Users that liked post</p>
+<mat-card>
+
+    <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
+    <mat-card-title>{{postData.post_text}}</mat-card-title>
+</mat-card>
+    
+    <div *ngFor="let likeData of likeList">
+        <p>{{likeData.firstname}} {{likeData.lastname}}</p>
+        
+    </div>

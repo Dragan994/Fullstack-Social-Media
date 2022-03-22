@@ -21,8 +21,8 @@ export default function resetCommentsTable(){
     const createTableSql =
     `CREATE TABLE comments(
        comment_id INT NOT NULL AUTO_INCREMENT,
-       fk_comm_post_id INT,
-       fk_comm_user_id INT,
+       fk_comm_post_id INT NOT NULL,
+       fk_comm_user_id INT NOT NULL,
        comment_text VARCHAR(500),
        PRIMARY KEY (comment_id),
        CONSTRAINT fk_comm_post_id FOREIGN KEY (fk_comm_post_id)

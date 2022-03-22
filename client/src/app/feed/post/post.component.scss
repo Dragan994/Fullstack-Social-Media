@@ -4,4 +4,40 @@
     mat-card-title{
         margin-top: 10px;
     }
+
+    .buttons{
+        padding-top: 10px;
+        &>a{
+            margin-right: 15px;
+        }
+    }
+
+    .likes-comments-counter{
+        &>span{
+            margin-right: 15px;
+        }
+    }
+
+    .postIsLiked{
+        background-color: blue;
+    }
+
+}
+
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+
+  .flex{
+    display: flex;
+    justify-content: space-between;
 }

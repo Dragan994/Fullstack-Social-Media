@@ -13,6 +13,8 @@ import resetCommentsTable from './tableResets/resetCommentsTable_DB';
 import likePost from './posts/likePost_DB';
 import getPostLikeList from './posts/getPostLikeList_DB';
 import deletePost from './posts/deletePost_DB';
+import commentPost from './posts/commentPost_DB';
+import getPostComments from './posts/getPostComments_DB';
 
 
 export default class Database {
@@ -96,6 +98,12 @@ export default class Database {
     }
     getPostLikeList(post_id, callback){
         getPostLikeList(post_id, callback)
+    }
+    commentPost(commentData){
+        commentPost(commentData)
+    }
+    getPostComments(post_id, callback){
+        getPostComments(post_id, callback)
     }
 
     connect(){

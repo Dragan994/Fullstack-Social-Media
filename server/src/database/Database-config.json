@@ -1,5 +1,5 @@
 {
-    "connectionLimit": 100,
+    "connectionLimit": 500,
     "host": "localhost",
     "user": "root",
     "password": "",

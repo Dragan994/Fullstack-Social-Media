@@ -11,6 +11,7 @@ export const likePost = express.Router();
 likePost.post('/api/likePost', (req, res)=>{
     const likeData = req.body
     database.likePost(likeData, (resDB)=>{
+        console.log("User liked post")
         res.send(resDB)
     })
 

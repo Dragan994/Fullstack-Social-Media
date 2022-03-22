@@ -21,9 +21,9 @@ export default function resetPostsTable(){
     const createTableSql =
      `CREATE TABLE posts(
         post_id INT NOT NULL AUTO_INCREMENT,
-        fk_post_user_id INT,
-        firstname VARCHAR(20),
-        lastname VARCHAR (20),
+        fk_post_user_id INT NOT NULL,
+        firstname VARCHAR(20) NOT NULL,
+        lastname VARCHAR (20) NOT NULL,
         post_text TEXT(500) NOT NULL,
         PRIMARY KEY (post_id),
         CONSTRAINT fk_post_user_id FOREIGN KEY (fk_post_user_id)

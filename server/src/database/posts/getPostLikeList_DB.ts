@@ -25,7 +25,7 @@ export default function getPostLikeList(post_id, callback){
     function getUsersList(){
         const getUsersWhoLikedSQL = 
         `SELECT user_id, firstname, lastname FROM users
-        WHERE user_id IN (${userswhoLikedList})
+        WHERE user_id IN (${userswhoLikedList});
         `
         if(userswhoLikedList.length === 0){ // This fixed an error that sql throw when array is empty...
             
