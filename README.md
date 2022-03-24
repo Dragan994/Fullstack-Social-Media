@@ -39,9 +39,9 @@ Listening at 100.103.0.120:3000
 
 This address is availible on your local network.
 
-So if your pc is connected to router you can acces this adress from any device that is connected to same Wi-Fi.
+So if your pc is connected to router you can acces this adress from any device that is connected to same router.
 
->cd server
+
 
 >npm run serve
 
@@ -52,7 +52,9 @@ So app will work fine on Angular dev-server and our server.
 ___
 
 # DATABASE
-Database is MySQL, and for this application I used XAMP. Install it and run Apache and MySQL and that should be it.
+Database is MySQL, and for this application I used XAMP. Install it and create database and name it as you want and change database prop in Database-config.json to that name.
+
+After that go to src/server.ts file and uncomment database.reset****() function one by one starting from top to create tabels for application, you can review those functions in src/database/tableResets folder.
 
 
 
