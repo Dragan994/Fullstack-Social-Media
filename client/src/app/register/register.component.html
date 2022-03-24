@@ -1,4 +1,4 @@
-<div class="flex-container-center wrapper">
+<div class="wrapper-register" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
 
     <mat-card>
         <mat-card-title class="text-center">{{"components.register.title" | translate}}</mat-card-title>
@@ -78,6 +78,6 @@
         <div class="flex-container-center m-t-15">
             <button id="registerBtn" (click)="submitForm()" mat-raised-button="mat-raised-button" color="primary" [disabled]="!registerForm.valid">{{"components.register.buttons.register" | translate}}</button>
         </div>
-        <p class="text-center">Have account <a routerLink="/login">Login</a></p>
+        <p class="text-center">Have account <a class="login-btn" routerLink="/login">Login</a></p>
     </mat-card>
 </div>

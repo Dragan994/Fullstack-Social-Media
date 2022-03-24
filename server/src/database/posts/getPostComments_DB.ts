@@ -68,17 +68,11 @@ export default function getPostComments(post_id, callback){
     function mergeUserAndPostData(_commentList, _usersList){
         const commentList = _commentList
         const usersList = _usersList
-        console.log("MERGIND DATA")
         commentList.forEach(comment=>{
-            console.log(comment)
             const user = usersList.find(user=> user['user_id'] ==comment['fk_comm_user_id'])
-            console.log(user)
             comment.firstname = user.firstname
             comment.lastname = user.lastname
-            console.log(comment)
         })
-        console.log("FINALE merging")
-        console.log(commentList)
         callback(commentList)
 
 

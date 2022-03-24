@@ -9,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class LikeListDialogComponent implements OnInit {
   public postData
   public likeList
+  darkMode = true
 
 
   constructor(
@@ -19,6 +20,17 @@ export class LikeListDialogComponent implements OnInit {
     console.log("LikeList dialog inited.")
     this.postData = this.data.postData
     this.likeList = this.data.likeList
+    
+    if(localStorage.getItem('darkMode')==='true'){
+      this.darkMode = true
+    }else{
+      this.darkMode = false
+    }
   }
+
+  closeLikeList(){
+    this.dialogRef.close()
+  }
+
 
 }

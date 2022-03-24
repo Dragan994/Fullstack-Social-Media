@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MainViewService } from '../mainView/main-view.service';
+import {  UserService } from '../user/user.service';
 import { FeedService } from './feed.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class FeedComponent implements OnInit {
   public allPosts
 
   constructor(
-    private userService: MainViewService,
+    private userService: UserService,
     private feedService: FeedService,
     private fb: FormBuilder) {
       this.postForm = this.fb.group({
@@ -23,16 +23,14 @@ export class FeedComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.feedService.getAllPosts().subscribe( posts =>{
-      this.allPosts = posts
-      this.allPosts.reverse()
-    })
+    this.updatePosts()
+    
   }
 
 
-  createPost(){
+  createPost(event){
     const postTextValue = this.postForm.value['post']
-    if(postTextValue !== ""){
+    if(postTextValue !== "" && event.keyCode === 13){
       const postData = {
         user_id: this.userData.user_id,
         firstname: this.userData.firstname,
@@ -43,12 +41,18 @@ export class FeedComponent implements OnInit {
       this.feedService.createPost(postData).subscribe( res =>{
         console.log(res)
       })
-
+      
+    this.updatePosts() // this is temponary solution i want to use socket io for this...
       this.postForm.controls['post'].setValue("")
     }
   }
 
 
-
+updatePosts(){
+  this.feedService.getAllPosts().subscribe( posts =>{
+    this.allPosts = posts
+    this.allPosts.reverse()
+  })
+}
 
 }

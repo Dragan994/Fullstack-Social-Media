@@ -23,7 +23,7 @@ export default function getAllPosts(callback){
     `SELECT * FROM posts`
 
     connnection.query(allPostsSQL, (err, res, fields)=>{
-        console.log(res)
+        if(err) throw err
         return callback(res)
     })
 

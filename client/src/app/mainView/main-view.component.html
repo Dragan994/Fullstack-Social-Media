@@ -1,31 +1,9 @@
-<div class="wrapper">
+<div class="wrapper-main-view" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
     <div *ngIf="!tokenError">
 
-        <nav >
-            <div class="nav-bar">
-                <div class="user-profile">
-                    {{userData['firstname']}} {{userData['lastname']}}
-                </div>
-                <div>
-                    <button mat-mini-fab color="primary" (click)="enableCrudUser()" >
-                        <mat-icon>person</mat-icon>
-                      </button>
-                </div>
-                <div>
-                    <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
-                </div>
-            </div>
+        <app-navigation [userData]="userData"></app-navigation>
 
-        </nav>
-
-        <div class="main-view">
-            
-            <!--
-                <app-battleship></app-battleship>
-            -->
-                
-            
-        </div>
+        
     </div>
     
     
@@ -34,7 +12,6 @@
         <a routerLink="/login">Go to Login</a>
     </div>
     <div *ngIf="!tokenError" class="main-view">
-        <app-update-user *ngIf="updateUser" [userData]="userData" (cancelUpdateEvent)="disapleUpdateUser()"></app-update-user>
 
         <app-feed *ngIf="!updateUser" [userData]="userData"></app-feed>
         

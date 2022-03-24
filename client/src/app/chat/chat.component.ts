@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocketService } from '../services/socket.service';
-import { MainViewService } from '../mainView/main-view.service';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-chat',
@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private socketService: SocketService,
-    private userService: MainViewService
+    private userService: UserService
   ) {
     this.chatForm = this.fb.group({
       chatText: ['', []]

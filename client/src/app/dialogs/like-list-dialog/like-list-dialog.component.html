@@ -1,12 +1,16 @@
 
-<p>Users that liked post</p>
-<mat-card>
-
-    <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
-    <mat-card-title>{{postData.post_text}}</mat-card-title>
-</mat-card>
-    
-    <div *ngFor="let likeData of likeList">
-        <p>{{likeData.firstname}} {{likeData.lastname}}</p>
-        
-    </div>
+    <mat-card class="wrapper" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+        <div class="close-btn">
+            <mat-icon color="primary" (click)="closeLikeList()">cancel</mat-icon>
+        </div>
+        <!-- Post data is availible for use but will stay commented to mimic facebook -->
+        <!--
+            <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
+            <mat-card-title>{{postData.post_text}}</mat-card-title>
+        -->
+            
+        <div *ngFor="let likeData of likeList">
+            <p>{{likeData.firstname}} {{likeData.lastname}}</p>
+            
+        </div>
+    </mat-card>

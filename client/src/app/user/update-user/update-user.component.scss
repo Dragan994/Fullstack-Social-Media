@@ -1,5 +1,12 @@
+
 .wrapper{
+    height: 100vh;
+    background-color: var(--background-color);
+}
+.form-wrapper{
     padding-top: 40px;
+    max-width: 500px;
+    margin: auto;
 }
 
 

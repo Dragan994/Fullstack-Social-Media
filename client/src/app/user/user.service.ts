@@ -7,19 +7,22 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
-export class MainViewService {
+export class UserService {
 
-  private userData = null;
+  //private userData = null;
   constructor(private http: HttpClient, private router: Router) {}
 
-  setUserData(data){
-    this.userData = data
-  }
+  //setUserData(data){
+  //  this.userData = data
+  //}
   getUserData(){
       const token = window.localStorage.getItem('token')
-      
       return this.http.post('/api/user',{token})
-      
+  }
+
+
+  goToUserProfile(user_id){
+    return this.http.get(`/api/userProfile?id=${user_id}`)
   }
 
 }

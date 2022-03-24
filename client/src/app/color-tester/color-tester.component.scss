@@ -1,0 +1,120 @@
+.wrapper{
+    background-image: linear-gradient(to right, white, black) !important;
+    height: 100vh;
+    overflow-y: auto;
+    & div{
+        margin-top: 5px;
+        height: 50px;
+        text-align: center;
+    }
+}
+
+.primary{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+.accent-color{
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+.warn-color{
+    background-color: var(--warn-color);
+    color: var(--text-color);
+}
+.base-color{
+    background-color: var(--base-color);
+    color: var(--text-color);
+}
+.divider-color{
+    background-color: var(--divider-color);
+    color: var(--text-color);
+}
+
+.dividers-color{
+    background-color: var(--dividers-color);
+    color: var(--text-color);
+}
+.disabled-color{
+    background-color: var(--disabled-color);
+    color: var(--text-color);
+}
+.disabled-text-color{
+    background-color: var(--disabled-text-color);
+    color: var(--text-color);
+}
+.hint-text-color{
+    background-color: var(--hint-text-color);
+    color: var(--text-color);
+}
+.secondary-text-color{
+    background-color: var(--secondary-text-color);
+    color: var(--text-color);
+}
+.icon-color{
+    background-color: var(--icon-color);
+    color: var(--text-color);
+}
+.icons-color{
+    background-color: var(--icons-color);
+    color: var(--text-color);
+}
+.-text-color{
+    background-color: var(---text-color);
+    color: var(--text-color);
+}
+.slider-off-color{
+    background-color: var(--slider-off-color);
+    color: var(--text-color);
+}
+.slider-off-active-color{
+    background-color: var(--slider-off-active-color);
+    color: var(--text-color);
+}
+.status-bar-color{
+    background-color: var(--status-bar-color);
+    color: var(--text-color);
+}
+.app-bar-color{
+    background-color: var(--app-bar-color);
+    color: var(--text-color);
+}
+.background-color{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+.hover-color{
+    background-color: var(--hover-color);
+    color: var(--text-color);
+}
+.card-color{
+    background-color: var(--card-color);
+    color: var(--text-color);
+}
+.dialog-color{
+    background-color: var(--dialog-color);
+    color: var(--text-color);
+}
+.disabled-button-color{
+    background-color: var(--disabled-button-color);
+    color: var(--text-color);
+}
+.raised-button-color{
+    background-color: var(--raised-color-button);
+    color: var(--text-color);
+}
+.focused-button-color{
+    background-color: var(--focused-button-color);
+    color: var(--text-color);
+}
+.selected-button-color{
+    background-color: var(--selected-button-color);
+    color: var(--text-color);
+}
+.selected-disabled-button-color{
+    background-color: var(--selected-disabled-button-color);
+    color: var(--text-color);
+}
+.disabled-button-toggle-color{
+    background-color: var(--disabled-button-toggle-color);
+    color: var(--text-color);
+}

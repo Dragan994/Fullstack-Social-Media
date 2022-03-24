@@ -1,38 +1,40 @@
-.wrapper{
-    margin-top: 10px;
-
+.wrapper-post{
+margin-bottom: 15px;
+    
     mat-card-title{
         margin-top: 10px;
     }
 
     .buttons{
-        padding-top: 10px;
+        padding: 10px 0;
         &>a{
             margin-right: 15px;
         }
     }
 
     .likes-comments-counter{
+        display: inline-block;
         &>span{
             margin-right: 15px;
         }
     }
 
     .postIsLiked{
-        background-color: blue;
+        background-color: var(--primary-color);
+        color: var(--background-color);
     }
-
-}
-
+    
 
 
-.example-form {
+
+
+.input-form {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
   }
   
-  .example-full-width {
+  .input-full-width {
     width: 100%;
   }
 
@@ -40,4 +42,26 @@
   .flex{
     display: flex;
     justify-content: space-between;
+}
+
+.comments-wrapper{
+    max-height: 500px;
+    overflow-y: auto;
+
+    .comment-container{
+        margin: 10px;
+    }
+    .comment-text{
+        word-break: break-all;
+    }
+}
+
+
+
+mat-expansion-panel{
+    background-color: var(--status-bar-color) !important;
+}
+.mat-expansion-panel-body {
+    padding: 0 5px 5px 5px !important;
+  }
 }

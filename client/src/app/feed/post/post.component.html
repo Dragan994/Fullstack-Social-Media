@@ -1,41 +1,49 @@
-<div class="wrapper">
+<div class="wrapper-post" >
     <mat-card>
 
         <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
         <mat-card-title>{{postData.post_text}}</mat-card-title>
         <div class="likes-comments-counter" (click)="openLikeList()">
-            <span> {{likeCount}} Likes</span> <!--<span>Comments</span>-->
+            <span *ngIf="noLike">No likes so far...</span>
+            <span  *ngIf="!noLike">  {{likeCount}} 
+                <span *ngIf="oneLike">Like</span>
+                <span *ngIf="!oneLike">Likes</span>
+            </span>
         </div>
         <div class="buttons">
-            <a mat-raised-button class="link-style " [ngClass]="{'postIsLiked': postIsLiked}" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> Like</a>
+            <a mat-raised-button class="link-style " [ngClass]="{'postIsLiked': postIsLiked}" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> {{"components.post.like.likePostBtn" | translate}}</a>
         </div>
 
 
-        <mat-expansion-panel hideToggle>
+        <mat-expansion-panel hideToggle class="comment-expansion-panel">
+            
             <mat-expansion-panel-header>
                 <mat-panel-description *ngIf="!noComment">
-                    Show {{commentCount}} comments.
+                   <span>{{"components.post.comment.show" | translate}}</span>&nbsp;{{commentCount}}&nbsp;
+                   <span *ngIf="oneComment">{{"components.post.comment.comment" | translate}}</span> 
+                   <span *ngIf="!oneComment">{{"components.post.comment.comments" | translate}}</span> 
                 </mat-panel-description><mat-panel-description *ngIf="noComment">
-                    No comments yet.
+                    {{"components.post.comment.noCommentsYet" | translate}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="comment-container" *ngFor="let comment of commentList">
-                <mat-card>
-                    <mat-label>{{comment.firstname}} {{comment.lastname}}</mat-label>
-                    <h3>{{comment.comment_text}}</h3>
-                </mat-card>
 
+            <div class="comments-wrapper">
+                <div class="comment-container" *ngFor="let comment of commentList">
+                    <mat-card>
+                        <mat-label>{{comment.firstname}} {{comment.lastname}}</mat-label>
+                        <mat-card-content class=".mat-h3 comment-text">{{comment.comment_text}}</mat-card-content>
+                    </mat-card>
+                    
+                </div>
             </div>
-            <p *ngIf="noComment">Sorry this post isn't commented yet, be first to write a comment!</p>
+            <p *ngIf="noComment">{{"components.post.comment.sorryNoComment" | translate}}</p>
         </mat-expansion-panel>
         <div>
-            <form [formGroup]="commentForm" class="example-form">
-                <mat-form-field floatLabel="never" class="example-full-width">
+            <form [formGroup]="commentForm" class="input-form" (keypress)="commentPost($event)">
+                <mat-form-field floatLabel="never" class="input-full-width">
                     <input  formControlName="comment" matInput placeholder='{{"components.post.comment.postCommentPlaceholder" | translate}}'/>
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="commentPost()">
-                    Add Comment
-                </button>
+                
             </form>
         </div>
 

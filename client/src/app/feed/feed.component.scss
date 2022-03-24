@@ -1,31 +1,31 @@
-.center{
+.wrapper-feed{      
+      
+    .center{
 
-    width: 60%;
-    margin: auto;
-
-    .flex{
-        display: flex;
-        justify-content: space-between;
+      min-width: 150px;
+      max-width: 500px;
+      margin: auto;
     }
 
+    .post-container{
+      padding: 5px 15px;
+      margin-top: 10px;
+      border-radius: 20px;
+    }
 
+    .input-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+      }
+      
+    .input-full-width {
+        width: 100%;
+    }
+    .post-list{
+        margin-top: 15px;
+        height: 80vh;
+        overflow-y: auto;
+    }
 
-
-    
-    
-}
-
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-.post-list{
-    margin-top: 15px;
-    height: 80vh;
-    overflow-y: auto;
 }

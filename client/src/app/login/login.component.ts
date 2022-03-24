@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DarkModeService } from '../services/darkMode.service';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,13 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   responseData: any
+  darkMode = false
 
-  constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) {
+  constructor(
+    private loginService: LoginService,
+    private fb: FormBuilder,
+    private router: Router,
+    private darkModeService: DarkModeService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -27,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Login initiated.")
-
+    this.darkMode = this.darkModeService.getDarkModeValue()
   }
 
   submitForm(){
@@ -43,7 +49,7 @@ export class LoginComponent implements OnInit {
         //Set token
         window.localStorage.setItem('token', this.responseData['token'])
         // Go to user
-        this.router.navigate(['user'])
+        this.router.navigate(['main'])
       }
 
     })

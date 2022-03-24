@@ -12,6 +12,7 @@ import { likePost } from './routes/posts/likePost_route';
 import { getPostLikeList } from './routes/posts/getPostLikes_route';
 import { commentPost } from './routes/posts/commentPost_route';
 import { getPostsComments } from './routes/posts/getPostComments_routes';
+import { getUserProfileRouter } from './routes/user/userProfile_route';
 const http = require('http')
 const  app = express();
 const socketio = require('socket.io')
@@ -25,6 +26,7 @@ const ADDRESS = ip.address();
 
 app.use(express.json())
 app.use("/",express.static(__dirname + '/public', {redirect: false}));
+app.use("/userProfile",express.static(__dirname + '/public', {redirect: false}));
 
 app.use( (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");    
@@ -48,6 +50,7 @@ app.use(likePost)
 app.use(getPostLikeList)
 app.use(commentPost)
 app.use(getPostsComments)
+app.use(getUserProfileRouter)
 
 const serverData = {
     allClients: [],

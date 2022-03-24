@@ -15,6 +15,7 @@ import getPostLikeList from './posts/getPostLikeList_DB';
 import deletePost from './posts/deletePost_DB';
 import commentPost from './posts/commentPost_DB';
 import getPostComments from './posts/getPostComments_DB';
+import getUserByID from './user/getUserByID_DB';
 
 
 export default class Database {
@@ -104,6 +105,10 @@ export default class Database {
     }
     getPostComments(post_id, callback){
         getPostComments(post_id, callback)
+    }
+
+    getUserByID(user_id,callback){
+        getUserByID(user_id,callback)
     }
 
     connect(){

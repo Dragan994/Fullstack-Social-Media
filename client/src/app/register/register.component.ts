@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmedValidator } from 'src/utils/ConfirmedValidator';
-import { MainViewService } from '../mainView/main-view.service';
+import { DarkModeService } from '../services/darkMode.service';
+import {  UserService } from '../user/user.service';
 import { RegisterService } from './register.service';
 
 @Component({
@@ -13,12 +14,13 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   responseData: any
+  darkMode = false
 
   constructor(
       private registerService: RegisterService,
       private fb: FormBuilder,
       private router: Router,
-      private userService: MainViewService
+      private darkModeService: DarkModeService
   ) {
     this.registerForm = this.fb.group({
       
@@ -37,13 +39,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Register initiated.")
+    this.darkMode = this.darkModeService.getDarkModeValue()
   }
 
   submitForm(){
     this.registerService.requestRegistration(this.registerForm.value).subscribe( (response) => {
       this.responseData = response;
       if(this.responseData.status === "User created succesfully."){
-        this.userService.setUserData(this.responseData)
+        //this.userService.setUserData(this.responseData)
         this.router.navigate(["login"])
       }
       console.log(this.responseData)

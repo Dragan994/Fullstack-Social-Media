@@ -9,7 +9,7 @@ import { RequestPasswordService } from './request-password.service';
   styleUrls: ['./request-password.component.scss']
 })
 export class RequestPasswordComponent implements OnInit {
-
+  darkMode= false
   validatePasswordForm: FormGroup
 
   constructor(
@@ -25,6 +25,11 @@ export class RequestPasswordComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      if(localStorage.getItem('darkMode')==='true'){
+        this.darkMode = true
+      }else{
+        this.darkMode = false
+      }
     }
 
 
@@ -48,7 +53,6 @@ export class RequestPasswordComponent implements OnInit {
       this.requestPasswordService.requestUpdateUser(userData.loginData, userData.updateUserData).subscribe(res=>{
   
         if(res['affectedRows'] && res['changedRows']){
-          alert("ALL OKEJ")
           this.dialogRef.close()
           localStorage.removeItem('token')
           this.router.navigate(['login'])

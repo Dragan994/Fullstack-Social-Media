@@ -1,0 +1,39 @@
+<mat-card class="navigation"  [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+    <div class="navigation-container">
+        <div *ngIf="mobileBrowser"><mat-icon>smartphone</mat-icon></div>
+        <div *ngIf="!mobileBrowser"><mat-icon>computer</mat-icon></div>
+        
+        <h2 class="user-profile mat-body">
+            {{userData['firstname']}} {{userData['lastname']}}
+        </h2>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+
+            <button mat-menu-item (click)="toggleDarkMode()">
+                <mat-icon>dark_mode</mat-icon>
+                <span *ngIf="!darkMode">Dark mode</span>
+                <span *ngIf="darkMode">Light mode</span>
+            </button>
+
+            <button mat-menu-item (click)="visitProfile(userData)">
+                <mat-icon>person</mat-icon>
+                <span>Visit profile</span>
+            </button>
+            <button mat-menu-item (click)="updateUser()">
+                <mat-icon>person</mat-icon>
+                <span>Update profile</span>
+            </button>
+
+            <button mat-menu-item (click)="logOut()">
+                <mat-icon>logout</mat-icon>
+                <span>Log out</span>
+            </button>
+
+        </mat-menu>
+    </div>
+        
+
+</mat-card>

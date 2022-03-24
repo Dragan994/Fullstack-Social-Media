@@ -21,8 +21,14 @@
                 "likePostBtn": "Like"
             },
             "comment":{
+                "show":"Show",
+                "comment":"comment.",
+                "comments": "comments.",
                 "postCommentPlaceholder": "Write Comment here...",
-                "postCommentBtn": "Post Comment"
+                "postCommentBtn": "Post Comment",
+                "noCommentsYet": "No comments yet...",
+                "sorryNoComment": "Sorry this post isn't commented yet, be first to write a comment!",
+                "addComment": "Add Comment"
             }
         }
     },

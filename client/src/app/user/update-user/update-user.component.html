@@ -1,7 +1,11 @@
-<div class="flex-container-center wrapper">
+<div class="wrapper" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+    <div>
+        <app-navigation *ngIf="userData" [userData]="userData"></app-navigation>
+    </div>
 
-    <mat-card>   
-    
+<div class="form-wrapper">
+
+    <mat-card>
         <div>
             <form [formGroup]="updateUserForm">
             
@@ -40,12 +44,12 @@
                         <input id="username" formControlName="username" matInput/>
                     </mat-form-field>
                 </div>
-
+                
                 <div class="flex">
                     <mat-checkbox formControlName="changePassword" >Change password</mat-checkbox>
                 </div>
                 
-
+                
                 <div *ngIf="updatePasswordIsVisible">
                     <div class="flex">
                         <p class="input-label">{{"common.user.newPassword" | translate}}</p>
@@ -54,12 +58,12 @@
                             <mat-error *ngIf='updateUserForm.controls.newPassword.hasError("minlength")'
                             >{{"common.user.errorMessages.minlength6" | translate}}</mat-error>
                             
-                        <mat-error *ngIf='updateUserForm.controls.newPassword.hasError("required")'
-                        >{{"common.user.newPassword" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
-
+                            <mat-error *ngIf='updateUserForm.controls.newPassword.hasError("required")'
+                            >{{"common.user.newPassword" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                            
                         </mat-form-field>
                     </div>
-                
+                    
                     <div class="flex">
                         <p class="input-label">{{"common.user.confirmPassword" | translate}}</p>
                         <mat-form-field>
@@ -77,11 +81,14 @@
 
             </form>
         </div>
-    
+        
         <div class="btn-container">
-            <button mat-flat-button color="warn" (click)="cancelUpdate()">Cancel</button>
+            <button mat-flat-button color="warn" (click)="cancelUpdate()">Back</button>
             <button mat-flat-button color="primary" (click)="updateUser()" [disabled]=!updateUserForm.valid>Save</button>
         </div>
+        
     
     </mat-card>
+
+    </div>
 </div>

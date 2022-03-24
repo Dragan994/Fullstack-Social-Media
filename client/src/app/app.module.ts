@@ -23,7 +23,7 @@ import { ChatComponent } from './chat/chat.component';
 import {MatIconModule} from '@angular/material/icon';
 import { BattleshipComponent } from './games/battleship/battleship.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { UpdateUserComponent } from './update-user/update-user.component';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RequestPasswordComponent } from './dialogs/request-password/request-password.component';
@@ -31,6 +31,10 @@ import { FeedComponent } from './feed/feed.component';
 import { PostComponent } from './feed/post/post.component';
 import { LikeListDialogComponent } from './dialogs/like-list-dialog/like-list-dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { ColorTesterComponent } from './color-tester/color-tester.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -54,7 +58,10 @@ const config: SocketIoConfig = {
     RequestPasswordComponent,
     FeedComponent,
     PostComponent,
-    LikeListDialogComponent
+    LikeListDialogComponent,
+    UserProfileComponent,
+    ColorTesterComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +78,8 @@ const config: SocketIoConfig = {
     MatDialogModule,
     MatCheckboxModule,
     FormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

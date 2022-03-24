@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LikeListDialogComponent } from './like-list-dialog.component';
+import { ColorTesterComponent } from './color-tester.component';
 
-describe('LikeListDialogComponent', () => {
-  let component: LikeListDialogComponent;
-  let fixture: ComponentFixture<LikeListDialogComponent>;
+describe('ColorTesterComponent', () => {
+  let component: ColorTesterComponent;
+  let fixture: ComponentFixture<ColorTesterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LikeListDialogComponent ]
+      declarations: [ ColorTesterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LikeListDialogComponent);
+    fixture = TestBed.createComponent(ColorTesterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
