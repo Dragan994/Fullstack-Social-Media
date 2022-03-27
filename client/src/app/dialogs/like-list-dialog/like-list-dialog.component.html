@@ -9,8 +9,7 @@
             <mat-card-title>{{postData.post_text}}</mat-card-title>
         -->
             
-        <div *ngFor="let likeData of likeList">
-            <p>{{likeData.firstname}} {{likeData.lastname}}</p>
-            
+        <div *ngFor="let userData of likeList">
+            <app-user-snack-bar [userData]="userData"></app-user-snack-bar>
         </div>
     </mat-card>

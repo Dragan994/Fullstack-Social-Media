@@ -15,7 +15,7 @@
     
 
     mat-card{
-        box-shadow:  0 0 8px 0.5px var(--accent-color);
+        border: 1px solid gray;
         border-radius: 4px;
         min-width: 320px;
         display: inline-block;

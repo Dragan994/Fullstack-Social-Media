@@ -36,6 +36,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { ColorTesterComponent } from './color-tester/color-tester.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { UserSnackBarComponent } from './user/user-snack-bar/user-snack-bar.component';
+import { CommentComponent } from './feed/comment/comment.component';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -63,7 +64,8 @@ const config: SocketIoConfig = {
     UserProfileComponent,
     ColorTesterComponent,
     NavigationComponent,
-    UserSnackBarComponent
+    UserSnackBarComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

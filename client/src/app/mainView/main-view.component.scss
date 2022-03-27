@@ -15,21 +15,22 @@
         }
 
         .content{
+            padding-top: 10px;
             display: flex;
             justify-content: space-between;
             align-items: stretch;
             overflow: hidden;
             .extras{
-                max-width: 400px;
             }
             .feed{
+                min-width: 450px;
                 padding: 0 15px;
                 overflow-y: auto;
             }
             .chat{
-                padding-top: 20px;
+                box-shadow: 0 0 1px 1px gray;
+                border-radius: 4px;
                 overflow-y: hidden;
-                max-width: 400px;
             }
 
 

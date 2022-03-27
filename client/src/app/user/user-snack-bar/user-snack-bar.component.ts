@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -8,11 +9,23 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UserSnackBarComponent implements OnInit {
 
   @Input() userData
+  public userPicture?
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
     console.log('User snackbar inited')
+    this.getPicture()
+  }
+
+
+  getPicture(){
+    this.http.get('https://dog.ceo/api/breeds/image/random').subscribe(data=>{
+      this.userPicture = data['message']
+    })
+
   }
 
 }

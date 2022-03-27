@@ -73,7 +73,7 @@ export default function getPostComments(post_id, callback){
             comment.userData = {
                 user_id: user.user_id,
                 firstname:user.firstname,
-                lastmane: user.lastname
+                lastname: user.lastname
             }
         })
         callback(commentList)

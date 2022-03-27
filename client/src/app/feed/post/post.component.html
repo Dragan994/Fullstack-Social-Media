@@ -9,8 +9,8 @@
                 <span *ngIf="!oneLike">Likes</span>
             </span>
         </div>
-        <div class="buttons">
-            <a mat-raised-button class="like-btn" [ngClass]="{'postIsLiked': postIsLiked}" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> {{"components.post.like.likePostBtn" | translate}}</a>
+        <div class="like-btn-container">
+            <button mat-raised-button class="like-btn" [ngClass]="{'postIsLiked': postIsLiked}" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> {{"components.post.like.likePostBtn" | translate}}</button>
         </div>
 
 
@@ -27,12 +27,8 @@
             </mat-expansion-panel-header>
 
             <div class="comments-wrapper">
-                <div class="comment-container" *ngFor="let comment of commentList">
-                    <mat-card>
-                        <app-user-snack-bar [userData]="postData"></app-user-snack-bar>
-                        <mat-card-content class=".mat-h3 comment-text">{{comment.comment_text}}</mat-card-content>
-                    </mat-card>
-                    
+                <div class="comment-container" *ngFor="let commentData of commentList">
+                    <app-comment [commentData]="commentData"></app-comment>
                 </div>
             </div>
             <p *ngIf="noComment">{{"components.post.comment.sorryNoComment" | translate}}</p>

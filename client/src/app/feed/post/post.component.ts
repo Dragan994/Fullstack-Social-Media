@@ -133,6 +133,7 @@ export class PostComponent implements OnInit {
         }
         this.commentCount = commentList['length']
         this.commentList = commentList
+        console.log(commentList)
       }
     })
   }
