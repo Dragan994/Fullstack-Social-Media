@@ -45,9 +45,9 @@ export class PostComponent implements OnInit {
       this.postService.getLikeList(this.postData.post_id).subscribe( likeList=>{
         this.updateLikeList(likeList)
       })
-      this.updateComments()
       
     },1000)
+    this.updateComments()
     
   }
 

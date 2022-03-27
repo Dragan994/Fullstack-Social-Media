@@ -1,15 +1,16 @@
-<div class="wrapper" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
-    <div>
+<div class="wrapper-updateUser" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+   
         <app-navigation *ngIf="userData" [userData]="userData"></app-navigation>
-    </div>
+    
 
-<div class="form-wrapper">
+
+<div class="flex">
 
     <mat-card>
         <div>
             <form [formGroup]="updateUserForm">
-            
-                <div class="flex">
+                
+                <div class="flex input-block">
                     <p class="input-label">{{"common.user.firstname" | translate}}</p>
                     <mat-form-field>
                         <input id="firstname" formControlName="firstname" matInput />
@@ -20,7 +21,7 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="flex">
+                <div class="flex input-block">
                     <p class="input-label">{{"common.user.lastname" | translate}}</p>
                     <mat-form-field>
                         <input id="lastname" formControlName="lastname" matInput/>
@@ -31,27 +32,27 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="flex">
+                <div class="flex input-block">
                     <p class="input-label">{{"common.user.email" | translate}}</p>
                     <mat-form-field>
                         <input id="email" formControlName="email" matInput readOnly/>
                     </mat-form-field>
                 </div>
                 
-                <div class="flex">
+                <div class="flex input-block">
                     <p class="input-label">{{"common.user.username" | translate}}</p>
                     <mat-form-field>
                         <input id="username" formControlName="username" matInput/>
                     </mat-form-field>
                 </div>
                 
-                <div class="flex">
+                <div class="flex input-block">
                     <mat-checkbox formControlName="changePassword" >Change password</mat-checkbox>
                 </div>
                 
                 
                 <div *ngIf="updatePasswordIsVisible">
-                    <div class="flex">
+                    <div class="flex input-block">
                         <p class="input-label">{{"common.user.newPassword" | translate}}</p>
                         <mat-form-field>
                             <input id="newPassword" formControlName="newPassword" type="text" matInput/>
@@ -64,7 +65,7 @@
                         </mat-form-field>
                     </div>
                     
-                    <div class="flex">
+                    <div class="flex input-block">
                         <p class="input-label">{{"common.user.confirmPassword" | translate}}</p>
                         <mat-form-field>
                             <input id="confirmNewPassword" formControlName="confirmNewPassword" matInput/>
@@ -74,11 +75,10 @@
                             >{{"common.user.errorMessages.minlength6" | translate}}</mat-error>
                             <mat-error *ngIf='updateUserForm.controls.confirmNewPassword.hasError("confirmedValidator")'
                             >{{"common.user.errorMessages.passwordsDontMatch" | translate}}</mat-error>
-                            
                         </mat-form-field>
                     </div>                
                 </div>
-
+                
             </form>
         </div>
         
@@ -89,6 +89,7 @@
         
     
     </mat-card>
+    
 
     </div>
 </div>

@@ -70,8 +70,11 @@ export default function getPostComments(post_id, callback){
         const usersList = _usersList
         commentList.forEach(comment=>{
             const user = usersList.find(user=> user['user_id'] ==comment['fk_comm_user_id'])
-            comment.firstname = user.firstname
-            comment.lastname = user.lastname
+            comment.userData = {
+                user_id: user.user_id,
+                firstname:user.firstname,
+                lastmane: user.lastname
+            }
         })
         callback(commentList)
 

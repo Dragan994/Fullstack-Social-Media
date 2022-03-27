@@ -1,7 +1,6 @@
 <div class="wrapper-post" >
     <mat-card>
-
-        <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
+        <app-user-snack-bar [userData]="postData"></app-user-snack-bar>
         <mat-card-title>{{postData.post_text}}</mat-card-title>
         <div class="likes-comments-counter" (click)="openLikeList()">
             <span *ngIf="noLike">No likes so far...</span>
@@ -11,7 +10,7 @@
             </span>
         </div>
         <div class="buttons">
-            <a mat-raised-button class="link-style " [ngClass]="{'postIsLiked': postIsLiked}" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> {{"components.post.like.likePostBtn" | translate}}</a>
+            <a mat-raised-button class="like-btn" [ngClass]="{'postIsLiked': postIsLiked}" (click)="likePost()"><mat-icon>thumb_up_alt</mat-icon> {{"components.post.like.likePostBtn" | translate}}</a>
         </div>
 
 
@@ -30,7 +29,7 @@
             <div class="comments-wrapper">
                 <div class="comment-container" *ngFor="let comment of commentList">
                     <mat-card>
-                        <mat-label>{{comment.firstname}} {{comment.lastname}}</mat-label>
+                        <app-user-snack-bar [userData]="postData"></app-user-snack-bar>
                         <mat-card-content class=".mat-h3 comment-text">{{comment.comment_text}}</mat-card-content>
                     </mat-card>
                     

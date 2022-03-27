@@ -2,27 +2,51 @@
     background: var(--background-color);
     padding: 0;
     margin: 0;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
+    
+    .main-view{
+        height: 100vh;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        
+
+        .navigation{
+            width: 100%;
+        }
+
+        .content{
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            overflow: hidden;
+            .extras{
+                max-width: 400px;
+            }
+            .feed{
+                padding: 0 15px;
+                overflow-y: auto;
+            }
+            .chat{
+                padding-top: 20px;
+                overflow-y: hidden;
+                max-width: 400px;
+            }
+
+
+
+        }
+
+
+    }
+
+
+
+
     
     mat-card{
     padding: 0;
     width: 100%;
     display: flex;
     background-color: var(--status-bar-color);
-        .nav-bar{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            .user-profile{
-                padding: 10px;
-                border-left: 3px solid var(--primary);
-            }
-            >div{
-                margin-right: 15px;
-            }
-        }
     }
 }

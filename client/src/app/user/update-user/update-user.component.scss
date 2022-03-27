@@ -1,25 +1,32 @@
 
-.wrapper{
+.wrapper-updateUser{
     height: 100vh;
     background-color: var(--background-color);
-}
-.form-wrapper{
-    padding-top: 40px;
-    max-width: 500px;
-    margin: auto;
-}
 
 
-mat-form-field{
-    min-width: 200px
-}
-.input-label{
-    min-width: 150px;
-}
+    .flex{
+        display: flex;
+    }
+    .input-block{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    
 
-.btn-container{
-    padding: 0 15px;
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
+    mat-card{
+        box-shadow:  0 0 8px 0.5px var(--accent-color);
+        border-radius: 4px;
+        min-width: 320px;
+        display: inline-block;
+        margin: 50px auto auto auto;
+    }
+    
+    
+    .btn-container{
+        padding: 0 15px;
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
 }

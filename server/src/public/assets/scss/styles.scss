@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100vh; }
 body { 
     box-sizing: border-box;
     margin: 0;
@@ -25,7 +25,7 @@ body {
 
 
 mat-dialog-container {
-    background: var(--base-color)!important;
+    background: var(--dialog-color)!important;
     color: var(--text-color) !important;
  }
 

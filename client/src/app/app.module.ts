@@ -35,6 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ColorTesterComponent } from './color-tester/color-tester.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { UserSnackBarComponent } from './user/user-snack-bar/user-snack-bar.component';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -61,7 +62,8 @@ const config: SocketIoConfig = {
     LikeListDialogComponent,
     UserProfileComponent,
     ColorTesterComponent,
-    NavigationComponent
+    NavigationComponent,
+    UserSnackBarComponent
   ],
   imports: [
     BrowserModule,
