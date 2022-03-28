@@ -22,12 +22,13 @@ export default function resetPostsTable(){
      `CREATE TABLE posts(
         post_id INT NOT NULL AUTO_INCREMENT,
         fk_post_user_id INT NOT NULL,
-        firstname VARCHAR(20) NOT NULL,
-        lastname VARCHAR (20) NOT NULL,
+        post_img_url TEXT(500),
         post_text TEXT(500) NOT NULL,
+        date_of_creation DATETIME,
         PRIMARY KEY (post_id),
         CONSTRAINT fk_post_user_id FOREIGN KEY (fk_post_user_id)
         REFERENCES users(user_id)
+            ON DELETE CASCADE
         
     );
     `

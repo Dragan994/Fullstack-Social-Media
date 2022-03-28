@@ -16,10 +16,12 @@
         }
     }
 
-    .likes-comments-counter{
+    .like-link{
         display: inline-block;
-        &>span{
-            margin-right: 15px;
+        cursor: pointer;
+
+        &:hover{
+            color: var(--accent-color);
         }
     }
 
@@ -27,6 +29,9 @@
 
     .like-btn{
         box-shadow: 0 0 1px 1px gray !important;
+        &:hover{
+            color: var(--accent-color);
+        }
     }
 
     .postIsLiked{

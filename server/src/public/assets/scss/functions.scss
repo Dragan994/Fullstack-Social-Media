@@ -8,6 +8,11 @@
     /////////////////////////////////////////////////
   
     $primary: mat-color(map-get($theme, primary));
+    $primary-extra-light: mat-color(map-get($theme, primary), 50);
+    $primary-light: mat-color(map-get($theme, primary), 100);
+    $primary-dark: mat-color(map-get($theme, primary), 700);
+    $primary-extra-dark: mat-color(map-get($theme, primary), 900);
+
     $accent: mat-color(map-get($theme, accent));
     $warn: mat-color(map-get($theme, warn));
   
@@ -28,6 +33,8 @@
     $status-bar: mat-color($background-palette, status-bar);
     $app-bar: mat-color($background-palette, app-bar);
     $background: mat-color($background-palette, background);
+    $background-light: mat-color($background-palette, 100);
+    $background-dark: mat-color($background-palette, 700);
     $hover: mat-color($background-palette, hover);
     $card: mat-color($background-palette, card);
     $dialog: mat-color($background-palette, dialog);
@@ -44,6 +51,10 @@
   
   
     --primary-color: #{$primary};
+    --primary-extra-light-color: #{$primary-extra-light};
+    --primary-light-color: #{$primary-light};
+    --primary-dark-color: #{$primary-dark};
+    --primary-extra-dark-color: #{$primary-extra-dark};
     --accent-color: #{$accent};
     --warn-color: #{$warn};
   
@@ -63,6 +74,8 @@
     --status-bar-color: #{$status-bar};
     --app-bar-color: #{$app-bar};
     --background-color: #{$background};
+    --background-light-color: #{$background-light};
+    --background-dark-color: #{$background-dark};
     --hover-color: #{$hover};
     --card-color: #{$card};
     --dialog-color: #{$dialog};

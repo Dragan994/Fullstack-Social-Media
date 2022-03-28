@@ -1,10 +1,13 @@
 <div class="wrapper-post" >
     <mat-card>
-        <app-user-snack-bar [userData]="postData"></app-user-snack-bar>
+
+        <app-user-post-owner [postData]="postData"></app-user-post-owner>
+
+        
         <mat-card-title>{{postData.post_text}}</mat-card-title>
         <div class="likes-comments-counter" (click)="openLikeList()">
             <span *ngIf="noLike">No likes so far...</span>
-            <span  *ngIf="!noLike">  {{likeCount}} 
+            <span class="like-link" *ngIf="!noLike">  {{likeCount}} 
                 <span *ngIf="oneLike">Like</span>
                 <span *ngIf="!oneLike">Likes</span>
             </span>

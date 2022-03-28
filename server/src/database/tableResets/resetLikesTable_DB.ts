@@ -26,11 +26,11 @@ export default function resetLikesTable(){
        PRIMARY KEY (like_id),
        CONSTRAINT fk_like_post_id FOREIGN KEY (fk_like_post_id)
        REFERENCES posts(post_id)
-        ON DELETE CASCADE,
+            ON DELETE CASCADE,
        
        CONSTRAINT fk_like_user_id FOREIGN KEY (fk_like_user_id)
        REFERENCES users(user_id)
-        ON DELETE CASCADE
+            ON DELETE CASCADE
    );
    `
     connnection.query(createTableSql, (err, res, fields)=>{

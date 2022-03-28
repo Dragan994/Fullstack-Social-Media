@@ -61,6 +61,12 @@ Cypress.Commands.add('register', (userData) => {
         cy.log(somenext)
     })    
 })
+
+
+
+
+
+
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

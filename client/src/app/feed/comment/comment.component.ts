@@ -20,8 +20,10 @@ export class CommentComponent implements OnInit {
     .subscribe(imgUrl => {
       this.userPictureUrl = imgUrl['message']
     })
-
-    console.log(this.commentData)
   }
+
+
+
+
 
 }

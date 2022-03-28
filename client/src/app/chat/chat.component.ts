@@ -56,7 +56,8 @@ export class ChatComponent implements OnInit {
 
         this.socketService.OnNewUserConnected().subscribe(onlineUsersList=>{       
           this.updateOnlineUsersList(onlineUsersList)
-          //console.log("userConnected")
+          console.log("userConnected")
+          console.log(onlineUsersList)
       })
 
       this.socketService.OnInitialData().subscribe( initialData=>{

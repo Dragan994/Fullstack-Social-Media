@@ -1,5 +1,5 @@
 
-    <mat-card class="wrapper" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+    <mat-card class="wrapper-like-list" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
         <div class="close-btn">
             <mat-icon color="primary" (click)="closeLikeList()">cancel</mat-icon>
         </div>
@@ -10,6 +10,6 @@
         -->
             
         <div *ngFor="let userData of likeList">
-            <app-user-snack-bar [userData]="userData"></app-user-snack-bar>
+            <app-user-snackbar [userData]="userData"></app-user-snackbar>
         </div>
     </mat-card>

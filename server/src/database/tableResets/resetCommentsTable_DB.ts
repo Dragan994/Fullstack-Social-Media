@@ -24,11 +24,15 @@ export default function resetCommentsTable(){
        fk_comm_post_id INT NOT NULL,
        fk_comm_user_id INT NOT NULL,
        comment_text VARCHAR(500),
+       comment_img_url VARCHAR(500),
+       date_of_creation DATETIME,
        PRIMARY KEY (comment_id),
        CONSTRAINT fk_comm_post_id FOREIGN KEY (fk_comm_post_id)
-       REFERENCES posts(post_id),       
+       REFERENCES posts(post_id)
+            ON DELETE CASCADE,       
        CONSTRAINT fk_comm_user_id FOREIGN KEY (fk_comm_user_id)
-       REFERENCES users(user_id)
+       REFERENCES users(user_id) 
+            ON DELETE CASCADE
    );
    `
     connnection.query(createTableSql, (err, res, fields)=>{

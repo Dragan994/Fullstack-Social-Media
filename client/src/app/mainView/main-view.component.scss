@@ -15,12 +15,14 @@
         }
 
         .content{
+            height: 100%;
             padding-top: 10px;
             display: flex;
             justify-content: space-between;
             align-items: stretch;
             overflow: hidden;
             .extras{
+                border: 1px dashed blue;
             }
             .feed{
                 min-width: 450px;

@@ -70,7 +70,6 @@ export default class Database {
     updateUser(updateData, callback){
         updateUserDB(updateData, callback)
     }
-
     resetUsersTable(){
         resetUsersTable()
     }
@@ -100,8 +99,8 @@ export default class Database {
     getPostLikeList(post_id, callback){
         getPostLikeList(post_id, callback)
     }
-    commentPost(commentData){
-        commentPost(commentData)
+    commentPost(commentData, callback){
+        commentPost(commentData, callback)
     }
     getPostComments(post_id, callback){
         getPostComments(post_id, callback)

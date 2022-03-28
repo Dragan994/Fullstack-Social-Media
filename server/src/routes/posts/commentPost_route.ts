@@ -10,5 +10,9 @@ export const commentPost = express.Router();
 
 commentPost.post('/api/commentPost', (req, res)=>{
     const commentData = req.body
-    database.commentPost(commentData)
+    database.commentPost(commentData, (resDB)=>{
+        // Sending back comments to post
+        res.send(resDB)
+
+    })
 })

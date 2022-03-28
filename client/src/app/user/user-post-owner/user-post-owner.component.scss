@@ -1,5 +1,6 @@
-.wrapper-user-snack-bar{
+.wrapper-user-post-owner{
     display: flex;
+    align-items: center;
     margin-bottom: 10px;
 
 
@@ -12,7 +13,7 @@
         width: 40px;
         height: 40px;
 
-        .user-snackbar-img{
+        .user-post-owner-img{
             margin: 0;
             padding: 0;
             object-fit: cover;

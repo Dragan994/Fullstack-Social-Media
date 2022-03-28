@@ -1,7 +1,7 @@
 {
-    "connectionLimit": 500,
+    "connectionLimit": 5000,
     "host": "localhost",
     "user": "root",
     "password": "",
-    "database": "chatApp"
+    "database": "social_media"
 }
