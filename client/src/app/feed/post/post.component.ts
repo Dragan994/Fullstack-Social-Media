@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { LikeListDialogComponent } from 'src/app/dialogs/like-list-dialog/like-list-dialog.component';
 import { ICommentList } from './CommentList.Interface';
-import { IPost } from './Post.interface';
+import { IPost } from '../../../Interfaces/Post.interface';
 import { PostService } from './post.service';
 
 @Component({
@@ -46,6 +46,7 @@ export class PostComponent implements OnInit {
     this.postService.getPostComments(this.postData.post_id).subscribe(commentListDB=>{
       this.updateComments(commentListDB)
     })
+
       
     
     
@@ -120,7 +121,6 @@ export class PostComponent implements OnInit {
 
 
   updateComments(commentListDB){
-    console.log(commentListDB)
     const arr = new Array()
     const commentListProps = Object.keys(commentListDB)
     this.commentCount = commentListProps.length
@@ -129,7 +129,6 @@ export class PostComponent implements OnInit {
       arr.push(comment)
     }
     if(commentListDB.length!==0){
-      console.log("no comme")
       this.noComment = false
     }
     this.commentList = arr

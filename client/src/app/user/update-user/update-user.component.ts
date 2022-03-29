@@ -5,10 +5,8 @@ import { Router } from '@angular/router';
 import { RequestPasswordComponent } from 'src/app/dialogs/request-password/request-password.component';
 import { DarkModeService } from 'src/app/services/darkMode.service';
 import { ConfirmedValidator } from 'src/utils/ConfirmedValidator';
-import updateDarkMode from 'src/utils/darkModeUpdater';
 import { UserService } from '../user.service';
-import { UserDataInterface } from '../UserData.interface';
-
+import { IUserData } from 'src/Interfaces/UserData.interface';
 
 
 @Component({
@@ -24,8 +22,8 @@ export class UpdateUserComponent implements OnInit {
   updatePasswordIsVisible = false
   darkMode = false
 
-  public userData: UserDataInterface
-
+  public userData: IUserData
+  readonly maxFileSize = 104857600;
 
   constructor(
     public dialog: MatDialog,
@@ -46,6 +44,8 @@ export class UpdateUserComponent implements OnInit {
 
       this.updateUserForm = this.fb.group({
         
+      //  requiredfile: [     undefined,     [Validators.required, FileValidator.maxContentSize(this.maxFileSize)] ],
+
       firstname: ['', [Validators.required, Validators.minLength(3)]],
       lastname: ['', [Validators.required, Validators.minLength(3)]],
       

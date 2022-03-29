@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { IPost } from 'src/app/feed/post/Post.interface';
+import { IPost } from 'src/Interfaces/Post.interface';
 
 @Component({
   selector: 'app-user-post-owner',
@@ -19,7 +19,6 @@ export class UserPostOwnerComponent implements OnInit {
 
   ngOnInit(): void {
     this.convertDateToString()
-    console.log(this.postData)
   }
 
 
@@ -34,7 +33,4 @@ export class UserPostOwnerComponent implements OnInit {
     const rawTime = rawDateTime[1].split(':',2)
     this.time = rawTime.join(':')
   }
-
-
-
 }

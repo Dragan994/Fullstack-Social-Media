@@ -38,7 +38,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UserPostOwnerComponent } from './user/user-post-owner/user-post-owner.component';
 import { CommentComponent } from './feed/comment/comment.component';
 import { UserSnackbarComponent } from './user/user-snackbar/user-snackbar.component';
-
 const config: SocketIoConfig = {
   url: environment.socketUrl,
   options: {

@@ -50,14 +50,14 @@ export class ChatComponent implements OnInit {
 
         this.socketService.OnUserDisconnected().subscribe(onlineUsersList=>{
           this.updateOnlineUsersList(onlineUsersList)
-          console.log("userDisconnected")
+          //console.log("userDisconnected")
           this.updateOnlineUsersList(onlineUsersList)
         })
 
         this.socketService.OnNewUserConnected().subscribe(onlineUsersList=>{       
           this.updateOnlineUsersList(onlineUsersList)
-          console.log("userConnected")
-          console.log(onlineUsersList)
+          //console.log("userConnected")
+          //console.log(onlineUsersList)
       })
 
       this.socketService.OnInitialData().subscribe( initialData=>{
@@ -70,8 +70,8 @@ export class ChatComponent implements OnInit {
               msg['userMessage'] = true
             }
           }else {
-            console.log("UserData")
-            console.log(this.userData['user_id'])
+            //console.log("UserData")
+            //console.log(this.userData['user_id'])
           }
 
 
@@ -130,10 +130,10 @@ export class ChatComponent implements OnInit {
             return  user
           }
         }else{
-          console.log("User from server")
-          console.log(user)
-          console.log("User on client")
-          console.log(this.userData)
+          //console.log("User from server")
+          //console.log(user)
+          //console.log("User on client")
+          //console.log(this.userData)
         }
       
       })
@@ -142,11 +142,11 @@ export class ChatComponent implements OnInit {
 
   hideChat(){
     this.chatIsHidden = true
-    console.log('closing chat')
+    //console.log('closing chat')
   }
 
   showChat(){
-    console.log('opening chat')
+    //console.log('opening chat')
 
     this.chatIsHidden = false
   }

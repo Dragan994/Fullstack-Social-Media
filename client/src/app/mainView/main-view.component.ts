@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { RequestPasswordComponent } from '../dialogs/request-password/request-password.component';
 import { DarkModeService } from '../services/darkMode.service';
-import { SocketService } from '../services/socket.service';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -21,14 +17,11 @@ export class MainViewComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router : Router,
-    private socketService: SocketService,
     private darkModeService: DarkModeService
   ) { }
 
   ngOnInit(): void {
       this.userService.getUserData().subscribe(res=>{
-        console.log(res)
         if(res['message'] === 'Access granted'){
           this.tokenError = false
           this.userData = {...res['data']}

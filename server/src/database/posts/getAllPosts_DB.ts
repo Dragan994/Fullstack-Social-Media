@@ -18,14 +18,69 @@ export default function getAllPosts(callback){
     }   
 
     connect();
-
+    const usersWhoPostedList = []
     const allPostsSQL = 
     `SELECT * FROM posts`
 
     connnection.query(allPostsSQL, (err, res, fields)=>{
-        if(err) throw err
-        return callback(res)
+        
+        if(err) throw err;
+        const tempList = res
+        
+        tempList.forEach( item =>{
+            usersWhoPostedList.push(item['fk_post_user_id'])
+        })
+        getUsersList(res, usersWhoPostedList)
     })
+
+
+
+
+
+
+
+    function getUsersList(postList , _usersWhoPostedList){
+        const getUsersWhoPostedSQL = 
+        `SELECT user_id, firstname, lastname FROM users
+        WHERE user_id IN (${_usersWhoPostedList});
+        `
+        if(_usersWhoPostedList.length === 0){ 
+            
+            callback([])
+            connnection.end()
+        }else{
+            connnection.query(getUsersWhoPostedSQL, (err, usersList, field)=>{
+                if(err) throw err;
+                const data = {
+                    postList,
+                    usersList
+                }
+                
+                mergeUserAndPostData(postList, usersList)
+                connnection.end()
+            })
+        }
+    }
+
+
+
+
+    function mergeUserAndPostData(_postList, _usersList){
+        const postList = _postList
+        const usersList = _usersList
+        postList.forEach(post=>{
+            const user = usersList.find(user=> user['user_id'] ==post['fk_post_user_id'])
+            post.userData = {
+                user_id: user.user_id,
+                firstname:user.firstname,
+                lastname: user.lastname
+            }
+        })
+        callback(postList)
+
+
+
+    }
 
 
 }
