@@ -3,7 +3,7 @@ import ip from 'ip';
 import { chatHandlers } from './chatHandlers';
 import Database from './database/Database';
 import { updateUserRouter } from './routes/user/updateUser_route';
-import {userRouter} from './routes/user_route'
+import {userRouter} from './routes/user/user_route'
 import { registerRouter } from './routes/user/register_route';
 import { loginRouter } from './routes/user/login_route';
 import { createPost } from './routes/posts/createPost_route';
@@ -13,6 +13,8 @@ import { getPostLikeList } from './routes/posts/getPostLikes_route';
 import { commentPost } from './routes/posts/commentPost_route';
 import { getPostsComments } from './routes/posts/getPostComments_routes';
 import { getUserProfileRouter } from './routes/user/userProfile_route';
+import { uploadImageRouter } from './routes/file/uploadImage_route';
+import { deleteImageRouter } from './routes/file/deleteImage_route';
 const http = require('http')
 const  app = express();
 const socketio = require('socket.io')
@@ -26,7 +28,7 @@ const ADDRESS = ip.address();
 
 app.use(express.json())
 app.use("/",express.static(__dirname + '/public', {redirect: false}));
-app.use("/userProfile",express.static(__dirname + '/public', {redirect: false}));
+app.use("/image",express.static(__dirname + '/files/images', {redirect: false}));
 
 app.use( (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");    
@@ -51,6 +53,8 @@ app.use(getPostLikeList)
 app.use(commentPost)
 app.use(getPostsComments)
 app.use(getUserProfileRouter)
+app.use(uploadImageRouter)
+app.use(deleteImageRouter)
 
 const serverData = {
     allClients: [],

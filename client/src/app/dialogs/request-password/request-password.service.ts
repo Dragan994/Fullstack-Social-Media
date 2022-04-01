@@ -1,5 +1,6 @@
 import { Injectable, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { IUserData } from 'src/Interfaces/UserData.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class RequestPasswordService {
   ) { }
 
 
-  requestUpdateUser(loginData: {username:string, password:string } , updateFormData){
+  requestUpdateUser(loginData: IUserData , updateFormData: IUserData){
     const bodyData = {
         loginData,
         updateFormData

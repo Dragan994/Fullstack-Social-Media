@@ -15,6 +15,5 @@ export class TranslatePipe {
 
     transform( prop: string ):string{
         return fetchFromObject(english, prop) !== undefined ? fetchFromObject(english, prop): prop
-
     }
 }

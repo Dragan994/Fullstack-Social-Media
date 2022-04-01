@@ -1,7 +1,7 @@
 import express from 'express';
-import Database from '../database/Database';
+import Database from '../../database/Database';
 import jwt from 'jsonwebtoken'
-import { verifyToken } from '../utils/verifyToken'; // This middleware should be checked, now it has no function...
+import { verifyToken } from '../../utils/verifyToken'; // This middleware should be checked, now it has no function...
 export const userRouter = express.Router();
 
 

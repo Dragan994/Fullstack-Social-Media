@@ -23,6 +23,7 @@ export default function resetUsersTable(){
         lastname VARCHAR(40) NOT NULL,
         username VARCHAR(40) NOT NULL,
         email VARCHAR(40) NOT NULL,
+        img_url TEXT(500),
         password VARCHAR(40) NOT NULL,
         PRIMARY KEY ( user_id )
      );`

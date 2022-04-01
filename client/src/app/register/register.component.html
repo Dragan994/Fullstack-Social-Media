@@ -3,8 +3,21 @@
     <mat-card>
         <mat-card-title class="text-center">{{"components.register.title" | translate}}</mat-card-title>
 
+        
+        <div class="input-user-img-container">
+            <div class="user-img-container" *ngIf="selectedImgSrc">
+                <mat-icon (click)="clearUserImg()">clear</mat-icon>
+                <img class="user-img" src={{selectedImgSrc}} alt="">
+            </div>
+            
+            <div>
+                <button mat-raised-button (click)="imgInput.click()">Select Image <mat-icon matSuffix>image</mat-icon></button>
+            </div>
+            
+            <input type="file" accept="image/*" (change)="onImgSelected($event)" #imgInput>
+        </div>
+        
         <form [formGroup]="registerForm">
-
             <div>
                 <mat-form-field>
                     <mat-label>{{"common.user.firstname" | translate}}</mat-label>

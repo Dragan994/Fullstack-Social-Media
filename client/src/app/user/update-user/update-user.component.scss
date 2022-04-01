@@ -20,6 +20,44 @@
         min-width: 320px;
         display: inline-block;
         margin: 50px auto auto auto;
+
+
+        .input-user-img-container{
+            text-align: center;
+            
+            .user-img-container{
+                position: relative;
+                width: 100px;
+                height: 100px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 15px;
+                border: 1px solid gray;
+                border-radius: 4px;
+
+                mat-icon{
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    border-radius: 4px;
+                    color: var(--warn-color);
+                    background-color: rgba(128, 128, 128, 0.5);
+                    cursor: pointer;
+                }
+
+                img.user-img{
+                    margin: 0;
+                    padding: 0;
+                    object-fit: cover;
+                    object-position: 50% 50%;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+
+
     }
     
     
@@ -28,5 +66,9 @@
         margin-top: 15px;
         display: flex;
         justify-content: space-between;
+    }
+
+    input[type=file]{
+        display: none;
     }
 }

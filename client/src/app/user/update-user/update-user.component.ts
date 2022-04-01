@@ -7,6 +7,9 @@ import { DarkModeService } from 'src/app/services/darkMode.service';
 import { ConfirmedValidator } from 'src/utils/ConfirmedValidator';
 import { UserService } from '../user.service';
 import { IUserData } from 'src/Interfaces/UserData.interface';
+import { ImageService } from 'src/app/services/image.service';
+import { environment } from 'src/environments/environment.prod';
+import { HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -22,6 +25,11 @@ export class UpdateUserComponent implements OnInit {
   updatePasswordIsVisible = false
   darkMode = false
 
+  selectedUserImg: File = null
+  selectedUserImgSrc
+  imgBaseUrl: string
+  imageIsUploaded: boolean = false
+
   public userData: IUserData
   readonly maxFileSize = 104857600;
 
@@ -30,7 +38,8 @@ export class UpdateUserComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private darkModeService: DarkModeService,
-    private route: Router
+    private route: Router,
+    private imageService: ImageService
   ) {
     this.userService.getUserData().subscribe(res=>{
       console.log(res)
@@ -42,10 +51,8 @@ export class UpdateUserComponent implements OnInit {
 
 
 
-      this.updateUserForm = this.fb.group({
+    this.updateUserForm = this.fb.group({
         
-      //  requiredfile: [     undefined,     [Validators.required, FileValidator.maxContentSize(this.maxFileSize)] ],
-
       firstname: ['', [Validators.required, Validators.minLength(3)]],
       lastname: ['', [Validators.required, Validators.minLength(3)]],
       
@@ -63,13 +70,8 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeToFormValueChange()
-    this.darkModeService.darkModeToggleEvent.subscribe(res=>{
-      this.darkMode = res
-      console.log("NAVI")
-      console.log(res)
-    })
-
-    this.setDarkModeValue()
+    this.darkMode = this.darkModeService.getDarkModeValue()
+    this.darkModeService.darkModeToggleEvent.subscribe(newValue=>{this.darkMode = newValue});
   }
 
 
@@ -80,11 +82,8 @@ export class UpdateUserComponent implements OnInit {
     if(this.updateUserForm.pristine){
       this.cancelUpdate()
     }else{
-      console.log("open dialog")
       this.openRequestPasswordDialog()
     }
-    
-    console.log(this.updateUserForm)
   }
 
   cancelUpdate(){
@@ -102,7 +101,7 @@ export class UpdateUserComponent implements OnInit {
 
 
   openRequestPasswordDialog(){
-    const dialogRef = this.dialog.open(RequestPasswordComponent, {
+    this.dialog.open(RequestPasswordComponent, {
       disableClose:true,
       data: {
         loginData: {
@@ -113,21 +112,12 @@ export class UpdateUserComponent implements OnInit {
       }
       
     });
-
-    dialogRef.afterClosed().subscribe(res=>{
-      console.log(res)
-      console.log("Dialog closed")
-    })
-
-    console.log(this.userData)
   }
 
 
   subscribeToFormValueChange(){
     this.updateUserForm.controls['changePassword'].valueChanges.subscribe((userChangingPassword) => {
-
     this.updatePasswordIsVisible = userChangingPassword;
-
       if(userChangingPassword){
         this.updateUserForm.controls['newPassword'].enable();
         this.updateUserForm.controls['confirmNewPassword'].enable();
@@ -139,11 +129,56 @@ export class UpdateUserComponent implements OnInit {
   }
 
   
-  setDarkModeValue(){
-    const darkModeVal = localStorage.getItem('darkMode')
-    if(darkModeVal){
-      this.darkMode = JSON.parse(darkModeVal)
+
+
+
+
+  onImageSelected(e){
+    this.selectedUserImg = <File>e.target.files[0]
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedUserImg)
+    
+    reader.onload = ()=> {
+      const rawLog = reader.result;
+      this.selectedUserImgSrc = rawLog
+    };
+  
+  }
+
+  uploadImage(){
+    const fd = new FormData();
+    fd.append('image', this.selectedUserImg, `img${this.userData.user_id}`)
+    this.imageService.uploadImage(fd).subscribe((event) =>{
+      if(event.type === HttpEventType.UploadProgress){
+        const loadProgress = Math.round(event.loaded / event.total * 100)
+        if(loadProgress === 100){
+          this.imageIsUploaded = true
+        }
+        console.log(`Upload Progress: ${loadProgress}%`)
+      }else if(event.type === HttpEventType.Response){
+        this.imgBaseUrl = event.body['imgBaseUrl']
+        const fullImgUrl = `${environment.apiUrl}image/${this.imgBaseUrl}-mid.jpg`
+        console.log(fullImgUrl)
+        setTimeout(()=>{this.selectedUserImgSrc =  fullImgUrl},200)
+      }
+    })
+  }
+
+  clearUserImage(){
+    if(this.imageIsUploaded){
+      this.deleteImage()
+    }
+    this.selectedUserImg = null
+    this.selectedUserImgSrc = null
+  }
+
+  deleteImage(){
+    if(this.selectedUserImgSrc){
+      this.imageService.deleteImageByBaseUrl({imgBaseUrl: this.imgBaseUrl}).subscribe(res=>console.log(res))
     }
   }
 
+
+
 }
+

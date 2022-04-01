@@ -8,17 +8,24 @@
 
     <mat-card>
         <div>
-            <form [formGroup]="updateUserForm">
-                <!--
-
-                    <div class="flex input-block">
-                        <mat-form-field>
-                            <ngx-mat-file-input formControlName="requiredfile" placeholder="Basic Input" ></ngx-mat-file-input>
-                            <mat-icon matSuffix>folder</mat-icon>
-                        </mat-form-field>
+            
+            
+            <div class="input-user-img-container">
+                        <div class="user-img-container" *ngIf="selectedUserImgSrc">
+                            <mat-icon (click)="clearUserImage()">clear</mat-icon>
+                            <img class="user-img" src={{selectedUserImgSrc}} alt="">
+                        </div>
+                        
+                        <div>
+                            <button mat-raised-button (click)="imgInput.click()">Select Image <mat-icon matSuffix>image</mat-icon></button>
+                            <button mat-raised-button *ngIf="selectedUserImg" (click)="uploadImage()"><mat-icon matSuffix>upload</mat-icon></button>
+                        </div>
+                        
+                        <input type="file" accept="image/*"  (change)="onImageSelected($event)" #imgInput>
                     </div>
-                -->
-                
+                    
+                    <form [formGroup]="updateUserForm">
+                    
                 <div class="flex input-block">
                     <p class="input-label">{{"common.user.firstname" | translate}}</p>
                     <mat-form-field>

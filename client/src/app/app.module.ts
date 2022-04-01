@@ -38,6 +38,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UserPostOwnerComponent } from './user/user-post-owner/user-post-owner.component';
 import { CommentComponent } from './feed/comment/comment.component';
 import { UserSnackbarComponent } from './user/user-snackbar/user-snackbar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 const config: SocketIoConfig = {
   url: environment.socketUrl,
   options: {
@@ -85,6 +86,7 @@ const config: SocketIoConfig = {
     FormsModule,
     MatExpansionModule,
     MatMenuModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,6 +14,8 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   responseData: any
+  selectedImgSrc
+  selectedUserImg
   darkMode = false
 
   constructor(
@@ -51,5 +53,27 @@ export class RegisterComponent implements OnInit {
       }
       console.log(this.responseData)
     } )
+  }
+
+
+
+  onImgSelected(e){
+    const file = e.target.files[0]
+    const reader = new FileReader();
+    reader.readAsDataURL(file) 
+    
+    reader.onload = ()=> {
+      const rawLog = reader.result;
+      this.selectedImgSrc = rawLog
+  };
+  
+  }
+
+  uploadImage(){
+
+  }
+  clearUserImg(){
+    this.selectedUserImg = null
+    this.selectedImgSrc = null
   }
 }

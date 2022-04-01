@@ -59,9 +59,6 @@ export class RequestPasswordComponent implements OnInit {
         }
         console.log("Server reply on userUpdate call:")
         console.log(res)
-
-
-
       })
     }
 
