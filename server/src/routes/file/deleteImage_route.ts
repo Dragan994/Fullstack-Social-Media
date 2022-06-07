@@ -2,22 +2,30 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path'
+import Database from '../../database/Database';
 import { getProjectAbsolutePath } from '../../getProjectAbsolutePath';
 
 const srcPath = getProjectAbsolutePath()
 
 const imagesFolderPath = path.join(srcPath, '/files/images')
+const database = new Database()
 
 export const deleteImageRouter = express.Router();
 
-
 deleteImageRouter.post('/api/deleteImage', (req, res)=>{
+  console.log('/api/deleteImage')
     const imgBaseUrl = req.body['imgBaseUrl']
-    console.log(imgBaseUrl)
+    const user_id = req.body['user_id']
+    console.log(req.body)
 
     deleteDirFilesUsingPattern(imgBaseUrl, imagesFolderPath, (message)=>{
-      res.send({message})      
+      res.send({message})    
     })
+    const imageData= {
+      user_id: user_id,
+      image_url: imgBaseUrl
+    }
+    database.deleteImage(imageData)
 })
 
 
@@ -41,8 +49,6 @@ const deleteDirFilesUsingPattern = (pattern, dirPath, callback) => {
       // iterate through the found file names
       for (const name of fileNames) {
           const rawName = name.toString()
-          console.log(rawName)
-          console.log(name.includes(pattern))
         // if file name matches the pattern
 
         if (name.includes(pattern)) {
