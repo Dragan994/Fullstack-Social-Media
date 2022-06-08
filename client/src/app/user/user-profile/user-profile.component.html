@@ -1,1 +1,55 @@
-<p>user-profile works!</p>
+<div class="wrapper-user-profile" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+
+    <div class="navigation">
+        <app-navigation></app-navigation>
+    </div>
+
+    <div *ngIf="userData" class="user-profile-container">
+        <mat-card>
+            
+            <div class="img-container">
+                <img class="user-snackbar-img" src={{user_image_url}} alt="">
+            </div>
+            <div class="user-data-container">
+                <mat-card-title>{{userData.firstname}} {{userData.lastname}}</mat-card-title>
+            </div>
+
+            <div class="buttons">
+                <button mat-raised-button> <mat-icon>chat</mat-icon> {{"components.userProfile.buttons.sendMessage" | translate}}</button>
+                <button mat-raised-button><mat-icon>person_add</mat-icon> {{"components.userProfile.buttons.add" | translate}}</button>
+            </div>
+        </mat-card>
+        
+        <mat-card class="options">
+            <button (click)="selectView('posts')" mat-raised-button> <mat-icon>feed</mat-icon> {{"components.userProfile.buttons.posts" | translate}}</button>
+            <button (click)="selectView('info')" mat-raised-button> <mat-icon>info</mat-icon> {{"components.userProfile.buttons.info" | translate}}</button>
+            <button (click)="selectView('photos')" mat-raised-button> <mat-icon>image</mat-icon> {{"components.userProfile.buttons.photos" | translate}}</button>
+            <button (click)="selectView('friends')" mat-raised-button> <mat-icon>group</mat-icon> {{"components.userProfile.buttons.friends" | translate}}</button>
+        </mat-card>
+
+            
+        <div *ngIf="selectedView.posts" class="selected-view-container">
+            <app-user-posts [user_id]="user_id" ></app-user-posts>
+        </div>
+
+        <div *ngIf="selectedView.info" class="selected-view-container">
+            <app-user-info [user_id]="user_id" ></app-user-info>
+        </div>
+
+        <div *ngIf="selectedView.photos" class="selected-view-container">
+            <app-user-photos [user_id]="user_id" ></app-user-photos>
+        </div>
+
+        <div *ngIf="selectedView.friends" class="selected-view-container">
+            <app-user-friends [user_id]="user_id" ></app-user-friends>
+        </div>
+            
+    
+    </div>
+    
+    
+    <div *ngIf="!userData">
+        User not found
+    </div>
+
+</div>

@@ -11,9 +11,9 @@ export default function commentPost(commentData, callback){
     console.log(commentData)
 
     const commentPostSQL = 
-    `INSERT INTO comments (fk_comm_post_id, fk_comm_user_id , comment_img_url, comment_text, date_of_creation)
-    VALUES ((SELECT post_id FROM posts WHERE post_id = '${post_id}'),
-    (SELECT user_id FROM users WHERE user_id = '${user_id}'),'${comment_img_url}', '${comment_text}', curdate());
+    `INSERT INTO post_comment (fk_comm_post_id, fk_comm_user_id , comment_media_url, comment_text, date_of_creation)
+    VALUES ((SELECT post_id FROM user_post WHERE post_id = '${post_id}'),
+    (SELECT user_id FROM user_profile WHERE user_id = '${user_id}'),'${comment_img_url}', '${comment_text}', curdate());
     `
     connect()
 

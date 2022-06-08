@@ -1,11 +1,25 @@
 <mat-card class="navigation"  [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+    
     <div class="navigation-container">
+        <mat-icon routerLink="/main" class="logo clickable">logo_dev</mat-icon>
         <div *ngIf="mobileBrowser"><mat-icon>smartphone</mat-icon></div>
         <div *ngIf="!mobileBrowser"><mat-icon>computer</mat-icon></div>
         
-        <h2 class="user-profile mat-body">
-            {{userData['firstname']}} {{userData['lastname']}}
+        <h2 class="user-profile mat-body" *ngIf="userData">
+            {{userData.firstname}} {{userData['lastname']}}
         </h2>
+
+        <button mat-button [matMenuTriggerFor]="language">
+            {{'common.language.selectedLanguage' | translate}}
+        </button>
+        <mat-menu #language="matMenu">
+            <button mat-menu-item (click)="setLanguage('en')">
+                ENG
+            </button>
+            <button mat-menu-item (click)="setLanguage('sr')">
+                SRB
+            </button>
+        </mat-menu>
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>

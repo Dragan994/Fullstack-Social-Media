@@ -14,7 +14,11 @@ const routes: Routes = [
   {path: 'main', component: MainViewComponent},
   {path: 'updateUser', component: UpdateUserComponent},
   {path: 'userProfile', component: UserProfileComponent},
-  {path: 'userProfile/:id', component: UserProfileComponent},
+  {
+    path: 'userProfile/:id',
+    component: UserProfileComponent
+  
+  },
   {path: 'colorTester', component: ColorTesterComponent},
   {path: '', component: LoginComponent },
   {path:'**', component: PageNotFoundComponent},

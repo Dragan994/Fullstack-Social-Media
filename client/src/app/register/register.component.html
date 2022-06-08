@@ -4,39 +4,28 @@
         <mat-card-title class="text-center">{{"components.register.title" | translate}}</mat-card-title>
 
         
-        <div class="input-user-img-container">
-            <div class="user-img-container" *ngIf="selectedImgSrc">
-                <mat-icon (click)="clearUserImg()">clear</mat-icon>
-                <img class="user-img" src={{selectedImgSrc}} alt="">
-            </div>
-            
-            <div>
-                <button mat-raised-button (click)="imgInput.click()">Select Image <mat-icon matSuffix>image</mat-icon></button>
-            </div>
-            
-            <input type="file" accept="image/*" (change)="onImgSelected($event)" #imgInput>
-        </div>
+        
         
         <form [formGroup]="registerForm">
             <div>
                 <mat-form-field>
                     <mat-label>{{"common.user.firstname" | translate}}</mat-label>
-                    <input id="firstname" formControlName="firstname" matInput placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                    <input id="firstname" formControlName="firstname" matInput placeholder='{{"common.user.firstnamePlaceholder" | translate}}'/>
                     <mat-error *ngIf='registerForm.controls.firstname.hasError("required")'
                     >{{"common.user.firstname" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
                     <mat-error *ngIf='registerForm.controls.firstname.hasError("minlength")'
-                    >{{"common.user.errorMessages.minlength4" | translate}}</mat-error>
+                    >{{"common.user.errorMessages.minlength3" | translate}}</mat-error>
                 </mat-form-field>
             </div>
 
             <div>
                 <mat-form-field>
                     <mat-label>{{"common.user.lastname" | translate}}</mat-label>
-                    <input id="lastname" formControlName="lastname" matInput placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                    <input id="lastname" formControlName="lastname" matInput placeholder='{{"common.user.lastnamePlaceholder" | translate}}'/>
                     <mat-error *ngIf='registerForm.controls.lastname.hasError("required")'
                     >{{"common.user.lastname" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
                     <mat-error *ngIf='registerForm.controls.lastname.hasError("minlength")'
-                    >{{"common.user.errorMessages.minlength4" | translate}}</mat-error>
+                    >{{"common.user.errorMessages.minlength3" | translate}}</mat-error>
                 </mat-form-field>
             </div>
 
@@ -45,9 +34,9 @@
                     <mat-label>{{"common.user.email" | translate}}</mat-label>
                     <input id="email" formControlName="email" matInput placeholder='{{"common.user.emailPlaceholder" | translate}}'/>
                     <mat-error *ngIf='registerForm.controls.email.hasError("required")'
-                    >{{"common.user.email" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                    >{{"common.user.errorMessages.emailIsRequired" | translate}}</mat-error>
                     <mat-error *ngIf='registerForm.controls.email.hasError("email")'
-                    >{{"common.user.email" | translate}}{{"common.user.errorMessages.invalidEmail" | translate}}</mat-error>
+                    >{{"common.user.errorMessages.invalidEmail" | translate}}</mat-error>
                 </mat-form-field>
             </div>
 
@@ -65,9 +54,10 @@
             <div>
                 <mat-form-field>
                     <mat-label>{{"common.user.password" | translate}}</mat-label>
-                    <input id="password" formControlName="password" type="text" matInput placeholder='{{"common.user.passwordPlaceholder" | translate}}'/>
+                    <input id="password" formControlName="password" [type]="hidePassword ? 'password' : 'text'" matInput placeholder='{{"common.user.passwordPlaceholder" | translate}}'/>
+                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                     <mat-error *ngIf='registerForm.controls.password.hasError("required")'
-                    >{{"common.user.password" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                    >{{"common.user.errorMessages.passwordIsRequired" | translate}}</mat-error>
                     <mat-error *ngIf='registerForm.controls.password.hasError("minlength")'
                     >{{"common.user.errorMessages.minlength6" | translate}}</mat-error>
                 </mat-form-field>
@@ -76,9 +66,10 @@
             <div>
                 <mat-form-field>
                     <mat-label>{{"common.user.confirmPassword" | translate}}</mat-label>
-                    <input id="confirmPassword" formControlName="confirmPassword" matInput placeholder='{{"common.user.usernamePlaceholder" | translate}}'/>
+                    <input id="confirmPassword" formControlName="confirmPassword" matInput [type]="hideConfirmPassword ? 'password' : 'text'" placeholder='{{"common.user.confirmPasswordPlaceholder" | translate}}'/>
+                    <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                     <mat-error *ngIf='registerForm.controls.confirmPassword.hasError("required")'
-                    >{{"common.user.confirmPassword" | translate}}{{"common.user.errorMessages.isRequired" | translate}}</mat-error>
+                    >{{"common.user.errorMessages.confirmPasswordIsRequired" | translate}}</mat-error>
                     <mat-error *ngIf='registerForm.controls.confirmPassword.hasError("minlength")'
                     >{{"common.user.errorMessages.minlength6" | translate}}</mat-error>
                     <mat-error *ngIf='registerForm.controls.confirmPassword.hasError("confirmedValidator")'
@@ -91,6 +82,6 @@
         <div class="flex-container-center m-t-15">
             <button id="registerBtn" (click)="submitForm()" mat-raised-button="mat-raised-button" color="primary" [disabled]="!registerForm.valid">{{"components.register.buttons.register" | translate}}</button>
         </div>
-        <p class="text-center">Have account <a class="login-btn" routerLink="/login">Login</a></p>
+        <p class="text-center">{{"components.register.hasAccount" | translate}}<a class="login-btn" routerLink="/login">{{"components.login.title" | translate}}</a></p>
     </mat-card>
 </div>

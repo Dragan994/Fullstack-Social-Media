@@ -10,12 +10,16 @@ export default function getUserByID(user_id, callback){
     connect();
 
     const getUserByIDSql =
-    `SELECT firstname, lastname, email FROM users
-    WHERE user_id = '${user_id}'`
+    `SELECT firstname, lastname, email 
+     FROM user_profile
+     WHERE user_id = '${user_id}'`
     console.log(user_id)
     connnection.query(getUserByIDSql, (err,res,fields)=>{
+        
         if(err) throw err;
+
         console.log(res)
+        connnection.end()
         return callback(res)
     })
     

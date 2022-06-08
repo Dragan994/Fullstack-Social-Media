@@ -2,6 +2,7 @@
 .wrapper-chat {
     display: flex;
     height: 100%;
+    width: 100%;
     overflow: hidden;
 
     .header{
@@ -20,7 +21,7 @@
 
 
     .chat-window{
-        min-width: 350px;
+        width: 100%;
         padding-bottom: 15px;
         mat-card{
             padding: 10px;

@@ -1,15 +1,19 @@
-
-    <mat-card class="wrapper-like-list" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+<div class="wrapper-like-list" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+    
+    <mat-card class="like-list-container">
         <div class="close-btn">
             <mat-icon color="primary" (click)="closeLikeList()">cancel</mat-icon>
         </div>
-        <!-- Post data is availible for use but will stay commented to mimic facebook -->
+        
         <!--
             <mat-label>{{postData.firstname}} {{postData.lastname}}</mat-label>
             <mat-card-title>{{postData.post_text}}</mat-card-title>
         -->
-            
-        <div *ngFor="let userData of likeList">
-            <app-user-snackbar [userData]="userData"></app-user-snackbar>
+        <div class="user-list">
+            <div  *ngFor="let userData of likeList">
+                <app-user-snackbar (click)="closeLikeList()" [userData]="userData"></app-user-snackbar>
+            </div>
         </div>
     </mat-card>
+
+    </div>

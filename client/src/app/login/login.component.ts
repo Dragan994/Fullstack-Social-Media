@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
-import { TranslatePipe } from '../pipes/Translate.pipe';
 import {
   FormBuilder,
   FormGroup,
@@ -19,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   responseData: any
   darkMode = false
+  hidePassword = true
 
   constructor(
     private loginService: LoginService,
@@ -26,13 +26,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private darkModeService: DarkModeService) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   ngOnInit(): void {
-    console.log("Login initiated.")
     this.darkMode = this.darkModeService.getDarkModeValue()
   }
 

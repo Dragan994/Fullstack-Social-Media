@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +8,17 @@ import { Router } from '@angular/router';
 
 export class UserService {
 
-  //private userData = null;
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient
+    ) {}
 
-  //setUserData(data){
-  //  this.userData = data
-  //}
   getUserData(){
       const token = window.localStorage.getItem('token')
       return this.http.post('/api/user',{token})
   }
 
 
-  goToUserProfile(user_id){
+  getUserProfileData(user_id){
     return this.http.get(`/api/userProfile?id=${user_id}`)
   }
 

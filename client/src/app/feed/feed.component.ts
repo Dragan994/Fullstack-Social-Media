@@ -11,10 +11,9 @@ import { FeedService } from './feed.service';
 export class FeedComponent implements OnInit {
   @Input() userData
   public postForm!: FormGroup
-  public allPosts
+  public allPosts = new Array()
 
   constructor(
-    private userService: UserService,
     private feedService: FeedService,
     private fb: FormBuilder) {
       this.postForm = this.fb.group({
@@ -24,6 +23,9 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.updatePosts()
+    this.feedService.UpdateFeedEvent.subscribe(res=>{
+      this.updatePosts()
+    })
     
   }
 
@@ -39,19 +41,22 @@ export class FeedComponent implements OnInit {
       }
 
       this.feedService.createPost(postData).subscribe( res =>{
-        console.log(res)
+          this.updatePosts()
       })
       
-    this.updatePosts() // this is temponary solution i want to use socket io for this...
       this.postForm.controls['post'].setValue("")
     }
   }
 
 
 updatePosts(){
-  this.feedService.getAllPosts().subscribe( posts =>{
-    this.allPosts = posts
-    this.allPosts.reverse()
+  this.feedService.getAllPosts().subscribe( postsList =>{
+    const arr = new Array()
+    for(let prop in postsList){
+      const post = postsList[prop]
+      arr.push(post)
+    }
+    this.allPosts = arr
   })
 }
 

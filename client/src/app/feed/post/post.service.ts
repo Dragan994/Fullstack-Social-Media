@@ -36,4 +36,12 @@ export class PostService {
   }
 
 
+  deletePost(post_id){
+    const postData = {
+          post_id
+      }
+    return this.http.post('/api/deletePost', postData)
+  }
+
+
 }

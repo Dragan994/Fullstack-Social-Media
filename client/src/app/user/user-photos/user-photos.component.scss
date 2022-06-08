@@ -1,0 +1,40 @@
+mat-card.wrapper-user-photos{
+    margin: 10px auto 0;
+    max-width: 800px;
+    .user-photos-container{
+
+        display: flex;
+        flex-wrap: wrap;
+
+        .image-container{
+            width: 20%;
+        }
+    }
+}
+
+input[type=file]{
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    mat-card.wrapper-user-photos{
+        .user-photos-container{
+    
+            .image-container{
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    mat-card.wrapper-user-photos{
+        .user-photos-container{
+    
+            .image-container{
+                width: 100%;
+            }
+        }
+    }
+}

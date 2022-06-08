@@ -2,20 +2,20 @@
 
     <div class="main-view" *ngIf="!tokenError">
         <div class="navigation">
-            <app-navigation [userData]="userData"></app-navigation>
+            <app-navigation></app-navigation>
         </div>
         <div class="content">
-            <div class="extras"> Extras here</div>
+           
+            <app-aside class="extras"></app-aside>
 
             <div class="feed">
                 <app-feed *ngIf="!updateUser" [userData]="userData"></app-feed>
             </div>
-
+            
             <div class="chat">
-                
-                    <app-chat></app-chat>
-                
+                <app-chat></app-chat>
             </div>
+      
         </div>
 
     </div>

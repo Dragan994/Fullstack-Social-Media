@@ -39,6 +39,14 @@ import { UserPostOwnerComponent } from './user/user-post-owner/user-post-owner.c
 import { CommentComponent } from './feed/comment/comment.component';
 import { UserSnackbarComponent } from './user/user-snackbar/user-snackbar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AsideComponent } from './aside/aside.component';
+import { UserPhotosComponent } from './user/user-photos/user-photos.component';
+import { ImagePreviewThumbnailComponent } from './image-preview-thumbnail/image-preview-thumbnail.component';
+import { PostDeletePromptComponent } from './dialogs/post-delete-prompt/post-delete-prompt.component';
+import { ImagePreviewFullscreenComponent } from './image-preview-fullscreen/image-preview-fullscreen.component';
+import { UserPostsComponent } from './user/user-posts/user-posts.component';
+import { UserInfoComponent } from './user/user-info/user-info.component';
+import { UserFriendsComponent } from './user/user-friends/user-friends.component';
 const config: SocketIoConfig = {
   url: environment.socketUrl,
   options: {
@@ -67,7 +75,15 @@ const config: SocketIoConfig = {
     NavigationComponent,
     UserPostOwnerComponent,
     CommentComponent,
-    UserSnackbarComponent
+    UserSnackbarComponent,
+    AsideComponent,
+    UserPhotosComponent,
+    ImagePreviewThumbnailComponent,
+    PostDeletePromptComponent,
+    ImagePreviewFullscreenComponent,
+    UserPostsComponent,
+    UserInfoComponent,
+    UserFriendsComponent
   ],
   imports: [
     BrowserModule,

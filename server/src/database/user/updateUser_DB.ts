@@ -38,12 +38,12 @@ export default function updateUserDB(updateData, callback){
 
             if(updateData['updateFormData']['changePassword']){
                 console.log("Updating User with password change.")
-                const changePassSQL = 
-                `UPDATE users
+                const updateUserSQL = 
+                `UPDATE user_profile
                 SET firstname = '${firstname}', lastname= '${lastname}' , password= '${newPassword}'
                 WHERE username = '${username}' AND password= '${password}';
                 `
-                connection.query(changePassSQL, (err, res, fields)=>{
+                connection.query(updateUserSQL, (err, res, fields)=>{
                     if(err) throw err
                     return callback({
                         changedRows: res.changedRows,
@@ -53,7 +53,7 @@ export default function updateUserDB(updateData, callback){
                 connection.end()
             }else{
                 const changePassSQL = 
-                `UPDATE users
+                `UPDATE user_profile
                 SET firstname = '${firstname}', lastname= '${lastname}'
                 WHERE username = '${username}' AND password= '${password}';
                 `

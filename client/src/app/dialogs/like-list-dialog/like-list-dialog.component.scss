@@ -1,13 +1,26 @@
 .wrapper-like-list{
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
     box-shadow:  0 0 8px 0.5px var(--accent-color);
     border-radius: 4px;
     background-color: var(--background-color);
     color: var(--text-color);
-    
-    .close-btn{
-        text-align: right;
-        cursor: pointer;
+    mat-card.like-list-container{
+        
+        height: 100%;
+        overflow: hidden;
+        padding-bottom: 15px;
+        
+        .close-btn{
+            text-align: right;
+            cursor: pointer;
+        }
+        
+        .user-list{
+            border-radius: 4px;
+            height: 85%;
+            overflow: auto;
+            margin-bottom: 10px;
+        }
     }
 }

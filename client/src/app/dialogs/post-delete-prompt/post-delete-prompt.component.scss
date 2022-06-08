@@ -1,0 +1,23 @@
+.wrapper-post-delete-prompt{
+
+    h2{
+        margin-bottom: 5px;
+    }
+    box-shadow:  0 0 8px 0.5px var(--accent-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    text-align: center;
+
+
+
+
+
+    .btn-container{
+        padding: 0 15px;
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

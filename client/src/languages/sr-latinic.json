@@ -1,12 +1,110 @@
 {
     "components": {
         "login": {
-            "title": "Prijavi se"
+            "title": "Uloguj se",
+            "hasNoAccount":"Nemaš nalog ",
+            "buttons":{
+                "login": "Uloguj se"
+            }
         },
         "register": {
-            "title": "Registruj se"
-        }
+            "title": "Registruj se",
+            "hasAccount":"Imaš nalog ",
+            "buttons":{
+                "register": "Registruj se"
+            }
+        },
+        "feed":{
+            "postPlaceholder": "Napiši objavu...",
+            "postBtn": "Objava"
+        },
+        "userProfile":{
+            "buttons":{
+                "sendMessage":"Pošalji poruku",
+                "add": "Dodaj",
+                "posts": "Objave",
+                "info": "Info",
+                "photos": "Slike",
+                "friends": "Prijatelji"
+            }
+        },
+        "post": {
+            "like":{
+                "likePostBtn": "Sviđa mi se",
+                "oneLike": "Sviđanje",
+                "moreLikes":"Sviđanja",
+                "noLike": "Nema sviđanja..."
+            },
+            "comment":{
+                "show":"Prikaži",
+                "comment":"komentar.",
+                "comments": "komentara.",
+                "postCommentPlaceholder": "Napiši komentar ovde...",
+                "postCommentBtn": "Objavi komentar",
+                "noCommentsYet": "Nema komentara...",
+                "sorryNoComment": "Ovu objavu niko nije komentarisao, prokomentariši...",
+                "addComment": "Dodaj komentar",
+                "hideComments":"Sakrij komentare."
+            }
+        },
 
+        "userInfo":{
+            "title":"Info"
+        },
+        "userPhotos":{
+            "title":"Photos"
+        },
+        "userFriends":{
+            "title": "Friends"
+        }
+    },
+    "common":{
+        "user":{
+            "firstname": "Ime",
+            "firstnamePlaceholder":"Unesi Ime",
+
+            "lastname": "Prezime",
+            "lastnamePlaceholder":"Unesi Prezime",
+
+            "email": "E-mail",
+            "emailPlaceholder":"Unesi E-mail",
+
+            "username": "Korisničko Ime",
+            "usernamePlaceholder": "Unesi Korisničko Ime",
+
+            "password": "Lozinka",
+            "oldPassword": "Stara Lozinka",
+            "newPassword": "Nova Lozinka",
+            "passwordPlaceholder": "Unesi Lozinku",
+
+            "confirmPassword": "Potvrdi Lozinku",
+            "confirmNewPassword": "Potvrdi Novu Lozinku",
+            "confirmPasswordPlaceholder": "Potvrdi Lozinku",
+
+
+
+
+            "errorMessages": {
+                "firstnameIsRequired": "Ime je obavezno!",
+                "lastnameIsRequired": "Prezime je obavezno!",
+                "emailIsRequired": "E-mail je obavezan!",
+                "usernameIsRequired": "Korisničko ime je obavezno!",
+                "passwordIsRequired": "Lozinka je obavezna!",
+                "confirmPasswordIsRequired": "Potvrdi Lozinku je obavezno!",
+                    "isRequired": " je obavezno!",
+                    "minlength3": "Dužina mora biti 3 karaktera ili više.",
+                    "minlength4": "Dužina mora biti 4 karaktera ili više.",
+                    "minlength6": "Dužina mora biti 6 karaktera ili više.",
+                    "passwordsDontMatch": "Lozinke se ne podudaraju.",
+                    "wrongCredentials": "Pogrešni kredencijali, pokušaj ponovo.",
+                    "wrongPassword": "Pogrešna lozinka, pokušaj ponovo.",
+                    "invalidEmail": "Nepravilan email format."
+                
+            }
+        },
+        "language":{
+            "selectedLanguage":"SRB"
+        }
     }
 
 }

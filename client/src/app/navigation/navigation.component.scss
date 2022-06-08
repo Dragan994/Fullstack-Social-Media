@@ -6,4 +6,11 @@ mat-card.navigation{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    .user-profile{
+        margin-left: 10px;
+    }
+    mat-icon.logo{
+        margin-left: 15px;
+        margin-right: auto;
+    }
 }

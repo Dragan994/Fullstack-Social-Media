@@ -15,7 +15,7 @@ export default function registerUser(newUserData: UserInterface, callback:any){
         if(response.status === "User not found."){
             connect()
             const newUserSql =
-            `INSERT INTO users ( firstname, lastname, username, email, password )
+            `INSERT INTO user_profile ( firstname, lastname, username, email, password )
             VALUES ('${firstname}', '${lastname}', '${username}', '${email}', '${password}')`
             connnection.query(newUserSql, (err, res, fields)=>{
                 if (err) throw err
@@ -43,7 +43,7 @@ export default function registerUser(newUserData: UserInterface, callback:any){
         };
         connect();
         const getUserSql =
-        `SELECT * FROM users
+        `SELECT * FROM user_profile
         WHERE username = '${username}' OR email = '${email}'`
         connnection.query(getUserSql, (err, res, fields)=>{
             if(err)throw err

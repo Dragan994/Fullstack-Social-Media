@@ -20,7 +20,7 @@ export default function getAllPosts(callback){
     connect();
     const usersWhoPostedList = []
     const allPostsSQL = 
-    `SELECT * FROM posts`
+    `SELECT * FROM user_post`
 
     connnection.query(allPostsSQL, (err, res, fields)=>{
         
@@ -41,7 +41,7 @@ export default function getAllPosts(callback){
 
     function getUsersList(postList , _usersWhoPostedList){
         const getUsersWhoPostedSQL = 
-        `SELECT user_id, firstname, lastname FROM users
+        `SELECT user_id, firstname, lastname FROM user_profile
         WHERE user_id IN (${_usersWhoPostedList});
         `
         if(_usersWhoPostedList.length === 0){ 

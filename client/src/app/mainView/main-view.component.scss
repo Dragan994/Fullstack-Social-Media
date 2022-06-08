@@ -22,34 +22,38 @@
             align-items: stretch;
             overflow: hidden;
             .extras{
-                border: 1px dashed blue;
+                display: block;
             }
             .feed{
-                min-width: 450px;
+                width: 500px;
+                min-width: 300px;
                 padding: 0 15px;
                 overflow-y: auto;
             }
             .chat{
                 box-shadow: 0 0 1px 1px gray;
+                width: 400px;
+                min-width: 250px;
                 border-radius: 4px;
                 overflow-y: hidden;
             }
-
-
-
         }
-
-
     }
 
-
-
-
-    
     mat-card{
     padding: 0;
     width: 100%;
     display: flex;
     background-color: var(--status-bar-color);
+    }
+}
+
+
+@media screen and (max-width: 769px) {
+    .feed{
+        flex: 1;
+    }
+    .chat{
+        display: none;
     }
 }

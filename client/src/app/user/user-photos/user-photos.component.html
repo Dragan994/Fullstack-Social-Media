@@ -1,0 +1,23 @@
+<mat-card class="wrapper-user-photos">
+    <h1>Photos</h1>
+    <div>
+        <div class="input-user-img-container">
+            <div class="user-img-container" *ngIf="selectedUserImgSrc">
+                <mat-icon (click)="clearUserImage()">clear</mat-icon>
+                <img class="user-img" src={{selectedUserImgSrc}} alt="">
+            </div>
+            
+            <div>
+                <button mat-raised-button (click)="imgInput.click()">Select Image to upload <mat-icon matSuffix>image</mat-icon></button>
+                <button mat-raised-button *ngIf="selectedUserImg" (click)="uploadImage()"><mat-icon matSuffix>upload</mat-icon></button>
+            </div>
+            
+            <input type="file" accept="image/*"  (change)="onImageSelected($event)" #imgInput>
+        </div>
+    </div>
+    <div class="user-photos-container">
+        <div *ngFor="let imageData of userImageList" class="image-container">
+            <app-image-preview-thumbnail [imageList]="userImageList"  [imageData]="imageData"></app-image-preview-thumbnail>
+        </div>
+    </div>
+</mat-card>

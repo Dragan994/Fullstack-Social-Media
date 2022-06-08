@@ -10,8 +10,8 @@ export default function createPost(postData){
     console.log(postData)
 
     const createPostSQL = 
-    `INSERT INTO posts (fk_post_user_id,post_img_url, post_text, date_of_creation)
-    VALUES ((SELECT user_id FROM users WHERE user_id = '${user_id}'),'${post_img_url}' , '${post_text}', now())
+    `INSERT INTO user_post (fk_post_user_id,post_media_url, post_text, date_of_creation)
+    VALUES ((SELECT user_id FROM user_profile WHERE user_id = '${user_id}'),'${post_img_url}' , '${post_text}', now())
     `
     connect()
 

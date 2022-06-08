@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { DarkModeService } from '../services/darkMode.service';
+import { LanguageService } from '../services/language.service';
 import { SocketService } from '../services/socket.service';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-navigation',
@@ -10,16 +12,24 @@ import { SocketService } from '../services/socket.service';
   encapsulation: ViewEncapsulation.None
 })
 export class NavigationComponent implements OnInit {
-@Input() userData
-mobileBrowser = false
-darkMode = false
+  userData?
+  mobileBrowser = false
+  darkMode = false
+
   constructor(
+    private userService: UserService,
     private router: Router,
     private socketService: SocketService,
-    private darkModeService: DarkModeService
+    private darkModeService: DarkModeService,
+    private languageService: LanguageService
   ) { }
 
   ngOnInit(): void {
+    this.userService.getUserData().subscribe(res=>{
+      if(res['message'] === 'Access granted'){
+        this.userData = {...res['data']}
+      }
+    })
     this.darkModeService.darkModeToggleEvent.subscribe(res=>{
       this.darkMode = res
       console.log("NAVI")
@@ -58,7 +68,10 @@ darkMode = false
   }
 
 
+  setLanguage(language){
+    this.languageService.setLanguage(language)
 
+  }
 
 
 

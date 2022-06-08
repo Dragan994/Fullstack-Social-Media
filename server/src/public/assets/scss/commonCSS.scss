@@ -1,0 +1,11 @@
+.clickable{
+    &:hover{
+        cursor: pointer;
+    }
+}
+.fullscreen-dialog .mat-dialog-container{
+    padding: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}

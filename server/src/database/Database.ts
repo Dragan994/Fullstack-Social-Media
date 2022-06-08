@@ -3,19 +3,16 @@ import { UserInterface } from '../User-interface';
 import addNewUser from './user/registerUser_DBr';
 import databaseConfig from './Database-config.json'
 import loginUser from './user/loginUser_DB';
-import resetPostsTable from './tableResets/resetPostsTable_DB';
-import resetUsersTable from './tableResets/resetUsersTable_DB';
 import updateUserDB from './user/updateUser_DB';
 import createPost from './posts/createPost_DB';
 import getAllPosts from './posts/getAllPosts_DB';
-import resetLikesTable from './tableResets/resetLikesTable_DB';
-import resetCommentsTable from './tableResets/resetCommentsTable_DB';
-import likePost from './posts/likePost_DB';
 import getPostLikeList from './posts/getPostLikeList_DB';
 import deletePost from './posts/deletePost_DB';
 import commentPost from './posts/commentPost_DB';
 import getPostComments from './posts/getPostComments_DB';
 import getUserByID from './user/getUserByID_DB';
+import uploadImage from './file/uploadImage_DB';
+import deleteImage from './file/deleteImage_DB';
 
 
 export default class Database {
@@ -39,7 +36,7 @@ export default class Database {
         };
         this.connect();
         const getUserSql =
-        `SELECT * FROM users
+        `SELECT * FROM user_profile
         WHERE username = '${username}' OR email = '${email}'`
         this.connnection.query(getUserSql, (err, res, fields)=>{
             if(err)throw err
@@ -70,19 +67,7 @@ export default class Database {
     updateUser(updateData, callback){
         updateUserDB(updateData, callback)
     }
-    resetUsersTable(){
-        resetUsersTable()
-    }
 
-    resetPostsTable(){
-        resetPostsTable()
-    }
-    resetLikesTable(){
-        resetLikesTable()
-    }
-    resetCommentsTable(){
-        resetCommentsTable()
-    }
 
     createPost(postData){
         createPost(postData)
@@ -92,9 +77,6 @@ export default class Database {
     }
     getAllPosts(callback){
         getAllPosts(callback)
-    }
-    likePost(likeData, callback){
-        likePost(likeData, callback)
     }
     getPostLikeList(post_id, callback){
         getPostLikeList(post_id, callback)
@@ -109,6 +91,15 @@ export default class Database {
     getUserByID(user_id,callback){
         getUserByID(user_id,callback)
     }
+
+    uploadImage(imageData){
+        uploadImage(imageData)
+    }
+
+    deleteImage(imageData){
+        deleteImage(imageData)
+    }
+
 
     connect(){
         console.log("Creating connection to Database")

@@ -9,7 +9,7 @@ export default function deletePost(postData){
     const {post_id} = postData
     console.log(postData)
 
-    const deletePostSQL = `DELETE FROM posts WHERE post_id = '${post_id}'`
+    const deletePostSQL = `DELETE FROM user_post WHERE post_id = '${post_id}'`
     connect()
 
     connnection.query(deletePostSQL, (err, res, field)=>{

@@ -1,0 +1,22 @@
+<div class="wrapper-image-preview-fullscreen" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
+    
+    <div class="image-preview-fullscreen-container">
+
+        <div class="image-container">
+            <div class="image-center">
+                <img src="{{imageUrl}}" alt="">
+                <p class="image-description">{{image_description}}</p>
+            </div>
+
+            <button (click)="closePreview()" class="close-btn"><mat-icon>close</mat-icon></button>        
+            <button *ngIf="notFirstPhoto" (click)="showPreviousImage()" class="previous-btn"><mat-icon>keyboard_arrow_left</mat-icon></button>
+            <button *ngIf="notLastPhoto" (click)="showNextImage()" class="next-btn"><mat-icon>keyboard_arrow_right</mat-icon></button>
+        </div>
+
+        <mat-card class="image-comments">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius at assumenda cum sunt nostrum commodi ex praesentium aperiam molestiae. Vitae doloremque deleniti blanditiis dicta sunt, nam aut earum illo nobis.</p>
+        </mat-card>
+        
+    </div>
+
+</div>

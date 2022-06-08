@@ -9,7 +9,7 @@ export default function getPostComments(post_id, callback){
     connect()
     const usersWhoCommentedList = []
     const getPostsCommentsSQL = 
-    `SELECT * FROM comments
+    `SELECT * FROM post_comment
     WHERE fk_comm_post_id = '${post_id}';`
 
     connnection.query(getPostsCommentsSQL, (err, res, field)=>{
@@ -30,7 +30,7 @@ export default function getPostComments(post_id, callback){
 
     function getUsersList(commentList , _usersWhoCommentedList){
         const getUsersWhoCommentedSQL = 
-        `SELECT user_id, firstname, lastname FROM users
+        `SELECT user_id, firstname, lastname FROM user_profile
         WHERE user_id IN (${_usersWhoCommentedList});
         `
         if(_usersWhoCommentedList.length === 0){ // This fixed an error that sql throw when array is empty...

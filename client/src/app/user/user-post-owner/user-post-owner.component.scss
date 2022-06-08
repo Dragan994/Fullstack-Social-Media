@@ -23,4 +23,18 @@
             border-radius: 20%;
         }
     }
+
+    .post-options-menu{
+        margin-left: auto;
+        align-self: flex-start;
+        padding: 5px;
+        border-radius: 50%;
+
+        &:hover{
+            background-color: var(--divider-color);
+        }
+        mat-icon{
+            display: block;
+        }
+    }
 }

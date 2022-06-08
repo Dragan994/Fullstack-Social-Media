@@ -1,13 +1,15 @@
 <div class="comment-container">
 
     <div class="user-img-container"> 
-        <img class="user-img" src={{userPictureUrl}} alt="">
+        <img (click)="goToUserProfile()" class="user-img clickable" src={{user_image_url}} alt="">
     </div>
     <mat-card class="comment-container">
-            <p class="user-FN-LN">{{commentData.userData.firstname}} {{commentData.userData.lastname}}</p>
-            <p class="comment-date">14:45 12/5/2021</p>
-            <p class="comment-text">{{commentData.comment_text}}</p>
+        
 
+            <p (click)="goToUserProfile()" class="user-FN-LN clickable">{{commentData.firstname}} {{commentData.lastname}}</p>
+            <mat-label>{{time}} {{date}}</mat-label>
+            
+            <p class="comment-text">{{commentData.comment_text}}</p>
     </mat-card>
 
 </div>

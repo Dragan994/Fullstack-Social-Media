@@ -146,9 +146,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   uploadImage(){
-    const fd = new FormData();
-    fd.append('image', this.selectedUserImg, `img${this.userData.user_id}`)
-    this.imageService.uploadImage(fd).subscribe((event) =>{
+    const imageBuffer = new FormData();
+    imageBuffer.append('image', this.selectedUserImg, `${this.userData.user_id}`) // For original name i set user_id, need this for DB FK
+
+    this.imageService.uploadImage(imageBuffer).subscribe((event) =>{
       if(event.type === HttpEventType.UploadProgress){
         const loadProgress = Math.round(event.loaded / event.total * 100)
         if(loadProgress === 100){
@@ -157,9 +158,7 @@ export class UpdateUserComponent implements OnInit {
         console.log(`Upload Progress: ${loadProgress}%`)
       }else if(event.type === HttpEventType.Response){
         this.imgBaseUrl = event.body['imgBaseUrl']
-        const fullImgUrl = `${environment.apiUrl}image/${this.imgBaseUrl}-mid.jpg`
-        console.log(fullImgUrl)
-        setTimeout(()=>{this.selectedUserImgSrc =  fullImgUrl},200)
+        setTimeout(()=>{this.selectedUserImgSrc = this.imageService.getImagePath( event.body['imgBaseUrl'], "mid")},200)
       }
     })
   }
@@ -173,8 +172,14 @@ export class UpdateUserComponent implements OnInit {
   }
 
   deleteImage(){
+    
+    const imageData = {
+      user_id: this.userData.user_id,
+      imgBaseUrl: this.imgBaseUrl
+    }
     if(this.selectedUserImgSrc){
-      this.imageService.deleteImageByBaseUrl({imgBaseUrl: this.imgBaseUrl}).subscribe(res=>console.log(res))
+      console.log(imageData)
+      this.imageService.deleteImageByBaseUrl(imageData).subscribe(res=>console.log(res))
     }
   }
 

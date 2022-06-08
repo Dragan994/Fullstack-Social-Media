@@ -11,6 +11,9 @@
         display: inline-block;
         margin: 50px auto auto auto;
         text-align: center;
+        mat-form-field{
+            width: 230px;
+        }
     }
     .register-btn{
         color: var(--primary-color);

@@ -1,7 +1,7 @@
 <div class="wrapper-user-snackbar">
     <div class="img-container">
-        <img class="user-snackbar-img" src={{userPicture}} alt="">
+        <img (click)="goToUserProfile()" class="user-snackbar-img clickable" src={{user_image_url}} alt="">
     </div>
     <div class="user-data-container">
-        <mat-label>{{userData.firstname}} {{userData.lastname}}</mat-label>
+        <mat-label (click)="goToUserProfile()" class="clickable"> {{userData.firstname}} {{userData.lastname}}</mat-label>
 </div>

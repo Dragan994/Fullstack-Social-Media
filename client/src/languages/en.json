@@ -2,12 +2,14 @@
     "components": {
         "login": {
             "title": "Login",
+            "hasNoAccount":"Don't have account",
             "buttons":{
                 "login": "Login"
             }
         },
         "register": {
             "title": "Register",
+            "hasAccount":"Have account",
             "buttons":{
                 "register": "Register"
             }
@@ -16,9 +18,22 @@
             "postPlaceholder": "Write a Post here...",
             "postBtn": "Post"
         },
+        "userProfile":{
+            "buttons":{
+                "sendMessage":"Send message",
+                "add": "Add",
+                "posts": "Posts",
+                "info": "Info",
+                "photos": "Photos",
+                "friends": "Friends"
+            }
+        },
         "post": {
             "like":{
-                "likePostBtn": "Like"
+                "likePostBtn": "Like",
+                "oneLike": "Like",
+                "moreLikes":"Likes",
+                "noLike": "No likes so far..."
             },
             "comment":{
                 "show":"Show",
@@ -28,9 +43,23 @@
                 "postCommentBtn": "Post Comment",
                 "noCommentsYet": "No comments yet...",
                 "sorryNoComment": "Sorry this post isn't commented yet, be first to write a comment!",
-                "addComment": "Add Comment"
+                "addComment": "Add Comment",
+                "hideComments":"Hide comments."
             }
+        },
+
+        "userInfo":{
+            "title":"Info"
+        },
+        "userPhotos":{
+            "title":"Photos"
+        },
+        "userFriends":{
+            "title": "Friends"
         }
+
+
+
     },
     "common":{
         "user":{
@@ -59,7 +88,15 @@
 
 
             "errorMessages": {
+                "firstnameIsRequired": "Firstname is required!",
+                "lastnameIsRequired": "Lastname is required!",
+                "emailIsRequired": "E-mail is required!",
+                "usernameIsRequired": "Username is required!",
+                "passwordIsRequired": "Password is required!",
+                "confirmPasswordIsRequired": " Confirm password is required!",
+
                     "isRequired": " is required!",
+                    "minlength3": "Length must be 3 characters or more.",
                     "minlength4": "Length must be 4 characters or more.",
                     "minlength6": "Length must be 6 characters or more.",
                     "passwordsDontMatch": "Passwords does not match.",
@@ -68,6 +105,9 @@
                     "invalidEmail": "Invalid email format."
                 
             }
+        },
+        "language":{
+            "selectedLanguage":"ENG"
         }
     }
 

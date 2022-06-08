@@ -2,8 +2,6 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { LikeListDialogComponent } from 'src/app/dialogs/like-list-dialog/like-list-dialog.component';
-import { ICommentList } from './CommentList.Interface';
-import { IPost } from '../../../Interfaces/Post.interface';
 import { PostService } from './post.service';
 
 @Component({
@@ -13,18 +11,20 @@ import { PostService } from './post.service';
   encapsulation: ViewEncapsulation.None
 })
 export class PostComponent implements OnInit {
+  @Input() postData
   @Input() userData
-  @Input() postData: IPost
   public noLike = false
   public oneLike = false
    public likeList
    public likeCount
-   public commentList
-   public noComment = false
-   public oneComment = false
+   public commentList = []
    public commentCount
+   public hasNoComment
+   public hasOneComment 
+   public hasManyComments
    public postIsLiked = false
    public commentForm!: FormGroup
+   public commentPanelOpenState = false
 
    
 
@@ -41,15 +41,16 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.postService.getLikeList(this.postData.post_id).subscribe( likeList=>{
       this.updateLikeList(likeList)
+      
     })
 
     this.postService.getPostComments(this.postData.post_id).subscribe(commentListDB=>{
       this.updateComments(commentListDB)
     })
 
+
+    
       
-    
-    
   }
 
 
@@ -57,10 +58,12 @@ export class PostComponent implements OnInit {
   likePost(){
     const post_id = this.postData.post_id
     const user_id = this.userData.user_id
-
     this.postService.likePost(post_id, user_id).subscribe(likeList => {
       this.updateLikeList(likeList)
     })
+    console.log("LIKE POST")
+    console.log(post_id)
+    console.log(user_id)
 
     
   }
@@ -92,6 +95,7 @@ export class PostComponent implements OnInit {
       this.dialog.open(LikeListDialogComponent, {
         minWidth:"350px",
         maxWidth:'500px',
+        height: '50vh',
         data: {
           likeList:this.likeList,
           postData: this.postData
@@ -101,17 +105,17 @@ export class PostComponent implements OnInit {
   }
 
   commentPost(event){
-    if(event.keyCode === 13){      
+    if(event.keyCode === 13){
       const commentData ={
       post_id :  this.postData.post_id,
       user_id : this.userData.user_id,
-      comment_img_url: "empty",
+      comment_media_url: "empty",
       comment_text : this.commentForm.value['comment']
     }
 
     if(this.commentForm.value['comment'] !== ""){
-      this.postService.commentPost(commentData).subscribe( (commentListDB)=>{
-        this.updateComments(commentListDB)
+      this.postService.commentPost(commentData).subscribe( commentListDB=>{
+          this.updateComments(commentListDB)
       });
            
       this.commentForm.controls['comment'].setValue("")
@@ -120,19 +124,19 @@ export class PostComponent implements OnInit {
 }
 
 
-  updateComments(commentListDB){
-    const arr = new Array()
-    const commentListProps = Object.keys(commentListDB)
-    this.commentCount = commentListProps.length
-    for(let prop in commentListProps){
-      const comment = commentListDB[prop]
-      arr.push(comment)
-    }
-    if(commentListDB.length!==0){
-      this.noComment = false
-    }
-    this.commentList = arr
+   updateComments(commentList){
+
+    this.commentList = commentList
+
+    this.commentCount = commentList.length
       
+    this.hasNoComment = commentList.length === 0
+    this.hasOneComment = commentList.length === 1
+    this.hasManyComments =  commentList.length > 1
+
+
+
+
   }
 
 

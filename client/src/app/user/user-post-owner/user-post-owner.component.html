@@ -1,10 +1,16 @@
 <div class="wrapper-user-post-owner">
-    <div class="img-container">
-        <img class="user-post-owner-img" src="" alt="">
+
+    <div (click)="goToUserProfile()" class="img-container clickable">
+        <img class="user-post-owner-img" src={{user_image_url}} alt="">
     </div>
+
     <div class="user-data-container">
-        <mat-label>{{postData.userData.firstname}} {{postData.userData.lastname}}</mat-label>        
+            <mat-label (click)="goToUserProfile()" class="clickable">{{postData.firstname}} {{postData.lastname}}</mat-label>
         <br>
         <mat-label>{{time}} {{date}}</mat-label>
+    </div>
+
+    <div class="post-options-menu" >
+        <mat-icon *ngIf="canDeletePost" (click)="deletePost()">delete</mat-icon>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Injectable, OnInit} from '@angular/core';
+import { EventEmitter, Injectable, OnInit, Output} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class FeedService {
-
+  @Output() UpdateFeedEvent = new EventEmitter()
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,10 @@ export class FeedService {
 
   getAllPosts(){
     return this.http.get("/api/getAllPosts")
+  }
+
+  updateFeed(){
+    this.UpdateFeedEvent.emit(true)
   }
 
 

@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
   selectedImgSrc
   selectedUserImg
   darkMode = false
+  hidePassword = true
+  hideConfirmPassword = true
 
   constructor(
       private registerService: RegisterService,
@@ -30,7 +32,7 @@ export class RegisterComponent implements OnInit {
       lastname: ['', [Validators.required, Validators.minLength(3)]],
       
       email: ['', [Validators.required, Validators.email]],
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
 
       password: ['', [Validators.required, Validators.minLength(6)]],      
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -70,8 +72,9 @@ export class RegisterComponent implements OnInit {
   }
 
   uploadImage(){
-
+    
   }
+
   clearUserImg(){
     this.selectedUserImg = null
     this.selectedImgSrc = null

@@ -1,28 +1,33 @@
-import express from 'express';
-import ip from 'ip';
-import { chatHandlers } from './chatHandlers';
-import Database from './database/Database';
-import { updateUserRouter } from './routes/user/updateUser_route';
-import {userRouter} from './routes/user/user_route'
-import { registerRouter } from './routes/user/register_route';
-import { loginRouter } from './routes/user/login_route';
-import { createPost } from './routes/posts/createPost_route';
-import { getAllPosts } from './routes/posts/getAllPosts_route';
-import { likePost } from './routes/posts/likePost_route';
-import { getPostLikeList } from './routes/posts/getPostLikes_route';
-import { commentPost } from './routes/posts/commentPost_route';
-import { getPostsComments } from './routes/posts/getPostComments_routes';
-import { getUserProfileRouter } from './routes/user/userProfile_route';
-import { uploadImageRouter } from './routes/file/uploadImage_route';
-import { deleteImageRouter } from './routes/file/deleteImage_route';
-const http = require('http')
-const  app = express();
-const socketio = require('socket.io')
-const server = http.createServer(app)
-const io = socketio(server)
+import express  from 'express';
+import ip       from 'ip';
+import mysql    from 'mysql';
+import databaseConfig               from '../src/database/Database-config.json'
+import { chatHandlers }             from './chatHandlers';
+import { updateUserRouter }         from './routes/user/updateUser_route';
+import {userRouter}                 from './routes/user/user_route'
+import { registerRouter }           from './routes/user/register_route';
+import { loginRouter }              from './routes/user/login_route';
+import { createPost }               from './routes/posts/createPost_route';
+import { getAllPosts }              from './routes/posts/getAllPosts_route';
+import { likePost }                 from './routes/posts/likePost_route';
+import { getPostLikeList }          from './routes/posts/getPostLikes_route';
+import { commentPost }              from './routes/posts/commentPost_route';
+import { getPostsComments }         from './routes/posts/getPostComments_routes';
+import { getUserProfileRouter }     from './routes/user/userProfile_route';
+import { uploadImageRouter }        from './routes/file/uploadImage_route';
+import { deleteImageRouter }        from './routes/file/deleteImage_route';
+import { deletePost } from './routes/posts/deletePost_route';
+import { getUserImages } from './routes/user/getUserImages_route';
+import { getUserPosts } from './routes/posts/getUserPosts_route';
 
 
-const database = new Database()
+const http      = require('http')
+const app       = express();
+const socketio  = require('socket.io')
+const server    = http.createServer(app)
+const io        = socketio(server)
+
+
 const PORT = 3000
 const ADDRESS = ip.address();
 
@@ -42,6 +47,9 @@ app.use( (req,res,next)=>{
     }
 })
 
+export const pool = mysql.createPool(databaseConfig);
+
+
 app.use(registerRouter)
 app.use(loginRouter)
 app.use(updateUserRouter)
@@ -55,7 +63,9 @@ app.use(getPostsComments)
 app.use(getUserProfileRouter)
 app.use(uploadImageRouter)
 app.use(deleteImageRouter)
-
+app.use(deletePost)
+app.use(getUserImages)
+app.use(getUserPosts)
 const serverData = {
     allClients: [],
     chat: []
@@ -70,11 +80,6 @@ io.on('connection', socket=>{
 
 
 
-
-
-
-
-
 app.get('*', (req,res)=>{
    res.sendFile('index.html', {root: __dirname + '/public'})
 })
@@ -82,24 +87,3 @@ app.get('*', (req,res)=>{
 server.listen(PORT,ADDRESS, ()=>{
     console.log(`Server starting...\nListening at ${ADDRESS}:${PORT}`);
 })
-const newUserData = {
-    firstname: "John",
-    lastname: "Doe",
-    username: "Johny",
-    email: "john@mail.com",
-    password: "12345678",
-
-}
-
-
-
-//database.resetUsersTable()
-//database.resetPostsTable()
-//database.resetLikesTable()
-//database.resetCommentsTable()
-//database.addNewUser(newUserData, (data)=>{console.log(data)})
-
-//database.getUser("Rexyco", (response)=>{console.log(response)})
-//database.loginUser("Rexyco","rex123isSafe", (response)=>{console.log({...response[0]})})
-
-

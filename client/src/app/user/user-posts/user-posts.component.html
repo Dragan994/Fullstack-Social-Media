@@ -1,0 +1,6 @@
+
+<div class="center post-list">
+    <div  *ngFor="let postData of userPosts">
+        <app-post [userData]="userData" [postData]="postData"></app-post>
+    </div>
+</div>

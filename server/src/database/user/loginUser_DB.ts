@@ -14,14 +14,14 @@ export default function loginUser(username, password, callback){
                 console.error("Error connecting to Database:\nError:" + err.stack);
                 return
             }
-            console.log("Connected as id:" + connnection.threadId)
+            console.log("Connected as id: @loginUser" + connnection.threadId)
         })
     }   
 
     connect();
 
     const loginUserSql =
-    `SELECT * FROM users
+    `SELECT * FROM user_profile
     WHERE username = '${username}' AND password = '${password}'`
     
     connnection.query(loginUserSql, (err,res,fields)=>{

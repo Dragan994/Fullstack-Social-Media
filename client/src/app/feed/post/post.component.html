@@ -6,10 +6,10 @@
         
         <mat-card-title>{{postData.post_text}}</mat-card-title>
         <div class="likes-comments-counter" (click)="openLikeList()">
-            <span *ngIf="noLike">No likes so far...</span>
-            <span class="like-link" *ngIf="!noLike">  {{likeCount}} 
-                <span *ngIf="oneLike">Like</span>
-                <span *ngIf="!oneLike">Likes</span>
+            <span *ngIf="noLike">{{'components.post.like.noLike' | translate}}</span>
+            <span class="like-link" *ngIf="!noLike">  {{likeCount}}. 
+                <span *ngIf="oneLike">{{'components.post.like.oneLike' | translate}}</span>
+                <span *ngIf="!oneLike">{{'components.post.like.moreLikes' | translate}}</span>
             </span>
         </div>
         <div class="like-btn-container">
@@ -17,15 +17,19 @@
         </div>
 
 
-        <mat-expansion-panel hideToggle class="comment-expansion-panel">
+        <mat-expansion-panel hideToggle class="comment-expansion-panel" (opened)="commentPanelOpenState = true" (closed)="commentPanelOpenState = false">
             
             <mat-expansion-panel-header>
-                <mat-panel-description *ngIf="!noComment">
-                   <span>{{"components.post.comment.show" | translate}}</span>&nbsp;{{commentCount}}&nbsp;
-                   <span *ngIf="oneComment">{{"components.post.comment.comment" | translate}}</span> 
-                   <span *ngIf="!oneComment">{{"components.post.comment.comments" | translate}}</span> 
-                </mat-panel-description><mat-panel-description *ngIf="noComment">
+                <mat-panel-description *ngIf="!hasNoComment && !commentPanelOpenState">
+                   <span>{{"components.post.comment.show" | translate}}&nbsp;{{commentCount}}&nbsp;</span>
+                   <span *ngIf="hasOneComment">{{"components.post.comment.comment" | translate}}</span>
+                   <span *ngIf="hasManyComments">{{"components.post.comment.comments" | translate}}</span> 
+                </mat-panel-description><mat-panel-description *ngIf="hasNoComment && !commentPanelOpenState">
                     {{"components.post.comment.noCommentsYet" | translate}}
+                </mat-panel-description>
+
+                <mat-panel-description *ngIf="commentPanelOpenState">
+                    <span>{{"components.post.comment.hideComments" | translate}}</span><mat-icon>expand_less</mat-icon>
                 </mat-panel-description>
             </mat-expansion-panel-header>
 
@@ -34,7 +38,7 @@
                     <app-comment [commentData]="commentData"></app-comment>
                 </div>
             </div>
-            <p *ngIf="noComment">{{"components.post.comment.sorryNoComment" | translate}}</p>
+            <p *ngIf="hasNoComment">{{"components.post.comment.sorryNoComment" | translate}}</p>
         </mat-expansion-panel>
         <div>
             <form [formGroup]="commentForm" class="input-form" (keypress)="commentPost($event)">
