@@ -30,7 +30,7 @@ export class UserPhotosComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateUserImages()
-    this.imageService.deleteImageEvent.subscribe(res=>{
+    this.imageService.updateImageEvent.subscribe(res=>{
       console.log(res)
       this.updateUserImages()
     })

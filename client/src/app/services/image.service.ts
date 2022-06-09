@@ -8,15 +8,15 @@ import { EventEmitter } from '@angular/core';
 })
 export class ImageService {
 
-  @Output() deleteImageEvent = new EventEmitter() 
+  @Output() updateImageEvent = new EventEmitter() 
 
   constructor(
     private http: HttpClient
   ) {}
 
 
-  fireDeleteImageEvent(){
-      this.deleteImageEvent.emit("ok")
+  fireUpdateImageEvent(eventData){
+      this.updateImageEvent.emit(eventData)
     }
 
  
@@ -41,6 +41,9 @@ export class ImageService {
     return this.http.post('/api/getUserImages', {user_id})
   }
 
+  setImageAsProfilePicture(imageData){
+    return this.http.post('/api/setProfilePicture', imageData)
+  }
 
 
 

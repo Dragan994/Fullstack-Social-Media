@@ -9,12 +9,12 @@
             <mat-icon>more_vert</mat-icon>
         </button>
     -->
-    <mat-icon mat-button [matMenuTriggerFor]="pictureOptions" class="clickable picture-options">more_vert</mat-icon>
+    <mat-icon *ngIf="!isProfilePicture" mat-button [matMenuTriggerFor]="pictureOptions" class="clickable picture-options">more_vert</mat-icon>
     <mat-menu #pictureOptions="matMenu" class="picture-options-menu" >
         <button *ngIf="canDeleteImage" mat-menu-item (click)="deleteImage()">
            <mat-icon>delete</mat-icon> Delete 
         </button>
-        <button mat-menu-item >
+        <button mat-menu-item   (click)="setImageAsProfilePicture()">
            <mat-icon>account_box</mat-icon> Set as profile picture
         </button>
     </mat-menu>

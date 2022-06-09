@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { DarkModeService } from 'src/app/services/darkMode.service';
 import { ImageService } from 'src/app/services/image.service';
@@ -33,9 +34,18 @@ export class UserProfileComponent implements OnInit {
     this.userService.getUserProfileData(this.user_id).subscribe(res=>{
       console.log(res)
       this.userData = res
-      this.user_image_url = this.imageService.getImagePath(this.userData['image_url'], "mid")
+      const profile_picture_url =  this.imageService.getImagePath(this.userData['image_url'], "mid")
+      this.setUserProfilePicture(profile_picture_url)
+      //this.user_image_url = this.imageService.getImagePath(this.userData['image_url'], "mid")
+    })
+    this.imageService.updateImageEvent.subscribe(res=>{
+      console.log(res)
+
+        this.setUserProfilePicture(res.data)
+     
     })
     this.darkMode = this.darkModeService.getDarkModeValue()
+    
     this.darkModeService.darkModeToggleEvent.subscribe(res=>{
       console.log(res)
       this.darkMode = res
@@ -52,6 +62,11 @@ export class UserProfileComponent implements OnInit {
     })
 
     this.selectedView[component] = true
+  }
+
+
+  setUserProfilePicture(image_url){
+    this.user_image_url = image_url
   }
 
 }

@@ -64,10 +64,28 @@ export class ImagePreviewThumbnailComponent implements OnInit {
     
       this.imageService.deleteImageByBaseUrl(imageData).subscribe(res=>{
         console.log(res)
-        this.imageService.fireDeleteImageEvent()
+        const eventData = {
+          event: "image_delete",
+          data: imageData.imgBaseUrl
+        }
+        this.imageService.fireUpdateImageEvent(eventData)
       }
         
         )
     
+  }
+  setImageAsProfilePicture(){
+    const imageData = {
+      user_id: this.userData.user_id,
+      imgBaseUrl: this.imageData['image_url']
+    }
+    this.imageService.setImageAsProfilePicture(imageData).subscribe(res=>{
+      console.log(res)
+      const eventData = {
+        event:"profilePictureUpdated",
+        data: this.imageUrl
+      }
+      this.imageService.fireUpdateImageEvent(eventData)
+    })
   }
 }

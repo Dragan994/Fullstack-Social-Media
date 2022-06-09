@@ -19,6 +19,7 @@ import { deleteImageRouter }        from './routes/file/deleteImage_route';
 import { deletePost } from './routes/posts/deletePost_route';
 import { getUserImages } from './routes/user/getUserImages_route';
 import { getUserPosts } from './routes/posts/getUserPosts_route';
+import { setProfilePicture } from './routes/file/setProfilePicture_route';
 
 
 const http      = require('http')
@@ -66,6 +67,9 @@ app.use(deleteImageRouter)
 app.use(deletePost)
 app.use(getUserImages)
 app.use(getUserPosts)
+app.use(setProfilePicture)
+
+
 const serverData = {
     allClients: [],
     chat: []
