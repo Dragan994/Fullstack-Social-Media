@@ -1,7 +1,7 @@
-<div class="wrapper-user-snackbar">
+<div *ngIf="profileUserData" class="wrapper-user-snackbar">
     <div class="img-container">
         <img (click)="goToUserProfile()" class="user-snackbar-img clickable" src={{user_image_url}} alt="">
     </div>
     <div class="user-data-container">
-        <mat-label (click)="goToUserProfile()" class="clickable"> {{userData.firstname}} {{userData.lastname}}</mat-label>
+        <mat-label (click)="goToUserProfile()" class="clickable"> {{profileUserData.firstname}} {{profileUserData.lastname}}</mat-label>
 </div>

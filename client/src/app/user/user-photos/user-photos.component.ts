@@ -3,29 +3,27 @@ import { ImageService } from 'src/app/services/image.service';
 
 import { HttpEventType } from '@angular/common/http';
 import { UserService } from '../user.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-user-photos',
   templateUrl: './user-photos.component.html',
   styleUrls: ['./user-photos.component.scss']
 })
 export class UserPhotosComponent implements OnInit {
-  @Input() user_id
-
+  @Input() profileUser_id
+  @Input()userData
   public userImageList
-  userData
   selectedUserImg: File = null
-  selectedUserImgSrc
+  selectedUploadImgSrc
   imgBaseUrl: string
   imageIsUploaded: boolean = false
+  userOwnsProfile = false
+  private darkModeToggleSubscription: Subscription
+  private imageUpdateSubscription: Subscription
   constructor(
     private imageService: ImageService,
     private userService: UserService
   ) {
-    this.userService.getUserData().subscribe(res=>{
-    if(res['message'] === 'Access granted'){
-        this.userData = {...res['data']}
-      }
-    })
   }
 
   ngOnInit(): void {
@@ -34,11 +32,27 @@ export class UserPhotosComponent implements OnInit {
       console.log(res)
       this.updateUserImages()
     })
+
+    if(this.userData.user_id === this.profileUser_id){
+      this.userOwnsProfile = true
+    }
+
+    console.log(this.userData.user_id)
+    console.log(this.profileUser_id)
   }
+
+  
+
+  
+
+
+
+
+
 
  updateUserImages(){
    
-  this.imageService.getUserImages(this.user_id).subscribe(res=>{
+  this.imageService.getUserImages(this.profileUser_id).subscribe(res=>{
     this.userImageList = res
     console.log("list updated")
   })
@@ -51,7 +65,7 @@ export class UserPhotosComponent implements OnInit {
     
     reader.onload = ()=> {
       const rawLog = reader.result;
-      this.selectedUserImgSrc = rawLog
+      this.selectedUploadImgSrc = rawLog
     };
   
   }
@@ -70,7 +84,7 @@ export class UserPhotosComponent implements OnInit {
       }else if(event.type === HttpEventType.Response){
         this.imgBaseUrl = event.body['imgBaseUrl']
         setTimeout(()=>{
-          this.selectedUserImgSrc = this.imageService.getImagePath( event.body['imgBaseUrl'], "mid")
+          this.selectedUploadImgSrc = this.imageService.getImagePath( event.body['imgBaseUrl'], "mid")
           this.updateUserImages()
         },200)
       }
@@ -82,7 +96,7 @@ export class UserPhotosComponent implements OnInit {
       this.deleteImage()
     }
     this.selectedUserImg = null
-    this.selectedUserImgSrc = null
+    this.selectedUploadImgSrc = null
   }
 
   deleteImage(){
@@ -91,7 +105,7 @@ export class UserPhotosComponent implements OnInit {
       user_id: this.userData.user_id,
       imgBaseUrl: this.imgBaseUrl
     }
-    if(this.selectedUserImgSrc){
+    if(this.selectedUploadImgSrc){
       console.log(imageData)
       this.imageService.deleteImageByBaseUrl(imageData).subscribe(res=>{
         console.log(res)
@@ -99,5 +113,6 @@ export class UserPhotosComponent implements OnInit {
     }
   }
   
+
 
 }

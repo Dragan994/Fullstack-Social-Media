@@ -10,8 +10,8 @@
             <mat-card-title>{{postData.post_text}}</mat-card-title>
         -->
         <div class="user-list">
-            <div  *ngFor="let userData of likeList">
-                <app-user-snackbar (click)="closeLikeList()" [userData]="userData"></app-user-snackbar>
+            <div  *ngFor="let profileUserData of likeList">
+                <app-user-snackbar (click)="closeLikeList()" [userData]="null"  [profileUserData]="profileUserData"></app-user-snackbar>
             </div>
         </div>
     </mat-card>

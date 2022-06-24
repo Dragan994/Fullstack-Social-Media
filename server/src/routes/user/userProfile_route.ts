@@ -9,17 +9,14 @@ export const getUserProfileRouter = express.Router();
 getUserProfileRouter.get("/api/userProfile", (req, res)=>{
 
     const user_id = req.query.id
-    console.log(req)
 
     const getUserByIdSQL = `
     SELECT
-        u.firstname,
-        u.lastname,
-        u.email,
-        i.image_url
-    FROM user_profile u
-    JOIN user_image i
-        ON i.fk_image_user_id = u.user_id AND i.image_type = 'profile_picture_selected'
+        user_id,
+        firstname,
+        lastname,
+        email
+    FROM user_profile 
     WHERE user_id = ${user_id}
     `
 

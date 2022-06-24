@@ -41,13 +41,10 @@ commentPost.post('/api/commentPost', (req, res)=>{
         c.date_of_creation,
         u.firstname,
         u.lastname,
-        u.user_id,
-        i.image_url
+        u.user_id
     FROM post_comment c
     JOIN user_profile u
         ON c.fk_comm_user_id = u.user_id
-    JOIN user_image i
-        ON c.fk_comm_user_id = i.fk_image_user_id AND i.image_type = 'profile_picture_selected'
     WHERE c.fk_comm_post_id = ${post_id}
     ORDER BY c.date_of_creation DESC
     `
@@ -62,8 +59,7 @@ commentPost.post('/api/commentPost', (req, res)=>{
         })
         
         connection.query(getPostCommentListSQL,(err, data)=>{
-            res.send(data)
-            
+            res.send(data)            
             
             if(err) throw err;
         })

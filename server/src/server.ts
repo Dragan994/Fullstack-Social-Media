@@ -20,6 +20,14 @@ import { deletePost } from './routes/posts/deletePost_route';
 import { getUserImages } from './routes/user/getUserImages_route';
 import { getUserPosts } from './routes/posts/getUserPosts_route';
 import { setProfilePicture } from './routes/file/setProfilePicture_route';
+import { getProfilePicture } from './routes/file/getProfilePicture_route';
+import { sendFriendRequest } from './routes/friendship/sendFriendRequest_route';
+import { getFriendshipStatus } from './routes/friendship/getFriendshipStatus_route';
+import { acceptFriendship } from './routes/friendship/acceptFriendship_route';
+import { cancelFriendship } from './routes/friendship/cancelFriendship_route';
+import { blockUser } from './routes/friendship/blockUser_route';
+import { unblockUser } from './routes/friendship/unblockUser_route';
+import { getProfileFriends } from './routes/friendship/getProfileFriends_route';
 
 
 const http      = require('http')
@@ -68,7 +76,14 @@ app.use(deletePost)
 app.use(getUserImages)
 app.use(getUserPosts)
 app.use(setProfilePicture)
-
+app.use(getProfilePicture)
+app.use(sendFriendRequest)
+app.use(getFriendshipStatus)
+app.use(acceptFriendship)
+app.use(cancelFriendship)
+app.use(blockUser)
+app.use(unblockUser)
+app.use(getProfileFriends)
 
 const serverData = {
     allClients: [],

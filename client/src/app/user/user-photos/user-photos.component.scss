@@ -1,6 +1,22 @@
 mat-card.wrapper-user-photos{
     margin: 10px auto 0;
     max-width: 800px;
+
+    .input-upload-img-container{
+        position: relative;
+        width: 300px;
+        .clear-user-image{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        .upload-img{
+            width: 100%;
+            margin: auto;
+        }
+    }
+
+
     .user-photos-container{
 
         display: flex;
@@ -12,9 +28,7 @@ mat-card.wrapper-user-photos{
     }
 }
 
-input[type=file]{
-    display: none;
-}
+
 
 
 @media screen and (max-width: 768px) {

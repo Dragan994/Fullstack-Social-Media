@@ -1,7 +1,7 @@
 <div class="wrapper-post" >
     <mat-card>
 
-        <app-user-post-owner [postData]="postData"></app-user-post-owner>
+        <app-user-post-owner [userData]="userData" [postData]="postData"></app-user-post-owner>
 
         
         <mat-card-title>{{postData.post_text}}</mat-card-title>
@@ -35,7 +35,7 @@
 
             <div class="comments-wrapper">
                 <div class="comment-container" *ngFor="let commentData of commentList">
-                    <app-comment [commentData]="commentData"></app-comment>
+                    <app-comment [userData]="userData" [commentData]="commentData"></app-comment>
                 </div>
             </div>
             <p *ngIf="hasNoComment">{{"components.post.comment.sorryNoComment" | translate}}</p>

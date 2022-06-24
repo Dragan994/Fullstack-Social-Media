@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 export class UserInfoComponent implements OnInit {
 
   @Input() user_id
-  userData
+  public userData
   constructor(
    private userService: UserService
   ) { }
@@ -18,10 +18,20 @@ export class UserInfoComponent implements OnInit {
   ngOnInit(): void {
     console.log("userInfo")
 
-    this.userService.getUserProfileData(this.user_id).subscribe(userData=>{
-      console.log(userData)
-      this.userData = userData
-    })
+    this.loadInitialData()
+
+  
+    
   }
+
+
+
+
+  async loadInitialData(){
+    const result = await this.userService.getUserProfileData(this.user_id).toPromise()
+
+    this.userData = result
+  }
+
 
 }

@@ -44,6 +44,15 @@ export class ImageService {
   setImageAsProfilePicture(imageData){
     return this.http.post('/api/setProfilePicture', imageData)
   }
+  getUserProfilePicture(user_id){
+    return this.http.post('/api/getProfilePicture', {user_id})
+  }
+
+  setDefaultProfilePicture(){
+
+    return "../../assets/images/defaulf_profile_picture.jpg"
+
+  }
 
 
 

@@ -19,14 +19,11 @@ export class UserPostsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("POST")
-    console.log(this.user_id)
     this.userService.getUserData().subscribe(res=>{
       if(res['message'] === 'Access granted'){
-        this.userData = {...res['data']}
+        this.userData = res['data']
       }
     })
-    console.log(this.userData)
     this.userPostsService.getUserPosts(this.user_id).subscribe( userPosts => {
       console.log(userPosts)
       this.userPosts = userPosts

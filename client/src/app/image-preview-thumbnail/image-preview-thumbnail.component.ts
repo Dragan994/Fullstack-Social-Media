@@ -13,6 +13,7 @@ import { UserService } from '../user/user.service';
 export class ImagePreviewThumbnailComponent implements OnInit {
   @Input() imageData
   @Input() imageList
+  @Input() userOwnsProfile
   public imageUrl
   darkMode
   userData
@@ -65,7 +66,7 @@ export class ImagePreviewThumbnailComponent implements OnInit {
       this.imageService.deleteImageByBaseUrl(imageData).subscribe(res=>{
         console.log(res)
         const eventData = {
-          event: "image_delete",
+          name: "image_delete",
           data: imageData.imgBaseUrl
         }
         this.imageService.fireUpdateImageEvent(eventData)
@@ -79,10 +80,11 @@ export class ImagePreviewThumbnailComponent implements OnInit {
       user_id: this.userData.user_id,
       imgBaseUrl: this.imageData['image_url']
     }
+    console.log(imageData)
     this.imageService.setImageAsProfilePicture(imageData).subscribe(res=>{
       console.log(res)
       const eventData = {
-        event:"profilePictureUpdated",
+        name:"profile_picture_update",
         data: this.imageUrl
       }
       this.imageService.fireUpdateImageEvent(eventData)

@@ -36,8 +36,8 @@ export class RequestPasswordComponent implements OnInit {
     validatePassword(){
 
       const pass = this.validatePasswordForm.value['password']
-      if(pass === this.data['loginData']['password']){
-        console.log("Send update request")
+      if(pass === this.data['password']){
+        
         this.sendUpdateUserRequest(this.data)
       }else{
         this.validatePasswordForm.controls['password'].setErrors({wrongPassword: true})
@@ -50,9 +50,15 @@ export class RequestPasswordComponent implements OnInit {
     }
     
     sendUpdateUserRequest(userData){
-      this.requestPasswordService.requestUpdateUser(userData.loginData, userData.updateUserData).subscribe(res=>{
-  
-        if(res['affectedRows'] && res['changedRows']){
+      this.requestPasswordService.requestUpdateUser(userData.user_id, userData.updateUserData).subscribe(res=>{
+        
+        if(res['status']=== "OK"){
+
+          // Here we can fire event that requests userData so it can be refreshed after update.
+          
+          // This way user have to login again.
+
+          console.log('closing dialog')
           this.dialogRef.close()
           localStorage.removeItem('token')
           this.router.navigate(['login'])

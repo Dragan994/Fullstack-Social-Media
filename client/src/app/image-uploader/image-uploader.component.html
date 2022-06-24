@@ -1,0 +1,13 @@
+<div class="input-upload-img-container">
+    <div class="upload-img-container" *ngIf="selectedUploadImgSrc">
+        <mat-icon class="clear-user-image" (click)="clearUserImage()">clear</mat-icon>
+        <img class="upload-img" src={{selectedUploadImgSrc}} alt="">
+    </div>
+    
+    <div>
+        <button mat-raised-button (click)="imgInput.click()">Select Image to upload <mat-icon matSuffix>image</mat-icon></button>
+        <button mat-raised-button *ngIf="selectedUserImage" (click)="uploadImage()"><mat-icon matSuffix>upload</mat-icon></button>
+    </div>
+    
+    <input type="file" accept="image/*"  (change)="onImageSelected($event)" #imgInput>
+</div>

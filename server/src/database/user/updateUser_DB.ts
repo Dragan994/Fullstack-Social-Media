@@ -35,8 +35,8 @@ export default function updateUserDB(updateData, callback){
 
             const {firstname, lastname, newPassword} = {...updatedFormData}
             const {username, password} = {...loginData}
-
-            if(updateData['updateFormData']['changePassword']){
+    console.log(updatedFormData)
+            if(newPassword){
                 console.log("Updating User with password change.")
                 const updateUserSQL = 
                 `UPDATE user_profile
@@ -52,6 +52,7 @@ export default function updateUserDB(updateData, callback){
                 })                
                 connection.end()
             }else{
+                console.log("Updating User without password change.")
                 const changePassSQL = 
                 `UPDATE user_profile
                 SET firstname = '${firstname}', lastname= '${lastname}'

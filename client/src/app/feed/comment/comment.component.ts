@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ImageService } from 'src/app/services/image.service';
@@ -9,6 +8,7 @@ import { ImageService } from 'src/app/services/image.service';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
+  @Input() userData
   @Input() commentData
   public time
   public date
@@ -21,19 +21,24 @@ public user_image_url
   ) { }
 
   ngOnInit(): void {
+
+    this.loadInitialData()
+
     this.user_image_url = this.imageService.getImagePath(this.commentData['image_url'], "small")
-    this.convertDateToString()
+    
   }
 
 
-
-  convertDateToString(){
-    const rawDateTime = this.commentData.date_of_creation.split("T")
-    const rawDate = rawDateTime[0].split("-")
-    this.date = rawDate.join("/")
-    const rawTime = rawDateTime[1].split(':',2)
-    this.time = rawTime.join(':')
+  async loadInitialData(){
+    const user_id = this.commentData['user_id']    
+    const profilePictureData = await this.imageService.getUserProfilePicture(user_id).toPromise()
+    if(profilePictureData['message'] === "image_url not found"){
+      this.user_image_url = this.imageService.setDefaultProfilePicture()
+    }else{
+      this.user_image_url = this.imageService.getImagePath(profilePictureData['image_url'],"mid")
+    }
   }
+
 
   goToUserProfile(){
     const user_id = this.commentData.user_id

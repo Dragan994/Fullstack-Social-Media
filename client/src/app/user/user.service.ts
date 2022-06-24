@@ -17,9 +17,10 @@ export class UserService {
       return this.http.post('/api/user',{token})
   }
 
-
   getUserProfileData(user_id){
     return this.http.get(`/api/userProfile?id=${user_id}`)
   }
+
+  
 
 }

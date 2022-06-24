@@ -1,6 +1,6 @@
 <div class="wrapper-image-preview-thumbnail">
     
-        <img (click)="openFullscreenPreview(imageData)" class="image clickable" [ngClass]="{'profile-picture' : isProfilePicture }" src={{imageUrl}} alt="">
+    <img (click)="openFullscreenPreview(imageData)" class="image clickable" src={{imageUrl}} alt="">
     
     <!--
 
@@ -9,7 +9,8 @@
             <mat-icon>more_vert</mat-icon>
         </button>
     -->
-    <mat-icon *ngIf="!isProfilePicture" mat-button [matMenuTriggerFor]="pictureOptions" class="clickable picture-options">more_vert</mat-icon>
+
+    <mat-icon  *ngIf="!isProfilePicture && userOwnsProfile" mat-button [matMenuTriggerFor]="pictureOptions" class="clickable picture-options">more_vert</mat-icon>
     <mat-menu #pictureOptions="matMenu" class="picture-options-menu" >
         <button *ngIf="canDeleteImage" mat-menu-item (click)="deleteImage()">
            <mat-icon>delete</mat-icon> Delete 
@@ -18,4 +19,6 @@
            <mat-icon>account_box</mat-icon> Set as profile picture
         </button>
     </mat-menu>
+
+    <div *ngIf="isProfilePicture" class="profile-picture-icon"><mat-icon>account_box</mat-icon></div>
 </div>

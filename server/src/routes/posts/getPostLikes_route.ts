@@ -15,13 +15,10 @@ getPostLikeList.post('/api/getPostLikeList', (req, res)=>{
 
     const getPostLikesSQL = `
     SELECT
-        u.user_id,
-        u.firstname,
-        u.lastname,
-        i.image_url
-    FROM user_profile u
-    JOIN user_image i 
-        ON u.user_id = i.fk_image_user_id AND i.image_type = 'profile_picture_selected'
+        user_id,
+        firstname,
+        lastname
+    FROM user_profile 
     WHERE user_id IN (
     SELECT fk_post_like_user_id 
     FROM sql_social_media.post_like

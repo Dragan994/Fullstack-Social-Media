@@ -10,18 +10,52 @@ export const updateUserRouter = express.Router();
 
 
 updateUserRouter.post("/api/updateUser", (req, res)=>{
-    const updateData = req.body
+    const mainData = req.body
+    console.log(mainData)
+    const {user_id, updateFormData} = mainData
 
-    const {firstname, lastname, username,password, newPassword} = updateData
+    const {firstname, lastname, newPassword, changePassword} = updateFormData
     console.log('Update User')
-    console.log(updateData)
+    console.log(user_id)
+    console.log(updateFormData)
 
 
-    const updateUserSQL = 
-    `UPDATE user_profile
-    SET firstname = '${firstname}', lastname= '${lastname}' , password= '${newPassword}'
-    WHERE username = '${username}' AND password= '${password}';
-    `
+    if(changePassword){
+        const updateUserSQL = 
+        `UPDATE user_profile
+        SET firstname = '${firstname}', lastname= '${lastname}', password = '${newPassword}'
+        WHERE user_id = '${user_id}';
+        `
+        pool.query(updateUserSQL, (err,data)=>{
+            if(err) throw err;
+            
+            console.log(data)
+            const responseBody = {
+                status: "OK",
+                message:"User updated succesfully with password"
+            }
+            res.send(responseBody)
+        })
+        
+    }else{
+        
+        const updateUserSQL = 
+        `UPDATE user_profile
+        SET firstname = '${firstname}', lastname= '${lastname}'
+        WHERE user_id = '${user_id}';
+        `
+        pool.query(updateUserSQL, (err,data)=>{
+            if(err) throw err;
+            
+            console.log(data)
+            const responseBody = {
+                status: "OK",
+                message:"User updated succesfully without password"
+            }
+            res.send(responseBody)
+        })
+    }
+
 
 
     /*

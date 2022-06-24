@@ -17,9 +17,9 @@ export class RequestPasswordService {
   ) { }
 
 
-  requestUpdateUser(loginData: IUserData , updateFormData: IUserData){
+  requestUpdateUser(user_id , updateFormData: IUserData){
     const bodyData = {
-        loginData,
+        user_id,
         updateFormData
     } 
     return this.http.post("/api/updateUser",bodyData)

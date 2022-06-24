@@ -1,1 +1,10 @@
-<p>user-friends works!</p>
+<div class="user-friends-wrapper">
+
+    <mat-card>
+        <div *ngFor="let profileUserData of friendList" class="friends-list-container">
+
+            <app-user-snackbar [userData]="userData" [profileUserData]="profileUserData" ></app-user-snackbar>
+        </div>
+    </mat-card>
+
+</div>

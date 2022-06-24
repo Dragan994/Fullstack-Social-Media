@@ -16,8 +16,8 @@ body {
     @include angular-material-theme($dark-theme);
     @include generate-theme-vars($dark-theme);
 }
-
 .light-theme {
+    // Light-theme background is changed at >> 'node_modules/@angular/material/core/theming/_palette.scss' on $light-theme-background-palette 
     @import "src/themes/light-theme";
     @include angular-material-theme($light-theme);
     @include generate-theme-vars($light-theme);

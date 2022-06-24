@@ -61,9 +61,6 @@ export class PostComponent implements OnInit {
     this.postService.likePost(post_id, user_id).subscribe(likeList => {
       this.updateLikeList(likeList)
     })
-    console.log("LIKE POST")
-    console.log(post_id)
-    console.log(user_id)
 
     
   }
@@ -115,7 +112,11 @@ export class PostComponent implements OnInit {
 
     if(this.commentForm.value['comment'] !== ""){
       this.postService.commentPost(commentData).subscribe( commentListDB=>{
+          console.log(commentListDB)
+     
+
           this.updateComments(commentListDB)
+        
       });
            
       this.commentForm.controls['comment'].setValue("")

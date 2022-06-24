@@ -30,12 +30,9 @@ export class NavigationComponent implements OnInit {
         this.userData = {...res['data']}
       }
     })
-    this.darkModeService.darkModeToggleEvent.subscribe(res=>{
-      this.darkMode = res
-      console.log("NAVI")
-      console.log(res)
-    })
+    this.darkModeService.darkModeToggleEvent.subscribe(res=> this.darkMode = res )
     this.darkMode = this.darkModeService.getDarkModeValue()
+    this.mobileChecker()
   }
 
   logOut(){
@@ -63,14 +60,21 @@ export class NavigationComponent implements OnInit {
   }
 
   visitProfile(userData){
-    console.log(userData)
+    const visitedUser_id = window.location.search.split("=")[1]
+    
     this.router.navigate(['userProfile'],{queryParams: {id: userData.user_id}})
+    .then(()=>{ 
+      // This ensures user to visit his own profile if he is on someone elses profile.
+      const user_id = window.location.search.split("=")[1]
+      if(visitedUser_id !== user_id){
+        window.location.reload()
+      }
+    })
   }
 
 
   setLanguage(language){
     this.languageService.setLanguage(language)
-
   }
 
 

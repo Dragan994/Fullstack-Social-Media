@@ -47,6 +47,7 @@ import { ImagePreviewFullscreenComponent } from './image-preview-fullscreen/imag
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
 import { UserFriendsComponent } from './user/user-friends/user-friends.component';
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 const config: SocketIoConfig = {
   url: environment.socketUrl,
   options: {
@@ -83,7 +84,8 @@ const config: SocketIoConfig = {
     ImagePreviewFullscreenComponent,
     UserPostsComponent,
     UserInfoComponent,
-    UserFriendsComponent
+    UserFriendsComponent,
+    ImageUploaderComponent
   ],
   imports: [
     BrowserModule,

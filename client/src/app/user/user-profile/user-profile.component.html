@@ -4,19 +4,64 @@
         <app-navigation></app-navigation>
     </div>
 
-    <div *ngIf="userData" class="user-profile-container">
+    <div *ngIf="profileUserData" class="user-profile-container">
         <mat-card>
             
-            <div class="img-container">
-                <img class="user-snackbar-img" src={{user_image_url}} alt="">
+            <div  class="img-container">
+                <img *ngIf="user_image_url" class="user-profile-img" src={{user_image_url}} alt="">
+                
+                <img *ngIf="!user_image_url" class="user-profile-img" src='../../../assets/images/defaulf_profile_picture.jpg' alt="">
             </div>
             <div class="user-data-container">
-                <mat-card-title>{{userData.firstname}} {{userData.lastname}}</mat-card-title>
+                <mat-card-title>{{profileUserData.firstname}} {{profileUserData.lastname}}</mat-card-title>
             </div>
 
-            <div class="buttons">
-                <button mat-raised-button> <mat-icon>chat</mat-icon> {{"components.userProfile.buttons.sendMessage" | translate}}</button>
-                <button mat-raised-button><mat-icon>person_add</mat-icon> {{"components.userProfile.buttons.add" | translate}}</button>
+            <div *ngIf="!userOwnsProfile"  class="buttons">
+                <button mat-raised-button>
+                    <mat-icon>chat</mat-icon> {{"components.userProfile.buttons.sendMessage" | translate}}
+                </button>
+                <button  *ngIf="!friendshipData"  mat-raised-button>                    
+                        <span (click)="sendFriendRequest()">
+                            <mat-icon>person_add</mat-icon> {{"components.userProfile.buttons.add" | translate}}
+                        </span>
+                    
+                    <button mat-icon-button [matMenuTriggerFor]="friendshipOptions">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </button>
+                <button *ngIf="friendshipStatus === 'pending-sent'" mat-raised-button>
+                    <mat-icon>person</mat-icon> Request sent
+                    <button mat-icon-button [matMenuTriggerFor]="friendshipOptions">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </button>
+                <button *ngIf="friendshipStatus === 'pending-recieved'" (click)="acceptFriendship()" mat-raised-button>
+                    <mat-icon>person</mat-icon> Accept friend
+                    <button mat-icon-button [matMenuTriggerFor]="friendshipOptions">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </button>
+
+                <button *ngIf="friendshipStatus === 'accepted'"  mat-raised-button>
+                    <mat-icon>verified_user</mat-icon> Friends 
+                    <button mat-icon-button [matMenuTriggerFor]="friendshipOptions">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </button>
+                <button *ngIf="friendshipStatus === 'blocked'" (click)="unblockUser()" mat-raised-button >
+                    Unblock 
+                </button>
+                <mat-menu #friendshipOptions="matMenu">
+
+                    <button *ngIf="friendshipData" mat-menu-item (click)="cancelFriendship()">
+                        <mat-icon>person_remove</mat-icon> Unfriend
+                    </button>
+
+                    <button  mat-menu-item (click)="blockUser()">
+                        <mat-icon>block</mat-icon>Block
+                    </button>
+
+                </mat-menu>
             </div>
         </mat-card>
         
@@ -29,26 +74,26 @@
 
             
         <div *ngIf="selectedView.posts" class="selected-view-container">
-            <app-user-posts [user_id]="user_id" ></app-user-posts>
+            <app-user-posts [user_id]="profileUserData.user_id" ></app-user-posts>
         </div>
 
         <div *ngIf="selectedView.info" class="selected-view-container">
-            <app-user-info [user_id]="user_id" ></app-user-info>
+            <app-user-info [user_id]="profileUserData.user_id" ></app-user-info>
         </div>
 
         <div *ngIf="selectedView.photos" class="selected-view-container">
-            <app-user-photos [user_id]="user_id" ></app-user-photos>
+            <app-user-photos [userData]="userData" [profileUser_id]="profileUserData.user_id" ></app-user-photos>
         </div>
 
         <div *ngIf="selectedView.friends" class="selected-view-container">
-            <app-user-friends [user_id]="user_id" ></app-user-friends>
+            <app-user-friends [userData]="userData" [profileUser_id]="profileUserData.user_id" ></app-user-friends>
         </div>
             
     
     </div>
     
     
-    <div *ngIf="!userData">
+    <div *ngIf="!profileUserData">
         User not found
     </div>
 

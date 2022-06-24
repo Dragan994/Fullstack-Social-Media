@@ -7,7 +7,7 @@ const database = new Database()
 export const registerRouter = express.Router();
 
 
-registerRouter.post("/api/register", (req,res)=>{
+registerRouter.post("/api/register", (req,response)=>{
 
     const {firstname, lastname, username, email, password } = req.body;
     
@@ -32,14 +32,14 @@ registerRouter.post("/api/register", (req,res)=>{
                 `INSERT INTO user_profile ( firstname, lastname, username, email, password )
                 VALUES ('${firstname}', '${lastname}', '${username}', '${email}', '${password}')`
 
-                connection.query(newUserSql, (err, res, fields)=>{
+                
+
+                connection.query(newUserSql, (err, newUserResponse, fields)=>{
                     if (err) throw err
                     console.log(`User ${firstname} ${lastname} added succesfully.`)
-                    // Adding base profile picture
-                    addProfilePicture()
                 
                     connection.release()
-                    res.send({status: "User created succesfully.", data: rawuserData})
+                    response.send({status: "User created succesfully.", data: rawuserData})
                 })
             }// END
 
@@ -48,10 +48,10 @@ registerRouter.post("/api/register", (req,res)=>{
                 
                 connection.release();
                 if(rawuserData[0]['email'] === email){
-                    res.send({status: "Email taken.", data: null})
+                    response.send({status: "Email taken.", data: null})
                 }
                 else if(rawuserData[0]['username'] === username){
-                    res.send({status: "Username taken.", data: null})
+                    response.send({status: "Username taken.", data: null})
                 }
             }// END
 
@@ -60,7 +60,7 @@ registerRouter.post("/api/register", (req,res)=>{
                 const multiUserError = "DATABASE ERROR: Multiple users with same username!"
                 console.error("\x1b[31m",multiUserError)
                 connection.release();
-                res.send({status: multiUserError})
+                response.send({status: multiUserError})
             }
         })
 
@@ -80,6 +80,3 @@ registerRouter.post("/api/register", (req,res)=>{
 
 
 
-function addProfilePicture(){
-    
-}

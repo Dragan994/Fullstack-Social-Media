@@ -1,5 +1,23 @@
 <div class="wrapper-register" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
-
+    <div class="nav-bar">
+        <button  mat-button [matMenuTriggerFor]="language">
+            {{'common.language.selectedLanguage' | translate}}
+        </button>
+        <mat-menu #language="matMenu">
+            <button  mat-menu-item (click)="setLanguage('en')">
+                ENG
+            </button>
+            <button  mat-menu-item (click)="setLanguage('sr')">
+                SRB
+            </button>
+        </mat-menu>
+        
+        <button mat-button (click)="toggleDarkMode()">
+            <mat-icon>dark_mode</mat-icon>
+            <span *ngIf="!darkMode">Dark mode</span>
+            <span *ngIf="darkMode">Light mode</span>
+        </button>
+    </div>
     <mat-card>
         <mat-card-title class="text-center">{{"components.register.title" | translate}}</mat-card-title>
 

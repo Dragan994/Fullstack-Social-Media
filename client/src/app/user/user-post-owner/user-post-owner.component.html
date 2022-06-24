@@ -1,13 +1,13 @@
 <div class="wrapper-user-post-owner">
 
     <div (click)="goToUserProfile()" class="img-container clickable">
-        <img class="user-post-owner-img" src={{user_image_url}} alt="">
+        <img *ngIf="user_image_url" class="user-post-owner-img" src={{user_image_url}} alt="">
     </div>
 
     <div class="user-data-container">
             <mat-label (click)="goToUserProfile()" class="clickable">{{postData.firstname}} {{postData.lastname}}</mat-label>
         <br>
-        <mat-label>{{time}} {{date}}</mat-label>
+        <mat-label>{{ postData.date_of_creation | date:"EEEE, MMMM d, y, H:mm:ss" }}</mat-label>
     </div>
 
     <div class="post-options-menu" >

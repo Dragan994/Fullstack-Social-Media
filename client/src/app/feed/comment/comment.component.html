@@ -1,4 +1,4 @@
-<div class="comment-container">
+<div *ngIf="commentData" class="comment-container">
 
     <div class="user-img-container"> 
         <img (click)="goToUserProfile()" class="user-img clickable" src={{user_image_url}} alt="">
@@ -7,7 +7,7 @@
         
 
             <p (click)="goToUserProfile()" class="user-FN-LN clickable">{{commentData.firstname}} {{commentData.lastname}}</p>
-            <mat-label>{{time}} {{date}}</mat-label>
+            <mat-label>{{ commentData.date_of_creation | date:"EEEE, MMMM d, y, H:mm:ss" }}</mat-label>
             
             <p class="comment-text">{{commentData.comment_text}}</p>
     </mat-card>

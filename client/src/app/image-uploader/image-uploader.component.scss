@@ -1,0 +1,17 @@
+.input-upload-img-container{
+    position: relative;
+    width: 300px;
+    .clear-user-image{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+    .upload-img{
+        width: 100%;
+        margin: auto;
+    }
+    input[type=file]{
+        display: none;
+    }
+}
+
