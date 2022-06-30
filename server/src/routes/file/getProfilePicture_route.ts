@@ -15,7 +15,11 @@ getProfilePicture.post("/api/getProfilePicture", (req,res)=>{
     WHERE fk_image_user_id = ${user_id} AND image_type = 'profile_picture_selected'
     `
     pool.query(getProfilePictureSQL, (err,data)=>{
-        if(err) throw err;
+        if(err){
+            console.log(err)
+            res.send({message: err.message})
+            return
+        };
         
         if(data[0]){
             console.log("Sending image_url")

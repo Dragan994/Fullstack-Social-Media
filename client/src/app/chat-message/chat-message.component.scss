@@ -1,0 +1,28 @@
+.wrapper-chat-message{
+
+    padding: 5px;
+    display: flex;
+
+    .chat-participant-user{
+        max-width: 80%;
+        border: 1px solid grey;
+        border-radius: 10px 10px 0px 10px;
+        margin-left: auto;
+        background-color: var(--card-color);
+    }
+    .chat-participant-other{
+        max-width: 80%;
+        border: 1px solid grey;
+        border-radius: 0 10px 10px 10px;
+        margin-right: auto;
+        background-color: var(--card-color);
+        
+    }
+
+    .message-container{
+        white-space:pre-wrap;
+        margin: 10px 0;
+        padding: 0 10px;
+    }
+
+}

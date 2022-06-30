@@ -28,6 +28,9 @@ import { cancelFriendship } from './routes/friendship/cancelFriendship_route';
 import { blockUser } from './routes/friendship/blockUser_route';
 import { unblockUser } from './routes/friendship/unblockUser_route';
 import { getProfileFriends } from './routes/friendship/getProfileFriends_route';
+import { sendMessage } from './routes/message/sendMessage_route';
+import { getChatId } from './routes/message/getChatId_route';
+import { getChatMessageList } from './routes/message/getChatMessageList_route';
 
 
 const http      = require('http')
@@ -84,6 +87,12 @@ app.use(cancelFriendship)
 app.use(blockUser)
 app.use(unblockUser)
 app.use(getProfileFriends)
+app.use(sendMessage)
+app.use(getChatId)
+app.use(getChatMessageList)
+
+
+
 
 const serverData = {
     allClients: [],

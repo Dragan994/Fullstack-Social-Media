@@ -1,4 +1,4 @@
-.comment-container{
+.wrapper-comment{
     padding: 5px;
     display: flex;
 
@@ -26,6 +26,7 @@
 
 
     mat-card.comment-container{
+        padding: 5px;
         display: block;
         margin: 0;
         border: 1px solid gray;

@@ -151,7 +151,6 @@ export class UserProfileComponent implements OnInit {
     const requester_id = this.userData['user_id']
     const addressee_id = this.profileUserData['user_id']
 
-    console.log(friendship_id)
       const response = await this.friendshipService.blockUser(friendship_id, requester_id, addressee_id).toPromise()
       console.log(response)
    

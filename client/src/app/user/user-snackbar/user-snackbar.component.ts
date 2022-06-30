@@ -23,6 +23,7 @@ export class UserSnackbarComponent implements OnInit {
 
 
   async loadInitialData(){
+    console.log(this.profileUserData)
     const profilePictureData = await this.imageService.getUserProfilePicture(this.profileUserData['user_id']).toPromise()
 
     if(profilePictureData['message'] === "image_url not found"){

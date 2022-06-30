@@ -1,0 +1,65 @@
+<div class="wrapper-chat-card">
+
+    <mat-expansion-panel hideToggle [expanded]="cardIsOpen">
+
+        <mat-expansion-panel-header (click)="openChatCard()" *ngIf="!cardIsOpen">
+                <div class="chat-card-header">
+                    <div class="chat-card-participant">
+                        <p> {{chatCardData.firstname}} {{chatCardData.lastname}}</p>
+                    </div>
+                    <div class="chat-card-btns-container">
+                        <div>
+                            <mat-icon (click)="removeChatCard()">close</mat-icon> 
+                        </div>
+                        
+                    </div>
+                </div>
+          
+        </mat-expansion-panel-header>
+
+      
+            <div class="chat-card-header" *ngIf="cardIsOpen">
+
+                <div class="chat-card-participant">
+                    <p> {{chatCardData.firstname}} {{chatCardData.lastname}}</p>
+                </div>                
+
+                <div class="chat-card-btns-container">
+                    <div>
+                        <mat-icon (click)="minimizeChatCard()">minimize</mat-icon>
+                    </div>
+                    <div>
+                        <mat-icon  (click)="removeChatCard()">close</mat-icon>
+                    </div>
+                </div>
+            </div>
+       
+
+        <div>
+
+        </div>
+        <mat-card-content id="message-list-container" class="messages-container">
+            <div *ngFor="let messageData of messageList" class="message-container">
+                <app-chat-message [userData]="userData" [messageData]="messageData"></app-chat-message>
+            </div>
+        </mat-card-content>
+
+        <div class="chat-message-form-container">
+            <form [formGroup]="chatMessageForm" class="chat-message-form">
+                <mat-form-field floatLabel="never" >
+                    <textarea
+                    (keyup)="sendMessage($event)"
+                        matInput
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="6"
+                        formControlName="chatMessage"
+                        placeholder='Chat Message...'></textarea>
+                </mat-form-field>
+            </form>
+        </div>
+
+      </mat-expansion-panel>
+
+</div>

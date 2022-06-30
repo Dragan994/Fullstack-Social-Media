@@ -3,8 +3,6 @@
     box-shadow: 0 0 1px 1px gray;
     border-radius: 4px;
 
-
-
     mat-card-title{
         margin-top: 10px;
     }
@@ -25,8 +23,6 @@
         }
     }
 
-
-
     .like-btn{
         box-shadow: 0 0 1px 1px gray !important;
         &:hover{
@@ -34,49 +30,55 @@
         }
     }
 
-    .postIsLiked{
-        
+    .postIsLiked{        
         box-shadow: none !important;
         background-color: var(--primary-color);
         color: var(--background-color);
     }
 
-    
-
-
-
-
-.input-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .input-full-width {
-    width: 100%;
-  }
-
-
-  .flex{
-    display: flex;
-    justify-content: space-between;
-}
-
-.comments-wrapper{
-    max-height: 500px;
-    overflow-y: auto;
-
-    .comment-container{
-        margin: 10px;
+    .input-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
     }
+  
+    .input-full-width {
+        width: 100%;
+    }
+
+
+    .flex{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .comments-wrapper{
+        max-height: 500px;
+        overflow-y: auto;
+
+        .comment-container{
+            margin: 10px;
+        }
+    }
+
+    mat-panel-description{
+        padding: 0 15px;
+    }
+
+    .no-comment-message{
+        padding: 0 15px;
+    }
+
+
+
+    mat-expansion-panel{
+        //background-color: var(--status-bar-color) !important;
+        background-color: gray !important;
+    }
+
+
 }
 
-
-
-mat-expansion-panel{
-    background-color: var(--status-bar-color) !important;
-}
-.mat-expansion-panel-body {
-    padding: 0 5px 5px 5px !important;
-  }
+::ng-deep .mat-expansion-panel-body{
+    padding: 0 !important;
 }

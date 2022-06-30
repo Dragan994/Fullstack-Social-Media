@@ -1,4 +1,4 @@
-<div class="wrapper-chat" (keyup.enter)="sendMessage()" id="chat" [ngClass]="{'hidden-chat' : chatIsHidden}" >
+<div class="wrapper-chat"  id="chat" >
 
     <div class="chat-window">    
         <mat-card>
@@ -6,11 +6,33 @@
                 <input matInput placeholder="Contacts"><mat-icon>search</mat-icon>
             </mat-card-content>
 
-            <div class="chat-users-list">                         
-            
-               
-               
+            <div class="chat-users-list">
+                <div *ngFor="let profileUserData of friendList" class="chat-user-container">
+
+                    <app-user-snackbar [userData]="null" [profileUserData]="profileUserData"></app-user-snackbar>
+                    <span>
+                         <button (click)="openChat(profileUserData)" mat-button><mat-icon>chat</mat-icon> Message</button>
+                    </span>
+                </div>                
             </div>
         </mat-card>
     </div>
+
+
+
+
+    <div class="chat-card-container">
+
+        <div *ngFor="let chatCardData of activeChatCards">
+            <app-chat-card
+                    [userData]="userData"
+                    [chatCardData]="chatCardData"
+                    [cardIsOpen]="chatCardData.cardIsOpen"
+                    (openChatCardEvent)="openChatCard(chatCardData)"
+                    (closeChatCardEvent)="closeChatCard(chatCardData)"
+                    (removeChatCardEvent)="removeChatCard(chatCardData)"></app-chat-card>
+        </div>
+    </div>
+
+
 </div>

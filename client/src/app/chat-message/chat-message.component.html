@@ -1,0 +1,10 @@
+<div class="wrapper-chat-message">
+    
+    <div *ngIf="chatParticipantUser" class="chat-participant-user">
+        <p class="message-container">{{messageData.message_text}}</p>
+    </div>
+
+    <div *ngIf="chatParticipantOther" class="chat-participant-other">
+        <p class="message-container">{{messageData.message_text}}</p>
+    </div>
+</div>

@@ -17,14 +17,15 @@
         </div>
 
 
-        <mat-expansion-panel hideToggle class="comment-expansion-panel" (opened)="commentPanelOpenState = true" (closed)="commentPanelOpenState = false">
+        <mat-expansion-panel hideToggle (opened)="commentPanelOpenState = true" (closed)="commentPanelOpenState = false">
             
             <mat-expansion-panel-header>
                 <mat-panel-description *ngIf="!hasNoComment && !commentPanelOpenState">
                    <span>{{"components.post.comment.show" | translate}}&nbsp;{{commentCount}}&nbsp;</span>
                    <span *ngIf="hasOneComment">{{"components.post.comment.comment" | translate}}</span>
                    <span *ngIf="hasManyComments">{{"components.post.comment.comments" | translate}}</span> 
-                </mat-panel-description><mat-panel-description *ngIf="hasNoComment && !commentPanelOpenState">
+                </mat-panel-description>
+                <mat-panel-description *ngIf="hasNoComment && !commentPanelOpenState">
                     {{"components.post.comment.noCommentsYet" | translate}}
                 </mat-panel-description>
 
@@ -38,7 +39,7 @@
                     <app-comment [userData]="userData" [commentData]="commentData"></app-comment>
                 </div>
             </div>
-            <p *ngIf="hasNoComment">{{"components.post.comment.sorryNoComment" | translate}}</p>
+            <p class="no-comment-message" *ngIf="hasNoComment">{{"components.post.comment.sorryNoComment" | translate}}</p>
         </mat-expansion-panel>
         <div>
             <form [formGroup]="commentForm" class="input-form" (keypress)="commentPost($event)">
