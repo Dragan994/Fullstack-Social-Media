@@ -36,7 +36,6 @@ getChatId.post('/api/getChatId', async (req, res)=>{
                     //reject(err)
                     throw err
                 }
-                console.log(data[0])
 
                 resolve(data[0])
             })            
@@ -51,9 +50,7 @@ getChatId.post('/api/getChatId', async (req, res)=>{
     
     
     function createChat(){
-
-        console.log("Creating new chat")
-        
+       
         const createChatSql = `        
         INSERT INTO chat(
             fk_participant1_id,
@@ -72,8 +69,6 @@ getChatId.post('/api/getChatId', async (req, res)=>{
                     //reject(err)
                     throw err
                 }
-                console.log("data from new chat")
-                console.log(data)
                 resolve(data)
             })           
         })

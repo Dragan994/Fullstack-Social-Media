@@ -23,7 +23,6 @@ export class UserSnackbarComponent implements OnInit {
 
 
   async loadInitialData(){
-    console.log(this.profileUserData)
     const profilePictureData = await this.imageService.getUserProfilePicture(this.profileUserData['user_id']).toPromise()
 
     if(profilePictureData['message'] === "image_url not found"){
@@ -38,8 +37,6 @@ export class UserSnackbarComponent implements OnInit {
   goToUserProfile(){
     const profileUser_id = this.profileUserData['user_id']
 
-    console.log(profileUser_id)
-    
     this.router.navigate(['userProfile'],{queryParams: {id:profileUser_id}})
     .then(()=>{ 
       // This ensures user to visit his own profile if he is on someone elses profile.

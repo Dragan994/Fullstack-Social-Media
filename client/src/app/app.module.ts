@@ -50,7 +50,10 @@ import { UserFriendsComponent } from './user/user-friends/user-friends.component
 import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 import { ChatCardComponent } from './chat-card/chat-card.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
-const config: SocketIoConfig = {
+import { NotificationListComponent } from './notifications/notification-list/notification-list.component';
+import { NotificationCardComponent } from './notifications/notification-card/notification-card.component';
+
+const socketConfig: SocketIoConfig = {
   url: environment.socketUrl,
   options: {
     transports: ['websocket']
@@ -89,7 +92,9 @@ const config: SocketIoConfig = {
     UserFriendsComponent,
     ImageUploaderComponent,
     ChatCardComponent,
-    ChatMessageComponent
+    ChatMessageComponent,
+    NotificationListComponent,
+    NotificationCardComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +105,7 @@ const config: SocketIoConfig = {
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    SocketIoModule.forRoot(config),
+    SocketIoModule.forRoot(socketConfig),
     MatIconModule,
     DragDropModule,
     MatDialogModule,

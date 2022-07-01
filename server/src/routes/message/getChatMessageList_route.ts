@@ -7,9 +7,6 @@ getChatMessageList.post("/api/getChatMessageList", (req, res)=>{
 
     const {chat_id} = req.body
 
-
-    console.log(chat_id)
-
     const getChatMessageListSql = `
     
     SELECT *

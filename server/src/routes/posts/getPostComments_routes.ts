@@ -41,9 +41,7 @@ getPostsComments.post('/api/getPostComments', (req, res)=>{
         if(err){
             console.log(err)
         }
-        console.log(data)
-        const arr = [...data]
-        res.send(arr)
+        res.send(data)
     })
 
 /*

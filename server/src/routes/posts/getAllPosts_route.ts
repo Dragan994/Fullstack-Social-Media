@@ -21,7 +21,7 @@ getAllPosts.get('/api/getAllPosts', (req, res)=>{
     JOIN user_profile u
         ON p.fk_post_user_id = u.user_id
     ORDER BY p.date_of_creation DESC
-    LIMIT 5
+    LIMIT  20
     `
 
 

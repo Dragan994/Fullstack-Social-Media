@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';  
+import { Socket } from 'ngx-socket-io';
+import { UserService } from '../user/user.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class SocketService {
-	constructor(private socket: Socket) {}
+
+
+  userData
+  tokenError
+
+	constructor(
+    private socket: Socket,
+  ) {}
+
+
   // Get connection status
   getStatus(){
     return this.socket.connect()
   }
   
 
-  // Emit event
-  emitMessage(data){
-    this.socket.emit('message', data)
+  // Event emitters
+  emitMessageTo(chat_id){
+    this.socket.emit("message", {chat_id})
   }
 
   emitUserConnection(userData){
@@ -26,19 +36,8 @@ export class SocketService {
   }
 
   // Listen event
-  OnMessage(){
-    return this.socket.fromEvent('message')
-  }
-
-  OnNewUserConnected(){
-    return this.socket.fromEvent('newUserConnected')
-  }
-
-  OnUserDisconnected(){
-    return this.socket.fromEvent('userDisconnected')
-  }
-  OnInitialData(){
-    return this.socket.fromEvent('initialData')
+  OnNewMessage(chat_id){
+    return this.socket.fromEvent(`newMessageTo${chat_id}`)
   }
 
 }

@@ -2,7 +2,6 @@ import express  from 'express';
 import ip       from 'ip';
 import mysql    from 'mysql';
 import databaseConfig               from '../src/database/Database-config.json'
-import { chatHandlers }             from './chatHandlers';
 import { updateUserRouter }         from './routes/user/updateUser_route';
 import {userRouter}                 from './routes/user/user_route'
 import { registerRouter }           from './routes/user/register_route';
@@ -31,6 +30,7 @@ import { getProfileFriends } from './routes/friendship/getProfileFriends_route';
 import { sendMessage } from './routes/message/sendMessage_route';
 import { getChatId } from './routes/message/getChatId_route';
 import { getChatMessageList } from './routes/message/getChatMessageList_route';
+import { initiateMessageHandlers } from './socket/initiate_message_handlers';
 
 
 const http      = require('http')
@@ -94,16 +94,9 @@ app.use(getChatMessageList)
 
 
 
-const serverData = {
-    allClients: [],
-    chat: []
-}
-
 
 io.on('connection', socket=>{
-    chatHandlers(socket, serverData)
-    socket.emit('initialData',serverData)
-    //setTimeout(()=>{socket.emit('initialData',serverData)},100)
+    initiateMessageHandlers(socket)
 })
 
 
