@@ -27,13 +27,7 @@ export class SocketService {
     this.socket.emit("message", {chat_id})
   }
 
-  emitUserConnection(userData){
-    this.socket.emit('userConnection',userData)
-  }
 
-  emitUserDisconnection(){
-    this.socket.disconnect()
-  }
 
   // Listen event
   OnNewMessage(chat_id){

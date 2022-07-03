@@ -1,7 +1,7 @@
 <div class="wrapper-user-profile" [ngClass]="{'dark-theme' : darkMode, 'light-theme': !darkMode}">
 
     <div class="navigation">
-        <app-navigation></app-navigation>
+        <app-navigation [userData]="userData"></app-navigation>
     </div>
 
     <div *ngIf="profileUserData" class="user-profile-container">

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Socket } from 'ngx-socket-io';
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private socket: Socket
   ) { }
 
 
@@ -21,6 +23,26 @@ export class MessageService {
   getChatMessagList(chat_id){
     return this.http.post("/api/getChatMessageList", {chat_id})
   }
+  
+  
 
+  // SOCKET.IO
+  
+  emitMessageTo(chat_id, messageSender_id, messageReciever_id ){
+    const  data = {
+      chat_id,
+      messageSender_id,
+      messageReciever_id
+    }
+    this.socket.emit("message", data)
+  }
+
+  onNewMessageToChatCard(chat_id){
+    return this.socket.fromEvent(`newMessageToChatCard${chat_id}`)
+  }
+  
+  onNewMessageToChatList(messageSender_id, messageReciever_id){
+    return this.socket.fromEvent(`newMessageToChatList${messageSender_id}-${messageReciever_id}`)
+  }
 
 }
